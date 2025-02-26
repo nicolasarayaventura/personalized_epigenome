@@ -76,6 +76,18 @@ samplelist="/sc/arion/work/arayan01/project/personalized_epigenome/results/sampl
 done < "${samplelist}"
 }
 
+function atac_refgen_indexing {
+	rm -rf "${atac_scratch}/2025-02-24_atac/refgenome/indexed"
+	mkdir -p "${atac_scratch}/2025-02-24_atac/refgenome/indexed"
+
+	indexed_dir="${atac_scratch}/2025-02-24_atac/refgenome/indexed"
+	rawgen_file="${atac_scratch}/2025-02-24_atac/refgenome/hg38.fa"
+
+		bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${atac_scratch}/job_atacgenomeindexing.txt"
+			bwa mem ${rawgen_file} ${atac_scratch}/2025-02-24_atac/refgenome/indexed/hg38.fasta
+done
+}
+
 function atac_mapping {
 
 samplelist="/sc/arion/work/arayan01/project/personalized_epigenome/results/sample_ids.txt"
@@ -122,6 +134,7 @@ done < "${sample}"
 #atac_trimming
 #atac_trimming2
 #atac_fastqc_trimming
+#atac_refgen_indexing
 atac_mapping
 #atac_pre_peakcalling_processing
 #atac_peakcalling
