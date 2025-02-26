@@ -76,25 +76,15 @@ samplelist="/sc/arion/work/arayan01/project/personalized_epigenome/results/sampl
 done < "${samplelist}"
 }
 
-function atac_ref_indexing {
-
-	ref_dir="${atac_scratch}/refgenome"
-	ref_gen="${atac_scratch}/refgenome/hg38.fa.fai"
-
-
-	bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${atac_scratch}/job_refgenome_index.txt" \
-		bwa index -p hg38 ${ref_dir}/${ref_gen}
-
-}
-
 function atac_mapping {
 
 samplelist="/sc/arion/work/arayan01/project/personalized_epigenome/results/sample_ids.txt"
-ref_gen="${atac_scratch}/refgenome/indexed/hg"
-sample_dir="${atac_scratch}/2025-02-25_atac/trimming"
+ref_gen="${atac_scratch}/2025-02-24_atac/refgenome"
 mapped_dir="${atac_scratch}/2025-02-25_atac/mapping"
+sample_dir="${atac_scratch}/2025-02-25_atac/trimming"
 
-	while read -r sample ; do
+while read sample ; do
+
 		bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "job_atacmapping_${sample}.txt" \
 			"bwa mem -t 2 ${ref_gen} ${sample_dir}/${sample}_tr_1P.fastq.gz ${sample_dir}/${sample}_tr_2P.fastq.gz \
 			| samtools sort -@2 -o ${mapped_dir}/${sample}.bam - \
@@ -131,8 +121,7 @@ done < "${sample}"
 #atac_fastqc_initial
 #atac_trimming
 #atac_trimming2
-atac_fastqc_trimming
-#atac_ref_indexing
-#atac_mapping
+#atac_fastqc_trimming
+atac_mapping
 #atac_pre_peakcalling_processing
 #atac_peakcalling
