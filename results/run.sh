@@ -1,3 +1,4 @@
+
 set -x -e
 
 adapter_path="/sc/arion/work/arayan01/test-env/envs/atacseq/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa"
@@ -31,7 +32,7 @@ sampledir="${atac_scratch}/2022-11-22_data_from_Ranjan_Xiang/atac"
 
 adapter_path="/sc/arion/work/arayan01/test-env/envs/atacseq/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa"
 
-	sample1="7_SEM-1_S53_L004"  
+	sample1="7_SEM-1_S53_L004"
 	output1="${atac_scratch}/2025-02-25_atac/trimming/${sample1}_R1_001"
 	output2="${atac_scratch}/2025-02-25_atac/trimming/${sample1}_R2_001"
 
@@ -39,7 +40,7 @@ adapter_path="/sc/arion/work/arayan01/test-env/envs/atacseq/share/trimmomatic-0.
 		trimmomatic PE -threads 2 \
 		${sampledir}/${sample1}_R1_001.fastq.gz ${sampledir}/${sample1}_R2_001.fastq.gz \
 		${output1}_tr_1P.fastq.gz ${output1}_tr_1U.fastq.gz \
-		${output2}_tr_2P.fastq.gz ${output2}_tr_2P.fastq.gz \
+		${output2}_tr_2P.fastq.gz ${output2}_tr_2U.fastq.gz \
 		ILLUMINACLIP:${adapter_path}:2:30:10 MINLEN:87
 }
 
@@ -56,7 +57,7 @@ sampledir="${atac_scratch}/2022-11-22_data_from_Ranjan_Xiang/atac"
 		trimmomatic PE -threads 2 \
                 ${sampledir}/${sample2}_R1_001.fastq.gz ${sampledir}/${sample2}_R2_001.fastq.gz \
                 ${output1}_tr_1P.fastq.gz ${output1}_tr_1U.fastq.gz \
-                ${output2}_tr_2P.fastq.gz ${output2}_tr_2P.fastq.gz \
+                ${output2}_tr_2P.fastq.gz ${output2}_tr_2U.fastq.gz \
                 ILLUMINACLIP:${adapter_path}:2:30:10 MINLEN:87
 }
 
@@ -92,8 +93,9 @@ samplelist="/sc/arion/work/arayan01/project/personalized_epigenome/results/sampl
 ref_gen="${atac_scratch}/refgenome/indexed/hg"
 sample_dir="${atac_scratch}/2025-02-25_atac/trimming"
 mapped_dir="${atac_scratch}/2025-02-25_atac/mapping"
-	while read sample ; do
-		bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "job1_${sample}.txt" \
+
+	while read -r sample ; do
+		bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "job_atacmapping_${sample}.txt" \
 			"bwa mem -t 2 ${ref_gen} ${sample_dir}/${sample}_tr_1P.fastq.gz ${sample_dir}/${sample}_tr_2P.fastq.gz \
 			| samtools sort -@2 -o ${mapped_dir}/${sample}.bam - \
 			&& samtools index ${mapped_dir}/${sample}.bam \
@@ -102,9 +104,35 @@ mapped_dir="${atac_scratch}/2025-02-25_atac/mapping"
 
 done < "${samplelist}"
 }
+
+function atac_pre_peakcalling_processing {
+sample_dir="${atac_scratch}/2025-02-25_atac/trimming"
+	while read sample; do
+		bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "job2_${sample}.txt" \
+			"samtools view -bh ${sample_dir}/${sample}.bam I II III IV V VI VII VIII IX X XI XII XIII XIV XV XVI > ${sample_dir}/${sample}_SC_subset.bam && \
+			picard MarkDuplicates I=${sample_dir}/${sample}_SC_subset.bam O=${sample_dir}/${sample}_SC_subset_dedup.bam M=${sample_dir}/${sample}_markdup_metrics.txt && \
+			samtools index ${sample_dir}/${sample}_SC_subset_dedup.bam && \
+			samtools flagstat ${sample_dir}/${sample}_SC_subset_dedup.bam > ${sample_dir}/${sample}_SC_subset_dedup_map_stats.txt"
+done < "${sample}"
+}
+
+function atac_peakcalling {
+sample_dir="${atac_scratch}/2025-02-25_atac/trimming"
+	mkdir ${sample_dir}/peakcallings
+		peakcall="${sample_dir}/peakcallings"
+	while read sample; do
+		bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "job3_${sample}.txt" \
+			"macs2 callpeak -t ${sample_dir}/${sample}_SC_subset_dedup.bam -f BAMPE -n ${peakcall}/${sample}_peak -g 12000000 --keep-dup all"
+done < "${sample}"
+}
+
+
 #atac_samplelist
 #atac_fastqc_initial
 #atac_trimming
 #atac_trimming2
 atac_fastqc_trimming
 #atac_ref_indexing
+#atac_mapping
+#atac_pre_peakcalling_processing
+#atac_peakcalling
