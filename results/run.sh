@@ -1,4 +1,3 @@
-
 set -x -e
 
 adapter_path="/sc/arion/work/arayan01/test-env/envs/atacseq/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa"
@@ -77,45 +76,57 @@ done < "${samplelist}"
 }
 
 function atac_refgen_indexing {
-	rm -rf "${atac_scratch}/2025-02-24_atac/refgenome/indexed"
-	mkdir -p "${atac_scratch}/2025-02-24_atac/refgenome/indexed"
+	gen_dir="${atac_scratch}/2025-02-25_atac/refgenome"
 
-	indexed_dir="${atac_scratch}/2025-02-24_atac/refgenome/indexed"
-	rawgen_file="${atac_scratch}/2025-02-24_atac/refgenome/hg38.fa"
-
-		bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${atac_scratch}/job_atacgenomeindexing.txt"
-			bwa mem ${rawgen_file} ${atac_scratch}/2025-02-24_atac/refgenome/indexed/hg38.fasta
-done
+		bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${atac_scratch}/job_atacgenomeindexing.txt" \
+			bwa index -p ${gen_dir}/hg38  ${gen_dir}/hg38.fasta
 }
 
-function atac_mapping {
-
-samplelist="/sc/arion/work/arayan01/project/personalized_epigenome/results/sample_ids.txt"
-ref_gen="${atac_scratch}/2025-02-24_atac/refgenome"
+function atac_mapping1 {
+ref_gen="${atac_scratch}/2025-02-25_atac/refgenome/hg38"
 mapped_dir="${atac_scratch}/2025-02-25_atac/mapping"
 sample_dir="${atac_scratch}/2025-02-25_atac/trimming"
 
-while read sample ; do
+sample1="7_SEM-1_S53_L004_R1_001"
+sample2="7_SEM-1_S53_L004_R2_001"
+basename1="7_SEM-1_S53_L004"
 
-		bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "job_atacmapping_${sample}.txt" \
-			"bwa mem -t 2 ${ref_gen} ${sample_dir}/${sample}_tr_1P.fastq.gz ${sample_dir}/${sample}_tr_2P.fastq.gz \
-			| samtools sort -@2 -o ${mapped_dir}/${sample}.bam - \
-			&& samtools index ${mapped_dir}/${sample}.bam \
-			&& samtools flagstat ${mapped_dir}/${sample}.bam > ${mapped_dir}/${sample}_map_stats.txt"
+		bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "job_atacmapping_${basename1}.txt" \
+			"bwa mem -t 2 ${ref_gen} ${sample_dir}/${sample1}_tr_1P.fastq.gz ${sample_dir}/${sample2}_tr_2P.fastq.gz \
+			| samtools sort -@2 -o ${mapped_dir}/${basename1}.bam - \
+			&& samtools index ${mapped_dir}/${basename1}.bam \
+			&& samtools flagstat ${mapped_dir}/${basename1}.bam > ${mapped_dir}/${basename1}_map_stats.txt"
 
+}
 
-done < "${samplelist}"
+function atac_mapping2 {
+ref_gen="${atac_scratch}/2025-02-25_atac/refgenome/hg38"
+mapped_dir="${atac_scratch}/2025-02-25_atac/mapping"
+sample_dir="${atac_scratch}/2025-02-25_atac/trimming"
+
+sample3="8_SEM-2_S54_L004_R1_001"
+sample4="8_SEM-2_S54_L004_R2_001"
+basename2="8_SEM-2_S54_L004"
+
+                bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "job_atacmapping_${basename2}.txt" \
+                        "bwa mem -t 2 ${ref_gen} ${sample_dir}/${sample3}_tr_1P.fastq.gz ${sample_dir}/${sample4}_tr_2P.fastq.gz \
+                        | samtools sort -@2 -o ${mapped_dir}/${basename2}.bam - \
+                        && samtools index ${mapped_dir}/${basename2}.bam \
+                        && samtools flagstat ${mapped_dir}/${basename2}.bam > ${mapped_dir}/${basename2}_map_stats.txt"
+
 }
 
 function atac_pre_peakcalling_processing {
-sample_dir="${atac_scratch}/2025-02-25_atac/trimming"
+samplelist="/sc/arion/work/arayan01/project/personalized_epigenome/results/sample_ids.txt"
+mapped_dir="${atac_scratch}/2025-02-25_atac/mapping"
 	while read sample; do
+	base_sample=$(echo "$sample" | sed 's/\(L004\).*/\1/')
 		bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "job2_${sample}.txt" \
-			"samtools view -bh ${sample_dir}/${sample}.bam I II III IV V VI VII VIII IX X XI XII XIII XIV XV XVI > ${sample_dir}/${sample}_SC_subset.bam && \
-			picard MarkDuplicates I=${sample_dir}/${sample}_SC_subset.bam O=${sample_dir}/${sample}_SC_subset_dedup.bam M=${sample_dir}/${sample}_markdup_metrics.txt && \
-			samtools index ${sample_dir}/${sample}_SC_subset_dedup.bam && \
-			samtools flagstat ${sample_dir}/${sample}_SC_subset_dedup.bam > ${sample_dir}/${sample}_SC_subset_dedup_map_stats.txt"
-done < "${sample}"
+			"samtools view -bh ${mapped_dir}/${base_sample}.bam I II III IV V VI VII VIII IX X XI XII XIII XIV XV XVI > ${mapped_dir}/${base_sample}_SC_subset.bam && \
+			picard MarkDuplicates I=${mapped_dir}/${base_sample}_SC_subset.bam O=${mapped_dir}/${base_sample}_SC_subset_dedup.bam M=${mapped_dir}/${base_sample}_markdup_metrics.txt && \
+			samtools index ${mapped_dir}/${base_sample}_SC_subset_dedup.bam && \
+			samtools flagstat ${mapped_dir}/${base_ample}_SC_subset_dedup.bam > ${mapped_dir}/${base_sample}_SC_subset_dedup_map_stats.txt"
+done < "${samplelist}"
 }
 
 function atac_peakcalling {
@@ -135,6 +146,7 @@ done < "${sample}"
 #atac_trimming2
 #atac_fastqc_trimming
 #atac_refgen_indexing
-atac_mapping
+atac_mapping1
+atac_mapping2
 #atac_pre_peakcalling_processing
 #atac_peakcalling
