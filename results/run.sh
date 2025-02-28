@@ -119,24 +119,41 @@ basename2="8_SEM-2_S54_L004"
 function atac_pre_peakcalling_processing {
 samplelist="/sc/arion/work/arayan01/project/personalized_epigenome/results/sample_ids.txt"
 mapped_dir="${atac_scratch}/2025-02-25_atac/mapping"
-	while read sample; do
-	base_sample=$(echo "$sample" | sed 's/\(L004\).*/\1/')
-		bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "job2_${sample}.txt" \
-			"samtools view -bh ${mapped_dir}/${base_sample}.bam I II III IV V VI VII VIII IX X XI XII XIII XIV XV XVI > ${mapped_dir}/${base_sample}_SC_subset.bam && \
-			picard MarkDuplicates I=${mapped_dir}/${base_sample}_SC_subset.bam O=${mapped_dir}/${base_sample}_SC_subset_dedup.bam M=${mapped_dir}/${base_sample}_markdup_metrics.txt && \
-			samtools index ${mapped_dir}/${base_sample}_SC_subset_dedup.bam && \
-			samtools flagstat ${mapped_dir}/${base_ample}_SC_subset_dedup.bam > ${mapped_dir}/${base_sample}_SC_subset_dedup_map_stats.txt"
-done < "${samplelist}"
+
+		base_samples=($(awk -F'_R[12]_001' '{print $1}' "${samplelist}" | sort -u))
+			base_sample1="${base_samples[0]}"
+			base_sample2="${base_samples[1]}"
+
+		base_sample3=("$base_sample1" "$base_sample2")
+
+		for samples in "${base_sample3[@]}"; do
+
+		bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "job2_prepeakcalling_${samples}.txt" \
+			"samtools view -bh ${mapped_dir}/${samples}.bam chr1 chr2 chr3 chr4 chr5 chr6 chr7 chr8 chr9 chr10 chr11 chr12 chr13 chr14 chr15 chr16 chr17 chr18 chr19 chr20 chr21 chr22 chrX chrY chrM > ${mapped_dir}/${samples}_SC_subset.bam && \
+			picard MarkDuplicates I=${mapped_dir}/${samples}_SC_subset.bam O=${mapped_dir}/${samples}_SC_subset_dedup.bam M=${mapped_dir}/${samples}_markdup_metrics.txt && \
+			samtools index ${mapped_dir}/${samples}_SC_subset_dedup.bam && \
+			samtools flagstat ${mapped_dir}/${samples}_SC_subset_dedup.bam > ${mapped_dir}/${samples}_SC_subset_dedup_map_stats.txt"
+done
 }
 
 function atac_peakcalling {
-sample_dir="${atac_scratch}/2025-02-25_atac/trimming"
-	mkdir ${sample_dir}/peakcallings
-		peakcall="${sample_dir}/peakcallings"
-	while read sample; do
+samplelist="/sc/arion/work/arayan01/project/personalized_epigenome/results/sample_ids.txt"
+mapped_dir="${atac_scratch}/2025-02-25_atac/mapping"
+	rm -rf "${atac_work}/peakcalling"
+	mkdir -p "${atac_work}/peakcalling"
+	peakcall="${sample_dir}/peakcallings"
+
+		base_samples=($(awk -F'_R[12]_001' '{print $1}' "${samplelist}" | sort -u))
+                        base_sample1="${base_samples[0]}"
+                        base_sample2="${base_samples[1]}"
+
+                base_sample3=("$base_sample1" "$base_sample2")
+
+                for samples in "${base_sample3[@]}"; do
+
 		bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "job3_${sample}.txt" \
-			"macs2 callpeak -t ${sample_dir}/${sample}_SC_subset_dedup.bam -f BAMPE -n ${peakcall}/${sample}_peak -g 12000000 --keep-dup all"
-done < "${sample}"
+			"macs2 callpeak -t ${mapped_dir}/${samples}_SC_subset_dedup.bam -f BAMPE -n ${peakcall}/${samples}_peak -g 12000000 --keep-dup all"
+done
 }
 
 
@@ -146,7 +163,7 @@ done < "${sample}"
 #atac_trimming2
 #atac_fastqc_trimming
 #atac_refgen_indexing
-atac_mapping1
-atac_mapping2
-#atac_pre_peakcalling_processing
+#atac_mapping1
+#atac_mapping2
+atac_pre_peakcalling_processing
 #atac_peakcalling
