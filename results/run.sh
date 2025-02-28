@@ -127,9 +127,16 @@ mapped_dir="${atac_scratch}/2025-02-25_atac/mapping"
 		base_sample3=("$base_sample1" "$base_sample2")
 
 		for samples in "${base_sample3[@]}"; do
+    rm -f \
+        "${mapped_dir}/${samples}_SC_subset.bam" \
+        "${mapped_dir}/${samples}_SC_subset_dedup.bam" \
+        "${mapped_dir}/${samples}_SC_subset_dedup.bam.bai" \
+        "${mapped_dir}/${samples}_markdup_metrics.txt" \
+        "${mapped_dir}/${samples}_SC_subset_dedup_map_stats.txt" \
+        "job2_prepeakcalling_${samples}.txt"
 
 		bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "job2_prepeakcalling_${samples}.txt" \
-			"samtools view -bh ${mapped_dir}/${samples}.bam chr1 chr2 chr3 chr4 chr5 chr6 chr7 chr8 chr9 chr10 chr11 chr12 chr13 chr14 chr15 chr16 chr17 chr18 chr19 chr20 chr21 chr22 chrX chrY chrM > ${mapped_dir}/${samples}_SC_subset.bam && \
+			"samtools view -bh ${mapped_dir}/${samples}.bam > ${mapped_dir}/${samples}_SC_subset.bam && \
 			picard MarkDuplicates I=${mapped_dir}/${samples}_SC_subset.bam O=${mapped_dir}/${samples}_SC_subset_dedup.bam M=${mapped_dir}/${samples}_markdup_metrics.txt && \
 			samtools index ${mapped_dir}/${samples}_SC_subset_dedup.bam && \
 			samtools flagstat ${mapped_dir}/${samples}_SC_subset_dedup.bam > ${mapped_dir}/${samples}_SC_subset_dedup_map_stats.txt"
@@ -137,11 +144,12 @@ done
 }
 
 function atac_peakcalling {
+
 samplelist="/sc/arion/work/arayan01/project/personalized_epigenome/results/sample_ids.txt"
 mapped_dir="${atac_scratch}/2025-02-25_atac/mapping"
 	rm -rf "${atac_work}/peakcalling"
 	mkdir -p "${atac_work}/peakcalling"
-	peakcall="${sample_dir}/peakcallings"
+	peakcall="${atac_work}/peakcalling"
 
 		base_samples=($(awk -F'_R[12]_001' '{print $1}' "${samplelist}" | sort -u))
                         base_sample1="${base_samples[0]}"
@@ -151,8 +159,8 @@ mapped_dir="${atac_scratch}/2025-02-25_atac/mapping"
 
                 for samples in "${base_sample3[@]}"; do
 
-		bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "job3_${sample}.txt" \
-			"macs2 callpeak -t ${mapped_dir}/${samples}_SC_subset_dedup.bam -f BAMPE -n ${peakcall}/${samples}_peak -g 12000000 --keep-dup all"
+		bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "job3_${samples}.txt" \
+			"macs2 callpeak -t ${mapped_dir}/${samples}_SC_subset_dedup.bam -f BAMPE -n ${peakcall}/${samples}_peak -g hs --keep-dup all"
 done
 }
 
@@ -165,5 +173,5 @@ done
 #atac_refgen_indexing
 #atac_mapping1
 #atac_mapping2
-atac_pre_peakcalling_processing
-#atac_peakcalling
+#atac_pre_peakcalling_processing
+atac_peakcalling
