@@ -1,41 +1,41 @@
 set -x -e
 
 adapter_path="/sc/arion/work/arayan01/test-env/envs/atacseq/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa"
-atac_scratch="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/data"
-atac_work="/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-02-24_atac"
+scratch="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-24_atac"
+work="/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-02-24_atac"
 
-function atac_samplelist {
-	sampledir="${atac_scratch}/2022-11-22_data_from_Ranjan_Xiang/atac"
+function samplelist {
+	sampledir="${scratch}/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac"
 	output="/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-02-24_atac/sample_ids.txt"
 		ls ${sampledir} | cut -f 1 -d "." > sample_ids.txt
 }
 
-function atac_fastqc_initial {
+function fastqc_initial {
 samplelist="/sc/arion/work/arayan01/project/personalized_epigenome/results/sample_ids.txt"
 #once job is finished run multiqc in directory!
-	sampledir="${atac_scratch}/2022-11-22_data_from_Ranjan_Xiang/atac"
-	qc_out="${atac_work}/qc/init_fastqc"
+	sampledir="${scratch}/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac"
+	qc_out="${work}/qc/init_fastqc"
 
 	while read -r sample ; do
-		bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${atac_scratch}/job_atacfastqc_${sample}.txt" \
+		bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${scratch}/job_atacfastqc_${sample}.txt" \
     				fastqc -t 2 ${sampledir}/${sample}.fastq.gz -o ${qc_out}
 
 done < "${samplelist}"
 }
 
-function atac_trimming {
-rm -rf "${atac_scratch}/2025-02-25_atac/trimming"
-mkdir -p "${atac_scratch}/2025-02-25_atac/trimming"
+function trimming {
+rm -rf "${scratch}/trimming"
+mkdir -p "${scratch}/trimming"
 samplelist="/sc/arion/work/arayan01/project/personalized_epigenome/results/sample_ids.txt"
-sampledir="${atac_scratch}/2022-11-22_data_from_Ranjan_Xiang/atac"
+sampledir="${scratch}/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac"
 
 adapter_path="/sc/arion/work/arayan01/test-env/envs/atacseq/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa"
 
 	sample1="7_SEM-1_S53_L004"
-	output1="${atac_scratch}/2025-02-25_atac/trimming/${sample1}_R1_001"
-	output2="${atac_scratch}/2025-02-25_atac/trimming/${sample1}_R2_001"
+	output1="${scratch}/trimming/${sample1}_R1_001"
+	output2="${scratch}/trimming/${sample1}_R2_001"
 
-	bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${atac_scratch}/job_atactrimming_${sample1}.txt" \
+	bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${scratch}/job_atactrimming_${sample1}.txt" \
 		trimmomatic PE -threads 2 \
 		${sampledir}/${sample1}_R1_001.fastq.gz ${sampledir}/${sample1}_R2_001.fastq.gz \
 		${output1}_tr_1P.fastq.gz ${output1}_tr_1U.fastq.gz \
@@ -43,16 +43,16 @@ adapter_path="/sc/arion/work/arayan01/test-env/envs/atacseq/share/trimmomatic-0.
 		ILLUMINACLIP:${adapter_path}:2:30:10 MINLEN:87
 }
 
-function atac_trimming2 {
+function trimming2 {
 samplelist="/sc/arion/work/arayan01/project/personalized_epigenome/results/sample_ids.txt"
-sampledir="${atac_scratch}/2022-11-22_data_from_Ranjan_Xiang/atac"
+sampledir="${scratch}/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac"
 
         adapter_path="/sc/arion/work/arayan01/test-env/envs/atacseq/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa"
 	sample2="8_SEM-2_S54_L004"
-	output1="${atac_scratch}/2025-02-25_atac/trimming/${sample2}_R1_001"
-	output2="${atac_scratch}/2025-02-25_atac/trimming/${sample2}_R2_001"
+	output1="${scratch}/trimming/${sample2}_R1_001"
+	output2="${scratch}/trimming/${sample2}_R2_001"
 
-        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${atac_scratch}/job_atactrimming_${sample2}.txt" \
+        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${scratch}/job_atactrimming_${sample2}.txt" \
 		trimmomatic PE -threads 2 \
                 ${sampledir}/${sample2}_R1_001.fastq.gz ${sampledir}/${sample2}_R2_001.fastq.gz \
                 ${output1}_tr_1P.fastq.gz ${output1}_tr_1U.fastq.gz \
@@ -60,14 +60,14 @@ sampledir="${atac_scratch}/2022-11-22_data_from_Ranjan_Xiang/atac"
                 ILLUMINACLIP:${adapter_path}:2:30:10 MINLEN:87
 }
 
-function atac_fastqc_trimming {
-rm -rf "${atac_work}/qc/trimming"
-mkdir -p "${atac_work}/qc/trimming"
+function trimming {
+rm -rf "${work}/qc/trimming"
+mkdir -p "${work}/qc/trimming"
 
 samplelist="/sc/arion/work/arayan01/project/personalized_epigenome/results/sample_ids.txt"
 
-	qc_output="${atac_work}/qc/trimming"
-	trimmed_dir="${atac_scratch}/2025-02-25_atac/trimming"
+	qc_output="${work}/qc/trimming"
+	trimmed_dir="${scratch}/trimming"
 
 	while read -r sample; do
 		fastqc -t 2 ${trimmed_dir}/*_SEM-*_S**_L004_R*_001_tr_*P.fastq.gz -o ${qc_output}
@@ -75,17 +75,17 @@ samplelist="/sc/arion/work/arayan01/project/personalized_epigenome/results/sampl
 done < "${samplelist}"
 }
 
-function atac_refgen_indexing {
-	gen_dir="${atac_scratch}/2025-02-25_atac/refgenome"
+function indexing {
+	gen_dir="${scratch}/refgenome"
 
-		bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${atac_scratch}/job_atacgenomeindexing.txt" \
+		bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${scratch}/job_atacgenomeindexing.txt" \
 			bwa index -p ${gen_dir}/hg38  ${gen_dir}/hg38.fasta
 }
 
-function atac_mapping1 {
-ref_gen="${atac_scratch}/2025-02-25_atac/refgenome/hg38"
-mapped_dir="${atac_scratch}/2025-02-25_atac/mapping"
-sample_dir="${atac_scratch}/2025-02-25_atac/trimming"
+function mapping1 {
+ref_gen="${scratch}/refgenome/hg38"
+mapped_dir="${scratch}/mapping"
+sample_dir="${scratch}/trimming"
 
 sample1="7_SEM-1_S53_L004_R1_001"
 sample2="7_SEM-1_S53_L004_R2_001"
@@ -99,10 +99,10 @@ basename1="7_SEM-1_S53_L004"
 
 }
 
-function atac_mapping2 {
-ref_gen="${atac_scratch}/2025-02-25_atac/refgenome/hg38"
-mapped_dir="${atac_scratch}/2025-02-25_atac/mapping"
-sample_dir="${atac_scratch}/2025-02-25_atac/trimming"
+function mapping2 {
+ref_gen="${scratch}/refgenome/hg38"
+mapped_dir="${scratch}/mapping"
+sample_dir="${scratch}/trimming"
 
 sample3="8_SEM-2_S54_L004_R1_001"
 sample4="8_SEM-2_S54_L004_R2_001"
@@ -116,9 +116,9 @@ basename2="8_SEM-2_S54_L004"
 
 }
 
-function atac_pre_peakcalling_processing {
+function peakcalling_processing {
 samplelist="/sc/arion/work/arayan01/project/personalized_epigenome/results/sample_ids.txt"
-mapped_dir="${atac_scratch}/2025-02-25_atac/mapping"
+mapped_dir="${scratch}/mapping"
 
 		base_samples=($(awk -F'_R[12]_001' '{print $1}' "${samplelist}" | sort -u))
 			base_sample1="${base_samples[0]}"
@@ -143,13 +143,13 @@ mapped_dir="${atac_scratch}/2025-02-25_atac/mapping"
 done
 }
 
-function atac_peakcalling {
+function peakcalling {
 
 samplelist="/sc/arion/work/arayan01/project/personalized_epigenome/results/sample_ids.txt"
-mapped_dir="${atac_scratch}/2025-02-25_atac/mapping"
-	rm -rf "${atac_work}/peakcalling"
-	mkdir -p "${atac_work}/peakcalling"
-	peakcall="${atac_work}/peakcalling"
+mapped_dir="${scratch}/mapping"
+	rm -rf "${work}/peakcalling"
+	mkdir -p "${work}/peakcalling"
+	peakcall="${work}/peakcalling"
 
 		base_samples=($(awk -F'_R[12]_001' '{print $1}' "${samplelist}" | sort -u))
                         base_sample1="${base_samples[0]}"
@@ -165,13 +165,13 @@ done
 }
 
 
-#atac_samplelist
-#atac_fastqc_initial
-#atac_trimming
-#atac_trimming2
-#atac_fastqc_trimming
-#atac_refgen_indexing
-#atac_mapping1
-#atac_mapping2
-#atac_pre_peakcalling_processing
-atac_peakcalling
+#samplelist
+#fastqc_initial
+#trimming
+#trimming2
+#fastqc_trimming
+#refgen_indexing
+#mapping1
+#mapping2
+#pre_peakcalling_processing
+peakcalling
