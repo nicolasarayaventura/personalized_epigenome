@@ -1,0 +1,5 @@
+Module	Section	Sample Name	Source
+FastQC	all_sections	8_SEM-2_S54_L004_R2_001	/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-02-24_atac/qc/init_fastqc/8_SEM-2_S54_L004_R2_001_fastqc.zip
+FastQC	all_sections	7_SEM-1_S53_L004_R2_001	/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-02-24_atac/qc/init_fastqc/7_SEM-1_S53_L004_R2_001_fastqc.zip
+FastQC	all_sections	7_SEM-1_S53_L004_R1_001	/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-02-24_atac/qc/init_fastqc/7_SEM-1_S53_L004_R1_001_fastqc.zip
+FastQC	all_sections	8_SEM-2_S54_L004_R1_001	/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-02-24_atac/qc/init_fastqc/8_SEM-2_S54_L004_R1_001_fastqc.zip

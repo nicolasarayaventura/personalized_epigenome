@@ -1,0 +1,5 @@
+Sample	fastqc_percent_duplicates	fastqc_percent_gc	fastqc_avg_sequence_length	fastqc_total_sequences
+7_SEM-1_S53_L004_R1_001_tr_1P	42.0690330691	47.0	100.0	56640533.0
+7_SEM-1_S53_L004_R2_001_tr_2P	39.9548752781	47.0	100.0	56640533.0
+8_SEM-2_S54_L004_R1_001_tr_1P	39.268693182	46.0	100.0	45767334.0
+8_SEM-2_S54_L004_R2_001_tr_2P	38.1075191853	46.0	100.0	45767334.0
