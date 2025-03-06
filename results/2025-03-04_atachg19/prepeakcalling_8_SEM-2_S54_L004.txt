@@ -1,0 +1,418 @@
+Sender: LSF System <lsfadmin@lc07e61>
+Subject: Job 172836357: <samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup_map_stats.txt> in cluster <chimera> Done
+
+Job <samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup_map_stats.txt> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Wed Mar  5 18:17:50 2025
+Job was executed on host(s) <1*lc07e61>, in queue <premium>, as user <arayan01> in cluster <chimera> at Wed Mar  5 18:17:55 2025
+                            <1*lc06e70>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-03-04_atachg19> was used as the working directory.
+Started at Wed Mar  5 18:17:55 2025
+Terminated at Wed Mar  5 18:44:32 2025
+Results reported at Wed Mar  5 18:44:32 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup_map_stats.txt
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   1587.93 sec.
+    Max Memory :                                 1118 MB
+    Average Memory :                             552.33 MB
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               14882.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                14
+    Run time :                                   1597 sec.
+    Turnaround time :                            1602 sec.
+
+The output (if any) follows:
+
+INFO	2025-03-05 18:29:16	MarkDuplicates	
+
+********** NOTE: Picard's command line syntax is changing.
+**********
+********** For more information, please see:
+********** https://github.com/broadinstitute/picard/wiki/Command-Line-Syntax-Transition-For-Users-(Pre-Transition)
+**********
+********** The command line looks like this in the new syntax:
+**********
+**********    MarkDuplicates -I /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam -O /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam -M /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_markdup_metrics.txt
+**********
+
+
+18:29:16.560 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/sc/arion/work/arayan01/test-env/envs/atacseq/share/picard-2.18.29-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Wed Mar 05 18:29:16 EST 2025] MarkDuplicates INPUT=[/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam] OUTPUT=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam METRICS_FILE=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_markdup_metrics.txt    MAX_SEQUENCES_FOR_DISK_READ_ENDS_MAP=50000 MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=8000 SORTING_COLLECTION_SIZE_RATIO=0.25 TAG_DUPLICATE_SET_MEMBERS=false REMOVE_SEQUENCING_DUPLICATES=false TAGGING_POLICY=DontTag CLEAR_DT=true DUPLEX_UMI=false ADD_PG_TAG_TO_READS=true REMOVE_DUPLICATES=false ASSUME_SORTED=false DUPLICATE_SCORING_STRATEGY=SUM_OF_BASE_QUALITIES PROGRAM_RECORD_ID=MarkDuplicates PROGRAM_GROUP_NAME=MarkDuplicates READ_NAME_REGEX=<optimized capture of last three ':' separated fields as numeric values> OPTICAL_DUPLICATE_PIXEL_DISTANCE=100 MAX_OPTICAL_DUPLICATE_SET_SIZE=300000 VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 MAX_RECORDS_IN_RAM=500000 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Wed Mar 05 18:29:16 EST 2025] Executing as arayan01@lc07e61 on Linux 5.14.0-427.13.1.el9_4.x86_64 amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.18.29-SNAPSHOT
+INFO	2025-03-05 18:29:16	MarkDuplicates	Start of doWork freeMemory: 503727152; totalMemory: 519110656; maxMemory: 1037959168
+INFO	2025-03-05 18:29:16	MarkDuplicates	Reading input file and constructing read end information.
+INFO	2025-03-05 18:29:16	MarkDuplicates	Will retain up to 3760721 data points before spilling to disk.
+INFO	2025-03-05 18:29:20	MarkDuplicates	Read     1,000,000 records.  Elapsed time: 00:00:03s.  Time for last 1,000,000:    3s.  Last read position: chr1:13,672,397
+INFO	2025-03-05 18:29:20	MarkDuplicates	Tracking 2105 as yet unmatched pairs. 65 records in RAM.
+INFO	2025-03-05 18:29:22	MarkDuplicates	Read     2,000,000 records.  Elapsed time: 00:00:05s.  Time for last 1,000,000:    2s.  Last read position: chr1:54,872,014
+INFO	2025-03-05 18:29:22	MarkDuplicates	Tracking 4948 as yet unmatched pairs. 233 records in RAM.
+INFO	2025-03-05 18:29:24	MarkDuplicates	Read     3,000,000 records.  Elapsed time: 00:00:08s.  Time for last 1,000,000:    2s.  Last read position: chr1:98,220,810
+INFO	2025-03-05 18:29:24	MarkDuplicates	Tracking 7005 as yet unmatched pairs. 249 records in RAM.
+INFO	2025-03-05 18:29:29	MarkDuplicates	Read     4,000,000 records.  Elapsed time: 00:00:12s.  Time for last 1,000,000:    4s.  Last read position: chr1:152,007,084
+INFO	2025-03-05 18:29:29	MarkDuplicates	Tracking 17211 as yet unmatched pairs. 223 records in RAM.
+INFO	2025-03-05 18:29:31	MarkDuplicates	Read     5,000,000 records.  Elapsed time: 00:00:14s.  Time for last 1,000,000:    2s.  Last read position: chr1:191,750,515
+INFO	2025-03-05 18:29:31	MarkDuplicates	Tracking 19487 as yet unmatched pairs. 176 records in RAM.
+INFO	2025-03-05 18:29:33	MarkDuplicates	Read     6,000,000 records.  Elapsed time: 00:00:16s.  Time for last 1,000,000:    2s.  Last read position: chr1:230,399,737
+INFO	2025-03-05 18:29:33	MarkDuplicates	Tracking 21693 as yet unmatched pairs. 88 records in RAM.
+INFO	2025-03-05 18:29:35	MarkDuplicates	Read     7,000,000 records.  Elapsed time: 00:00:19s.  Time for last 1,000,000:    2s.  Last read position: chr2:20,052,255
+INFO	2025-03-05 18:29:35	MarkDuplicates	Tracking 24051 as yet unmatched pairs. 5738 records in RAM.
+INFO	2025-03-05 18:29:41	MarkDuplicates	Read     8,000,000 records.  Elapsed time: 00:00:24s.  Time for last 1,000,000:    5s.  Last read position: chr2:57,878,512
+INFO	2025-03-05 18:29:41	MarkDuplicates	Tracking 68911 as yet unmatched pairs. 3647 records in RAM.
+INFO	2025-03-05 18:29:43	MarkDuplicates	Read     9,000,000 records.  Elapsed time: 00:00:26s.  Time for last 1,000,000:    2s.  Last read position: chr2:98,316,696
+INFO	2025-03-05 18:29:43	MarkDuplicates	Tracking 76219 as yet unmatched pairs. 2893 records in RAM.
+INFO	2025-03-05 18:29:45	MarkDuplicates	Read    10,000,000 records.  Elapsed time: 00:00:29s.  Time for last 1,000,000:    2s.  Last read position: chr2:143,912,861
+INFO	2025-03-05 18:29:45	MarkDuplicates	Tracking 77487 as yet unmatched pairs. 2064 records in RAM.
+INFO	2025-03-05 18:29:47	MarkDuplicates	Read    11,000,000 records.  Elapsed time: 00:00:31s.  Time for last 1,000,000:    2s.  Last read position: chr2:186,191,580
+INFO	2025-03-05 18:29:47	MarkDuplicates	Tracking 78337 as yet unmatched pairs. 1282 records in RAM.
+INFO	2025-03-05 18:29:50	MarkDuplicates	Read    12,000,000 records.  Elapsed time: 00:00:34s.  Time for last 1,000,000:    3s.  Last read position: chr2:226,109,193
+INFO	2025-03-05 18:29:50	MarkDuplicates	Tracking 79261 as yet unmatched pairs. 486 records in RAM.
+INFO	2025-03-05 18:29:53	MarkDuplicates	Read    13,000,000 records.  Elapsed time: 00:00:36s.  Time for last 1,000,000:    2s.  Last read position: chr3:24,180,610
+INFO	2025-03-05 18:29:53	MarkDuplicates	Tracking 79649 as yet unmatched pairs. 3338 records in RAM.
+INFO	2025-03-05 18:29:55	MarkDuplicates	Read    14,000,000 records.  Elapsed time: 00:00:38s.  Time for last 1,000,000:    2s.  Last read position: chr3:68,928,189
+INFO	2025-03-05 18:29:55	MarkDuplicates	Tracking 80250 as yet unmatched pairs. 2506 records in RAM.
+INFO	2025-03-05 18:29:57	MarkDuplicates	Read    15,000,000 records.  Elapsed time: 00:00:40s.  Time for last 1,000,000:    2s.  Last read position: chr3:117,152,602
+INFO	2025-03-05 18:29:57	MarkDuplicates	Tracking 82336 as yet unmatched pairs. 1702 records in RAM.
+INFO	2025-03-05 18:30:02	MarkDuplicates	Read    16,000,000 records.  Elapsed time: 00:00:45s.  Time for last 1,000,000:    4s.  Last read position: chr3:161,339,021
+INFO	2025-03-05 18:30:02	MarkDuplicates	Tracking 82812 as yet unmatched pairs. 818 records in RAM.
+INFO	2025-03-05 18:30:04	MarkDuplicates	Read    17,000,000 records.  Elapsed time: 00:00:47s.  Time for last 1,000,000:    2s.  Last read position: chr4:2,264,911
+INFO	2025-03-05 18:30:04	MarkDuplicates	Tracking 83397 as yet unmatched pairs. 5128 records in RAM.
+INFO	2025-03-05 18:30:06	MarkDuplicates	Read    18,000,000 records.  Elapsed time: 00:00:50s.  Time for last 1,000,000:    2s.  Last read position: chr4:46,200,301
+INFO	2025-03-05 18:30:06	MarkDuplicates	Tracking 83782 as yet unmatched pairs. 4215 records in RAM.
+INFO	2025-03-05 18:30:09	MarkDuplicates	Read    19,000,000 records.  Elapsed time: 00:00:53s.  Time for last 1,000,000:    3s.  Last read position: chr4:89,513,502
+INFO	2025-03-05 18:30:09	MarkDuplicates	Tracking 89969 as yet unmatched pairs. 2351 records in RAM.
+INFO	2025-03-05 18:30:12	MarkDuplicates	Read    20,000,000 records.  Elapsed time: 00:00:55s.  Time for last 1,000,000:    2s.  Last read position: chr4:132,381,060
+INFO	2025-03-05 18:30:12	MarkDuplicates	Tracking 90339 as yet unmatched pairs. 1445 records in RAM.
+INFO	2025-03-05 18:30:14	MarkDuplicates	Read    21,000,000 records.  Elapsed time: 00:00:57s.  Time for last 1,000,000:    2s.  Last read position: chr4:175,862,768
+INFO	2025-03-05 18:30:14	MarkDuplicates	Tracking 90550 as yet unmatched pairs. 475 records in RAM.
+INFO	2025-03-05 18:30:16	MarkDuplicates	Read    22,000,000 records.  Elapsed time: 00:01:00s.  Time for last 1,000,000:    2s.  Last read position: chr5:28,402,042
+INFO	2025-03-05 18:30:16	MarkDuplicates	Tracking 90971 as yet unmatched pairs. 3903 records in RAM.
+INFO	2025-03-05 18:30:21	MarkDuplicates	Read    23,000,000 records.  Elapsed time: 00:01:04s.  Time for last 1,000,000:    4s.  Last read position: chr5:76,384,246
+INFO	2025-03-05 18:30:21	MarkDuplicates	Tracking 92324 as yet unmatched pairs. 2735 records in RAM.
+INFO	2025-03-05 18:30:23	MarkDuplicates	Read    24,000,000 records.  Elapsed time: 00:01:06s.  Time for last 1,000,000:    2s.  Last read position: chr5:117,771,984
+INFO	2025-03-05 18:30:23	MarkDuplicates	Tracking 92342 as yet unmatched pairs. 1707 records in RAM.
+INFO	2025-03-05 18:30:25	MarkDuplicates	Read    25,000,000 records.  Elapsed time: 00:01:09s.  Time for last 1,000,000:    2s.  Last read position: chr5:156,929,262
+INFO	2025-03-05 18:30:25	MarkDuplicates	Tracking 92321 as yet unmatched pairs. 650 records in RAM.
+INFO	2025-03-05 18:30:28	MarkDuplicates	Read    26,000,000 records.  Elapsed time: 00:01:11s.  Time for last 1,000,000:    2s.  Last read position: chr6:18,077,161
+INFO	2025-03-05 18:30:28	MarkDuplicates	Tracking 92145 as yet unmatched pairs. 4020 records in RAM.
+INFO	2025-03-05 18:30:31	MarkDuplicates	Read    27,000,000 records.  Elapsed time: 00:01:14s.  Time for last 1,000,000:    3s.  Last read position: chr6:63,220,103
+INFO	2025-03-05 18:30:31	MarkDuplicates	Tracking 92754 as yet unmatched pairs. 2834 records in RAM.
+INFO	2025-03-05 18:30:33	MarkDuplicates	Read    28,000,000 records.  Elapsed time: 00:01:16s.  Time for last 1,000,000:    2s.  Last read position: chr6:108,108,206
+INFO	2025-03-05 18:30:33	MarkDuplicates	Tracking 92780 as yet unmatched pairs. 1819 records in RAM.
+INFO	2025-03-05 18:30:35	MarkDuplicates	Read    29,000,000 records.  Elapsed time: 00:01:18s.  Time for last 1,000,000:    2s.  Last read position: chr6:148,688,834
+INFO	2025-03-05 18:30:35	MarkDuplicates	Tracking 92737 as yet unmatched pairs. 881 records in RAM.
+INFO	2025-03-05 18:30:37	MarkDuplicates	Read    30,000,000 records.  Elapsed time: 00:01:21s.  Time for last 1,000,000:    2s.  Last read position: chr7:32,280,217
+INFO	2025-03-05 18:30:37	MarkDuplicates	Tracking 92521 as yet unmatched pairs. 5072 records in RAM.
+INFO	2025-03-05 18:30:42	MarkDuplicates	Read    31,000,000 records.  Elapsed time: 00:01:26s.  Time for last 1,000,000:    4s.  Last read position: chr7:82,671,255
+INFO	2025-03-05 18:30:42	MarkDuplicates	Tracking 95453 as yet unmatched pairs. 2745 records in RAM.
+INFO	2025-03-05 18:30:45	MarkDuplicates	Read    32,000,000 records.  Elapsed time: 00:01:28s.  Time for last 1,000,000:    2s.  Last read position: chr7:121,812,918
+INFO	2025-03-05 18:30:45	MarkDuplicates	Tracking 95352 as yet unmatched pairs. 1205 records in RAM.
+INFO	2025-03-05 18:30:47	MarkDuplicates	Read    33,000,000 records.  Elapsed time: 00:01:30s.  Time for last 1,000,000:    2s.  Last read position: chrX:6,228,666
+INFO	2025-03-05 18:30:47	MarkDuplicates	Tracking 95240 as yet unmatched pairs. 4776 records in RAM.
+INFO	2025-03-05 18:30:49	MarkDuplicates	Read    34,000,000 records.  Elapsed time: 00:01:32s.  Time for last 1,000,000:    2s.  Last read position: chrX:57,512,314
+INFO	2025-03-05 18:30:49	MarkDuplicates	Tracking 95066 as yet unmatched pairs. 3364 records in RAM.
+INFO	2025-03-05 18:30:52	MarkDuplicates	Read    35,000,000 records.  Elapsed time: 00:01:35s.  Time for last 1,000,000:    3s.  Last read position: chrX:115,302,026
+INFO	2025-03-05 18:30:52	MarkDuplicates	Tracking 97230 as yet unmatched pairs. 1285 records in RAM.
+INFO	2025-03-05 18:30:54	MarkDuplicates	Read    36,000,000 records.  Elapsed time: 00:01:38s.  Time for last 1,000,000:    2s.  Last read position: chr8:12,347,355
+INFO	2025-03-05 18:30:54	MarkDuplicates	Tracking 96770 as yet unmatched pairs. 5383 records in RAM.
+INFO	2025-03-05 18:30:57	MarkDuplicates	Read    37,000,000 records.  Elapsed time: 00:01:40s.  Time for last 1,000,000:    2s.  Last read position: chr8:50,178,620
+INFO	2025-03-05 18:30:57	MarkDuplicates	Tracking 96812 as yet unmatched pairs. 3454 records in RAM.
+INFO	2025-03-05 18:31:02	MarkDuplicates	Read    38,000,000 records.  Elapsed time: 00:01:45s.  Time for last 1,000,000:    4s.  Last read position: chr8:91,485,392
+INFO	2025-03-05 18:31:02	MarkDuplicates	Tracking 96317 as yet unmatched pairs. 2171 records in RAM.
+INFO	2025-03-05 18:31:04	MarkDuplicates	Read    39,000,000 records.  Elapsed time: 00:01:47s.  Time for last 1,000,000:    2s.  Last read position: chr8:133,846,442
+INFO	2025-03-05 18:31:04	MarkDuplicates	Tracking 95608 as yet unmatched pairs. 656 records in RAM.
+INFO	2025-03-05 18:31:06	MarkDuplicates	Read    40,000,000 records.  Elapsed time: 00:01:49s.  Time for last 1,000,000:    2s.  Last read position: chr9:29,780,546
+INFO	2025-03-05 18:31:06	MarkDuplicates	Tracking 94871 as yet unmatched pairs. 6252 records in RAM.
+INFO	2025-03-05 18:31:08	MarkDuplicates	Read    41,000,000 records.  Elapsed time: 00:01:52s.  Time for last 1,000,000:    2s.  Last read position: chr9:91,219,020
+INFO	2025-03-05 18:31:08	MarkDuplicates	Tracking 93619 as yet unmatched pairs. 2272 records in RAM.
+INFO	2025-03-05 18:31:12	MarkDuplicates	Read    42,000,000 records.  Elapsed time: 00:01:55s.  Time for last 1,000,000:    3s.  Last read position: chr9:134,275,524
+INFO	2025-03-05 18:31:12	MarkDuplicates	Tracking 92717 as yet unmatched pairs. 558 records in RAM.
+INFO	2025-03-05 18:31:14	MarkDuplicates	Read    43,000,000 records.  Elapsed time: 00:01:57s.  Time for last 1,000,000:    2s.  Last read position: chr10:34,410,918
+INFO	2025-03-05 18:31:14	MarkDuplicates	Tracking 91594 as yet unmatched pairs. 9644 records in RAM.
+INFO	2025-03-05 18:31:16	MarkDuplicates	Read    44,000,000 records.  Elapsed time: 00:01:59s.  Time for last 1,000,000:    2s.  Last read position: chr10:71,494,497
+INFO	2025-03-05 18:31:16	MarkDuplicates	Tracking 91168 as yet unmatched pairs. 2757 records in RAM.
+INFO	2025-03-05 18:31:18	MarkDuplicates	Read    45,000,000 records.  Elapsed time: 00:02:02s.  Time for last 1,000,000:    2s.  Last read position: chr10:112,276,125
+INFO	2025-03-05 18:31:18	MarkDuplicates	Tracking 90067 as yet unmatched pairs. 963 records in RAM.
+INFO	2025-03-05 18:31:23	MarkDuplicates	Read    46,000,000 records.  Elapsed time: 00:02:07s.  Time for last 1,000,000:    4s.  Last read position: chr11:20,682,555
+INFO	2025-03-05 18:31:23	MarkDuplicates	Tracking 89055 as yet unmatched pairs. 8209 records in RAM.
+INFO	2025-03-05 18:31:26	MarkDuplicates	Read    47,000,000 records.  Elapsed time: 00:02:09s.  Time for last 1,000,000:    2s.  Last read position: chr11:64,072,189
+INFO	2025-03-05 18:31:26	MarkDuplicates	Tracking 85728 as yet unmatched pairs. 2812 records in RAM.
+INFO	2025-03-05 18:31:28	MarkDuplicates	Read    48,000,000 records.  Elapsed time: 00:02:11s.  Time for last 1,000,000:    2s.  Last read position: chr11:103,183,193
+INFO	2025-03-05 18:31:28	MarkDuplicates	Tracking 84593 as yet unmatched pairs. 1139 records in RAM.
+INFO	2025-03-05 18:31:30	MarkDuplicates	Read    49,000,000 records.  Elapsed time: 00:02:13s.  Time for last 1,000,000:    2s.  Last read position: chr12:12,725,859
+INFO	2025-03-05 18:31:30	MarkDuplicates	Tracking 83377 as yet unmatched pairs. 7395 records in RAM.
+INFO	2025-03-05 18:31:33	MarkDuplicates	Read    50,000,000 records.  Elapsed time: 00:02:16s.  Time for last 1,000,000:    3s.  Last read position: chr12:55,084,023
+INFO	2025-03-05 18:31:33	MarkDuplicates	Tracking 81405 as yet unmatched pairs. 4133 records in RAM.
+INFO	2025-03-05 18:31:35	MarkDuplicates	Read    51,000,000 records.  Elapsed time: 00:02:18s.  Time for last 1,000,000:    2s.  Last read position: chr12:96,896,139
+INFO	2025-03-05 18:31:35	MarkDuplicates	Tracking 80007 as yet unmatched pairs. 1887 records in RAM.
+INFO	2025-03-05 18:31:38	MarkDuplicates	Read    52,000,000 records.  Elapsed time: 00:02:21s.  Time for last 1,000,000:    2s.  Last read position: chr13:28,045,886
+INFO	2025-03-05 18:31:38	MarkDuplicates	Tracking 78426 as yet unmatched pairs. 2609 records in RAM.
+INFO	2025-03-05 18:31:41	MarkDuplicates	Read    53,000,000 records.  Elapsed time: 00:02:24s.  Time for last 1,000,000:    3s.  Last read position: chr13:99,965,087
+INFO	2025-03-05 18:31:41	MarkDuplicates	Tracking 76907 as yet unmatched pairs. 449 records in RAM.
+INFO	2025-03-05 18:31:45	MarkDuplicates	Read    54,000,000 records.  Elapsed time: 00:02:28s.  Time for last 1,000,000:    3s.  Last read position: chr14:49,498,898
+INFO	2025-03-05 18:31:45	MarkDuplicates	Tracking 75245 as yet unmatched pairs. 3447 records in RAM.
+INFO	2025-03-05 18:31:47	MarkDuplicates	Read    55,000,000 records.  Elapsed time: 00:02:30s.  Time for last 1,000,000:    2s.  Last read position: chr14:91,021,829
+INFO	2025-03-05 18:31:47	MarkDuplicates	Tracking 73703 as yet unmatched pairs. 1481 records in RAM.
+INFO	2025-03-05 18:31:49	MarkDuplicates	Read    56,000,000 records.  Elapsed time: 00:02:32s.  Time for last 1,000,000:    2s.  Last read position: chr15:49,164,910
+INFO	2025-03-05 18:31:49	MarkDuplicates	Tracking 71508 as yet unmatched pairs. 2495 records in RAM.
+INFO	2025-03-05 18:31:52	MarkDuplicates	Read    57,000,000 records.  Elapsed time: 00:02:36s.  Time for last 1,000,000:    3s.  Last read position: chr15:96,278,341
+INFO	2025-03-05 18:31:52	MarkDuplicates	Tracking 69801 as yet unmatched pairs. 334 records in RAM.
+INFO	2025-03-05 18:31:54	MarkDuplicates	Read    58,000,000 records.  Elapsed time: 00:02:38s.  Time for last 1,000,000:    2s.  Last read position: chr16:31,479,001
+INFO	2025-03-05 18:31:54	MarkDuplicates	Tracking 67705 as yet unmatched pairs. 4975 records in RAM.
+INFO	2025-03-05 18:31:56	MarkDuplicates	Read    59,000,000 records.  Elapsed time: 00:02:40s.  Time for last 1,000,000:    2s.  Last read position: chr16:80,308,528
+INFO	2025-03-05 18:31:56	MarkDuplicates	Tracking 65434 as yet unmatched pairs. 661 records in RAM.
+INFO	2025-03-05 18:31:59	MarkDuplicates	Read    60,000,000 records.  Elapsed time: 00:02:42s.  Time for last 1,000,000:    2s.  Last read position: chr17:29,007,440
+INFO	2025-03-05 18:31:59	MarkDuplicates	Tracking 67506 as yet unmatched pairs. 3962 records in RAM.
+INFO	2025-03-05 18:32:04	MarkDuplicates	Read    61,000,000 records.  Elapsed time: 00:02:47s.  Time for last 1,000,000:    4s.  Last read position: chr17:69,486,672
+INFO	2025-03-05 18:32:04	MarkDuplicates	Tracking 65084 as yet unmatched pairs. 1189 records in RAM.
+INFO	2025-03-05 18:32:06	MarkDuplicates	Read    62,000,000 records.  Elapsed time: 00:02:50s.  Time for last 1,000,000:    2s.  Last read position: chr18:28,136,068
+INFO	2025-03-05 18:32:06	MarkDuplicates	Tracking 63393 as yet unmatched pairs. 2221 records in RAM.
+INFO	2025-03-05 18:32:08	MarkDuplicates	Read    63,000,000 records.  Elapsed time: 00:02:52s.  Time for last 1,000,000:    2s.  Last read position: chr18:72,902,473
+INFO	2025-03-05 18:32:08	MarkDuplicates	Tracking 61821 as yet unmatched pairs. 334 records in RAM.
+INFO	2025-03-05 18:32:10	MarkDuplicates	Read    64,000,000 records.  Elapsed time: 00:02:54s.  Time for last 1,000,000:    2s.  Last read position: chr20:41,678,102
+INFO	2025-03-05 18:32:10	MarkDuplicates	Tracking 58748 as yet unmatched pairs. 1306 records in RAM.
+INFO	2025-03-05 18:32:14	MarkDuplicates	Read    65,000,000 records.  Elapsed time: 00:02:57s.  Time for last 1,000,000:    3s.  Last read position: chr19:10,663,472
+INFO	2025-03-05 18:32:14	MarkDuplicates	Tracking 51285 as yet unmatched pairs. 13116 records in RAM.
+INFO	2025-03-05 18:32:16	MarkDuplicates	Read    66,000,000 records.  Elapsed time: 00:02:59s.  Time for last 1,000,000:    2s.  Last read position: chr19:47,758,624
+INFO	2025-03-05 18:32:16	MarkDuplicates	Tracking 39505 as yet unmatched pairs. 1048 records in RAM.
+INFO	2025-03-05 18:32:19	MarkDuplicates	Read    67,000,000 records.  Elapsed time: 00:03:02s.  Time for last 1,000,000:    2s.  Last read position: chr22:41,252,723
+INFO	2025-03-05 18:32:19	MarkDuplicates	Tracking 36816 as yet unmatched pairs. 908 records in RAM.
+INFO	2025-03-05 18:32:21	MarkDuplicates	Read    68,000,000 records.  Elapsed time: 00:03:04s.  Time for last 1,000,000:    2s.  Last read position: chr21:44,303,185
+INFO	2025-03-05 18:32:21	MarkDuplicates	Tracking 30472 as yet unmatched pairs. 499 records in RAM.
+INFO	2025-03-05 18:32:26	MarkDuplicates	Read    69,000,000 records.  Elapsed time: 00:03:09s.  Time for last 1,000,000:    5s.  Last read position: chrM:1
+INFO	2025-03-05 18:32:26	MarkDuplicates	Tracking 42456 as yet unmatched pairs. 42146 records in RAM.
+INFO	2025-03-05 18:32:29	MarkDuplicates	Read    70,000,000 records.  Elapsed time: 00:03:12s.  Time for last 1,000,000:    2s.  Last read position: chrM:732
+INFO	2025-03-05 18:32:29	MarkDuplicates	Tracking 118658 as yet unmatched pairs. 118348 records in RAM.
+INFO	2025-03-05 18:32:31	MarkDuplicates	Read    71,000,000 records.  Elapsed time: 00:03:14s.  Time for last 1,000,000:    2s.  Last read position: chrM:1,465
+INFO	2025-03-05 18:32:31	MarkDuplicates	Tracking 103394 as yet unmatched pairs. 103084 records in RAM.
+INFO	2025-03-05 18:32:34	MarkDuplicates	Read    72,000,000 records.  Elapsed time: 00:03:17s.  Time for last 1,000,000:    3s.  Last read position: chrM:2,278
+INFO	2025-03-05 18:32:34	MarkDuplicates	Tracking 97988 as yet unmatched pairs. 97678 records in RAM.
+INFO	2025-03-05 18:32:36	MarkDuplicates	Read    73,000,000 records.  Elapsed time: 00:03:20s.  Time for last 1,000,000:    2s.  Last read position: chrM:2,998
+INFO	2025-03-05 18:32:36	MarkDuplicates	Tracking 106627 as yet unmatched pairs. 106317 records in RAM.
+INFO	2025-03-05 18:32:39	MarkDuplicates	Read    74,000,000 records.  Elapsed time: 00:03:22s.  Time for last 1,000,000:    2s.  Last read position: chrM:3,704
+INFO	2025-03-05 18:32:39	MarkDuplicates	Tracking 109456 as yet unmatched pairs. 109146 records in RAM.
+INFO	2025-03-05 18:32:41	MarkDuplicates	Read    75,000,000 records.  Elapsed time: 00:03:24s.  Time for last 1,000,000:    2s.  Last read position: chrM:4,579
+INFO	2025-03-05 18:32:41	MarkDuplicates	Tracking 108048 as yet unmatched pairs. 107738 records in RAM.
+INFO	2025-03-05 18:32:46	MarkDuplicates	Read    76,000,000 records.  Elapsed time: 00:03:29s.  Time for last 1,000,000:    5s.  Last read position: chrM:5,384
+INFO	2025-03-05 18:32:46	MarkDuplicates	Tracking 93938 as yet unmatched pairs. 93628 records in RAM.
+INFO	2025-03-05 18:32:49	MarkDuplicates	Read    77,000,000 records.  Elapsed time: 00:03:32s.  Time for last 1,000,000:    2s.  Last read position: chrM:6,243
+INFO	2025-03-05 18:32:49	MarkDuplicates	Tracking 96883 as yet unmatched pairs. 96573 records in RAM.
+INFO	2025-03-05 18:32:51	MarkDuplicates	Read    78,000,000 records.  Elapsed time: 00:03:34s.  Time for last 1,000,000:    2s.  Last read position: chrM:7,059
+INFO	2025-03-05 18:32:51	MarkDuplicates	Tracking 100831 as yet unmatched pairs. 100521 records in RAM.
+INFO	2025-03-05 18:32:53	MarkDuplicates	Read    79,000,000 records.  Elapsed time: 00:03:36s.  Time for last 1,000,000:    2s.  Last read position: chrM:7,801
+INFO	2025-03-05 18:32:53	MarkDuplicates	Tracking 107150 as yet unmatched pairs. 106840 records in RAM.
+INFO	2025-03-05 18:32:56	MarkDuplicates	Read    80,000,000 records.  Elapsed time: 00:03:40s.  Time for last 1,000,000:    3s.  Last read position: chrM:8,540
+INFO	2025-03-05 18:32:56	MarkDuplicates	Tracking 89914 as yet unmatched pairs. 89604 records in RAM.
+INFO	2025-03-05 18:32:58	MarkDuplicates	Read    81,000,000 records.  Elapsed time: 00:03:42s.  Time for last 1,000,000:    2s.  Last read position: chrM:9,277
+INFO	2025-03-05 18:32:58	MarkDuplicates	Tracking 98455 as yet unmatched pairs. 98145 records in RAM.
+INFO	2025-03-05 18:33:01	MarkDuplicates	Read    82,000,000 records.  Elapsed time: 00:03:44s.  Time for last 1,000,000:    2s.  Last read position: chrM:10,005
+INFO	2025-03-05 18:33:01	MarkDuplicates	Tracking 118900 as yet unmatched pairs. 118590 records in RAM.
+INFO	2025-03-05 18:33:03	MarkDuplicates	Read    83,000,000 records.  Elapsed time: 00:03:46s.  Time for last 1,000,000:    2s.  Last read position: chrM:10,842
+INFO	2025-03-05 18:33:03	MarkDuplicates	Tracking 118608 as yet unmatched pairs. 118298 records in RAM.
+INFO	2025-03-05 18:33:08	MarkDuplicates	Read    84,000,000 records.  Elapsed time: 00:03:51s.  Time for last 1,000,000:    4s.  Last read position: chrM:11,584
+INFO	2025-03-05 18:33:08	MarkDuplicates	Tracking 105554 as yet unmatched pairs. 105244 records in RAM.
+INFO	2025-03-05 18:33:11	MarkDuplicates	Read    85,000,000 records.  Elapsed time: 00:03:54s.  Time for last 1,000,000:    2s.  Last read position: chrM:12,344
+INFO	2025-03-05 18:33:11	MarkDuplicates	Tracking 93641 as yet unmatched pairs. 93331 records in RAM.
+INFO	2025-03-05 18:33:13	MarkDuplicates	Read    86,000,000 records.  Elapsed time: 00:03:56s.  Time for last 1,000,000:    2s.  Last read position: chrM:13,078
+INFO	2025-03-05 18:33:13	MarkDuplicates	Tracking 110224 as yet unmatched pairs. 109914 records in RAM.
+INFO	2025-03-05 18:33:16	MarkDuplicates	Read    87,000,000 records.  Elapsed time: 00:03:59s.  Time for last 1,000,000:    3s.  Last read position: chrM:13,783
+INFO	2025-03-05 18:33:16	MarkDuplicates	Tracking 97855 as yet unmatched pairs. 97545 records in RAM.
+INFO	2025-03-05 18:33:18	MarkDuplicates	Read    88,000,000 records.  Elapsed time: 00:04:01s.  Time for last 1,000,000:    2s.  Last read position: chrM:14,546
+INFO	2025-03-05 18:33:18	MarkDuplicates	Tracking 98427 as yet unmatched pairs. 98117 records in RAM.
+INFO	2025-03-05 18:33:20	MarkDuplicates	Read    89,000,000 records.  Elapsed time: 00:04:03s.  Time for last 1,000,000:    2s.  Last read position: chrM:15,227
+INFO	2025-03-05 18:33:20	MarkDuplicates	Tracking 108269 as yet unmatched pairs. 107959 records in RAM.
+INFO	2025-03-05 18:33:23	MarkDuplicates	Read    90,000,000 records.  Elapsed time: 00:04:06s.  Time for last 1,000,000:    2s.  Last read position: chrM:15,970
+INFO	2025-03-05 18:33:23	MarkDuplicates	Tracking 88128 as yet unmatched pairs. 87818 records in RAM.
+INFO	2025-03-05 18:33:25	MarkDuplicates	Read 90771507 records. 0 pairs never matched.
+INFO	2025-03-05 18:33:27	MarkDuplicates	After buildSortedReadEndLists freeMemory: 995476608; totalMemory: 1037959168; maxMemory: 1037959168
+INFO	2025-03-05 18:33:27	MarkDuplicates	Will retain up to 32436224 duplicate indices before spilling to disk.
+INFO	2025-03-05 18:33:27	MarkDuplicates	Traversing read pair information and detecting duplicates.
+INFO	2025-03-05 18:33:27	SortingCollection	Creating merging iterator from 12 files
+INFO	2025-03-05 18:33:36	OpticalDuplicateFinder	Large duplicate set. size = 1268
+INFO	2025-03-05 18:33:36	OpticalDuplicateFinder	compared         1,000 ReadEnds to others.  Elapsed time: 00:00:00s.  Time for last 1,000:    0s.  Last read position: 0:30,698
+INFO	2025-03-05 18:33:36	OpticalDuplicateFinder	Large duplicate set. size = 1202
+INFO	2025-03-05 18:33:36	OpticalDuplicateFinder	compared         1,000 ReadEnds to others.  Elapsed time: 00:00:00s.  Time for last 1,000:    0s.  Last read position: 0:20,844
+INFO	2025-03-05 18:33:40	OpticalDuplicateFinder	Large duplicate set. size = 1046
+INFO	2025-03-05 18:33:40	OpticalDuplicateFinder	compared         1,000 ReadEnds to others.  Elapsed time: 00:00:00s.  Time for last 1,000:    0s.  Last read position: 0:14,055
+INFO	2025-03-05 18:33:40	OpticalDuplicateFinder	Large duplicate set. size = 1301
+INFO	2025-03-05 18:33:40	OpticalDuplicateFinder	compared         1,000 ReadEnds to others.  Elapsed time: 00:00:00s.  Time for last 1,000:    0s.  Last read position: 0:13,955
+INFO	2025-03-05 18:33:40	OpticalDuplicateFinder	Large duplicate set. size = 1186
+INFO	2025-03-05 18:33:40	OpticalDuplicateFinder	compared         1,000 ReadEnds to others.  Elapsed time: 00:00:00s.  Time for last 1,000:    0s.  Last read position: 0:7,771
+INFO	2025-03-05 18:33:41	MarkDuplicates	Traversing fragment information and detecting duplicates.
+INFO	2025-03-05 18:33:41	SortingCollection	Creating merging iterator from 25 files
+INFO	2025-03-05 18:33:54	MarkDuplicates	Sorting list of duplicate records.
+INFO	2025-03-05 18:33:56	MarkDuplicates	After generateDuplicateIndexes freeMemory: 765541440; totalMemory: 1037959168; maxMemory: 1037959168
+INFO	2025-03-05 18:33:56	MarkDuplicates	Marking 28620288 records as duplicates.
+INFO	2025-03-05 18:33:56	MarkDuplicates	Found 432184 optical duplicate clusters.
+INFO	2025-03-05 18:33:56	MarkDuplicates	Reads are assumed to be ordered by: coordinate
+INFO	2025-03-05 18:34:56	MarkDuplicates	Written    10,000,000 records.  Elapsed time: 00:00:59s.  Time for last 10,000,000:   59s.  Last read position: chr2:143,912,861
+INFO	2025-03-05 18:35:56	MarkDuplicates	Written    20,000,000 records.  Elapsed time: 00:01:59s.  Time for last 10,000,000:   59s.  Last read position: chr4:132,381,060
+INFO	2025-03-05 18:36:55	MarkDuplicates	Written    30,000,000 records.  Elapsed time: 00:02:59s.  Time for last 10,000,000:   59s.  Last read position: chr7:32,280,217
+INFO	2025-03-05 18:37:56	MarkDuplicates	Written    40,000,000 records.  Elapsed time: 00:04:00s.  Time for last 10,000,000:   60s.  Last read position: chr9:29,780,546
+INFO	2025-03-05 18:38:56	MarkDuplicates	Written    50,000,000 records.  Elapsed time: 00:04:59s.  Time for last 10,000,000:   59s.  Last read position: chr12:55,084,023
+INFO	2025-03-05 18:39:56	MarkDuplicates	Written    60,000,000 records.  Elapsed time: 00:05:59s.  Time for last 10,000,000:   59s.  Last read position: chr17:29,007,440
+INFO	2025-03-05 18:40:54	MarkDuplicates	Written    70,000,000 records.  Elapsed time: 00:06:58s.  Time for last 10,000,000:   58s.  Last read position: chrM:732
+INFO	2025-03-05 18:41:39	MarkDuplicates	Written    80,000,000 records.  Elapsed time: 00:07:43s.  Time for last 10,000,000:   44s.  Last read position: chrM:8,540
+INFO	2025-03-05 18:42:23	MarkDuplicates	Written    90,000,000 records.  Elapsed time: 00:08:26s.  Time for last 10,000,000:   43s.  Last read position: chrM:15,970
+INFO	2025-03-05 18:42:32	MarkDuplicates	Before output close freeMemory: 1027772392; totalMemory: 1037959168; maxMemory: 1037959168
+INFO	2025-03-05 18:42:32	MarkDuplicates	After output close freeMemory: 976273472; totalMemory: 986181632; maxMemory: 1037959168
+[Wed Mar 05 18:42:32 EST 2025] picard.sam.markduplicates.MarkDuplicates done. Elapsed time: 13.26 minutes.
+Runtime.totalMemory()=986181632
+Sender: LSF System <lsfadmin@lh06c05>
+Subject: Job 172941741: <samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup_map_stats.txt> in cluster <chimera> Exited
+
+Job <samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup_map_stats.txt> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Thu Mar  6 11:46:24 2025
+Job was executed on host(s) <1*lh06c05>, in queue <premium>, as user <arayan01> in cluster <chimera> at Thu Mar  6 11:46:28 2025
+                            <1*lh06c04>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-03-04_atachg19> was used as the working directory.
+Started at Thu Mar  6 11:46:28 2025
+Terminated at Thu Mar  6 11:46:28 2025
+Results reported at Thu Mar  6 11:46:28 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup_map_stats.txt
+------------------------------------------------------------
+
+Exited with exit code 127.
+
+Resource usage summary:
+
+    CPU time :                                   0.02 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   0 sec.
+    Turnaround time :                            4 sec.
+
+The output (if any) follows:
+
+/local/JOBS/1741279584.172941741: line 8: samtools: command not found
+Sender: LSF System <lsfadmin@lh06c05>
+Subject: Job 172943906: <samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup_map_stats.txt> in cluster <chimera> Exited
+
+Job <samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup_map_stats.txt> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Thu Mar  6 11:48:19 2025
+Job was executed on host(s) <1*lh06c05>, in queue <premium>, as user <arayan01> in cluster <chimera> at Thu Mar  6 11:48:23 2025
+                            <1*lh06c14>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-03-04_atachg19> was used as the working directory.
+Started at Thu Mar  6 11:48:23 2025
+Terminated at Thu Mar  6 11:48:23 2025
+Results reported at Thu Mar  6 11:48:23 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup_map_stats.txt
+------------------------------------------------------------
+
+Exited with exit code 127.
+
+Resource usage summary:
+
+    CPU time :                                   0.02 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   0 sec.
+    Turnaround time :                            4 sec.
+
+The output (if any) follows:
+
+/local/JOBS/1741279699.172943906: line 8: samtools: command not found
+Sender: LSF System <lsfadmin@lh06c05>
+Subject: Job 172944351: <samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup_map_stats.txt> in cluster <chimera> Exited
+
+Job <samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup_map_stats.txt> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Thu Mar  6 11:48:42 2025
+Job was executed on host(s) <1*lh06c05>, in queue <premium>, as user <arayan01> in cluster <chimera> at Thu Mar  6 11:48:48 2025
+                            <1*lh06c14>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-03-04_atachg19> was used as the working directory.
+Started at Thu Mar  6 11:48:48 2025
+Terminated at Thu Mar  6 11:48:48 2025
+Results reported at Thu Mar  6 11:48:48 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup_map_stats.txt
+------------------------------------------------------------
+
+Exited with exit code 127.
+
+Resource usage summary:
+
+    CPU time :                                   0.02 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   0 sec.
+    Turnaround time :                            6 sec.
+
+The output (if any) follows:
+
+/local/JOBS/1741279722.172944351: line 8: samtools: command not found
+Sender: LSF System <lsfadmin@lh06c25>
+Subject: Job 172944716: <samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup_map_stats.txt> in cluster <chimera> Exited
+
+Job <samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup_map_stats.txt> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Thu Mar  6 11:48:59 2025
+Job was executed on host(s) <1*lh06c25>, in queue <premium>, as user <arayan01> in cluster <chimera> at Thu Mar  6 11:49:03 2025
+                            <1*lh06c14>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-03-04_atachg19> was used as the working directory.
+Started at Thu Mar  6 11:49:03 2025
+Terminated at Thu Mar  6 11:49:43 2025
+Results reported at Thu Mar  6 11:49:43 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/8_SEM-2_S54_L004_SC_subset_dedup_map_stats.txt
+------------------------------------------------------------
+
+TERM_OWNER: job killed by owner.
+Exited with exit code 130.
+
+Resource usage summary:
+
+    CPU time :                                   39.93 sec.
+    Max Memory :                                 22 MB
+    Average Memory :                             20.59 MB
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               15978.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                4
+    Run time :                                   40 sec.
+    Turnaround time :                            44 sec.
+
+The output (if any) follows:
+

@@ -1,0 +1,225 @@
+Sender: LSF System <lsfadmin@lc07e71>
+Subject: Job 172836354: <samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup_map_stats.txt> in cluster <chimera> Exited
+
+Job <samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup_map_stats.txt> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Wed Mar  5 18:17:50 2025
+Job was executed on host(s) <1*lc07e71>, in queue <premium>, as user <arayan01> in cluster <chimera> at Wed Mar  5 18:17:55 2025
+                            <1*lc06e07>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-03-04_atachg19> was used as the working directory.
+Started at Wed Mar  5 18:17:55 2025
+Terminated at Wed Mar  5 18:17:55 2025
+Results reported at Wed Mar  5 18:17:55 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup_map_stats.txt
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   0.02 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   0 sec.
+    Turnaround time :                            5 sec.
+
+The output (if any) follows:
+
+[E::hts_open_format] fail to open file '/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam'
+samtools view: failed to open "/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam" for reading: No such file or directory
+Sender: LSF System <lsfadmin@lh06c25>
+Subject: Job 172941733: <samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup_map_stats.txt> in cluster <chimera> Exited
+
+Job <samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup_map_stats.txt> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Thu Mar  6 11:46:23 2025
+Job was executed on host(s) <1*lh06c25>, in queue <premium>, as user <arayan01> in cluster <chimera> at Thu Mar  6 11:46:28 2025
+                            <1*lh06c24>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-03-04_atachg19> was used as the working directory.
+Started at Thu Mar  6 11:46:28 2025
+Terminated at Thu Mar  6 11:46:28 2025
+Results reported at Thu Mar  6 11:46:28 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup_map_stats.txt
+------------------------------------------------------------
+
+Exited with exit code 127.
+
+Resource usage summary:
+
+    CPU time :                                   0.02 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   0 sec.
+    Turnaround time :                            5 sec.
+
+The output (if any) follows:
+
+/local/JOBS/1741279583.172941733: line 8: samtools: command not found
+Sender: LSF System <lsfadmin@lh06c24>
+Subject: Job 172943901: <samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup_map_stats.txt> in cluster <chimera> Exited
+
+Job <samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup_map_stats.txt> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Thu Mar  6 11:48:19 2025
+Job was executed on host(s) <1*lh06c24>, in queue <premium>, as user <arayan01> in cluster <chimera> at Thu Mar  6 11:48:23 2025
+                            <1*lh06c25>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-03-04_atachg19> was used as the working directory.
+Started at Thu Mar  6 11:48:23 2025
+Terminated at Thu Mar  6 11:48:23 2025
+Results reported at Thu Mar  6 11:48:23 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup_map_stats.txt
+------------------------------------------------------------
+
+Exited with exit code 127.
+
+Resource usage summary:
+
+    CPU time :                                   0.02 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   0 sec.
+    Turnaround time :                            4 sec.
+
+The output (if any) follows:
+
+/local/JOBS/1741279699.172943901: line 8: samtools: command not found
+Sender: LSF System <lsfadmin@lh06c24>
+Subject: Job 172944347: <samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup_map_stats.txt> in cluster <chimera> Exited
+
+Job <samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup_map_stats.txt> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Thu Mar  6 11:48:42 2025
+Job was executed on host(s) <1*lh06c24>, in queue <premium>, as user <arayan01> in cluster <chimera> at Thu Mar  6 11:48:48 2025
+                            <1*lh06c25>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-03-04_atachg19> was used as the working directory.
+Started at Thu Mar  6 11:48:48 2025
+Terminated at Thu Mar  6 11:48:48 2025
+Results reported at Thu Mar  6 11:48:48 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup_map_stats.txt
+------------------------------------------------------------
+
+Exited with exit code 127.
+
+Resource usage summary:
+
+    CPU time :                                   0.02 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   0 sec.
+    Turnaround time :                            6 sec.
+
+The output (if any) follows:
+
+/local/JOBS/1741279722.172944347: line 8: samtools: command not found
+Sender: LSF System <lsfadmin@lh06c24>
+Subject: Job 172944713: <samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup_map_stats.txt> in cluster <chimera> Exited
+
+Job <samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup_map_stats.txt> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Thu Mar  6 11:48:58 2025
+Job was executed on host(s) <1*lh06c24>, in queue <premium>, as user <arayan01> in cluster <chimera> at Thu Mar  6 11:49:03 2025
+                            <1*lh06c05>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-03-04_atachg19> was used as the working directory.
+Started at Thu Mar  6 11:49:03 2025
+Terminated at Thu Mar  6 11:49:03 2025
+Results reported at Thu Mar  6 11:49:03 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup_map_stats.txt
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   0.02 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   0 sec.
+    Turnaround time :                            5 sec.
+
+The output (if any) follows:
+
+[E::hts_open_format] fail to open file '/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam'
+samtools view: failed to open "/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam" for reading: No such file or directory
+Sender: LSF System <lsfadmin@lh06c18>
+Subject: Job 172946077: <samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup_map_stats.txt> in cluster <chimera> Exited
+
+Job <samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup_map_stats.txt> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Thu Mar  6 11:51:27 2025
+Job was executed on host(s) <1*lh06c18>, in queue <premium>, as user <arayan01> in cluster <chimera> at Thu Mar  6 11:51:33 2025
+                            <1*lh06c24>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-03-04_atachg19> was used as the working directory.
+Started at Thu Mar  6 11:51:33 2025
+Terminated at Thu Mar  6 11:51:33 2025
+Results reported at Thu Mar  6 11:51:33 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+samtools view -bh /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam &&             picard MarkDuplicates I=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset.bam O=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam M=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_markdup_metrics.txt &&             samtools index /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam &&             samtools flagstat /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup.bam > /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004_SC_subset_dedup_map_stats.txt
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   0.02 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   0 sec.
+    Turnaround time :                            6 sec.
+
+The output (if any) follows:
+
+[E::hts_open_format] fail to open file '/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam'
+samtools view: failed to open "/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/mapping/7_SEM-1_S53_L004.bam" for reading: No such file or directory

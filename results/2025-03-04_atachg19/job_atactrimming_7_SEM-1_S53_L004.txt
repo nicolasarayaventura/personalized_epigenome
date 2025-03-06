@@ -1,0 +1,136 @@
+Sender: LSF System <lsfadmin@lh06c27>
+Subject: Job 172771285: <trimmomatic PE -threads 2         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R1_001.fastq.gz.fasta.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R2_001.fastq.gz.fasta.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_1P.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_1U.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_2P.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_2U.fastq.gz         ILLUMINACLIP:/sc/arion/work/arayan01/test-env/envs/atacseq/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa:2:30:10 MINLEN:87> in cluster <chimera> Exited
+
+Job <trimmomatic PE -threads 2         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R1_001.fastq.gz.fasta.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R2_001.fastq.gz.fasta.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_1P.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_1U.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_2P.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_2U.fastq.gz         ILLUMINACLIP:/sc/arion/work/arayan01/test-env/envs/atacseq/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa:2:30:10 MINLEN:87> was submitted from host <li04e03> by user <arayan01> in cluster <chimera> at Wed Mar  5 11:17:10 2025
+Job was executed on host(s) <1*lh06c27>, in queue <premium>, as user <arayan01> in cluster <chimera> at Wed Mar  5 11:17:13 2025
+                            <1*lh06c16>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-03-04_atachg19> was used as the working directory.
+Started at Wed Mar  5 11:17:13 2025
+Terminated at Wed Mar  5 11:17:13 2025
+Results reported at Wed Mar  5 11:17:13 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+trimmomatic PE -threads 2         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R1_001.fastq.gz.fasta.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R2_001.fastq.gz.fasta.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_1P.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_1U.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_2P.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_2U.fastq.gz         ILLUMINACLIP:/sc/arion/work/arayan01/test-env/envs/atacseq/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa:2:30:10 MINLEN:87
+------------------------------------------------------------
+
+Exited with exit code 127.
+
+Resource usage summary:
+
+    CPU time :                                   0.02 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   0 sec.
+    Turnaround time :                            3 sec.
+
+The output (if any) follows:
+
+/local/JOBS/1741191430.172771285: line 8: trimmomatic: command not found
+Sender: LSF System <lsfadmin@lc07e26>
+Subject: Job 172771318: <trimmomatic PE -threads 2         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R1_001.fastq.gz.fasta.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R2_001.fastq.gz.fasta.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_1P.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_1U.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_2P.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_2U.fastq.gz         ILLUMINACLIP:/sc/arion/work/arayan01/test-env/envs/atacseq/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa:2:30:10 MINLEN:87> in cluster <chimera> Exited
+
+Job <trimmomatic PE -threads 2         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R1_001.fastq.gz.fasta.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R2_001.fastq.gz.fasta.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_1P.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_1U.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_2P.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_2U.fastq.gz         ILLUMINACLIP:/sc/arion/work/arayan01/test-env/envs/atacseq/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa:2:30:10 MINLEN:87> was submitted from host <li04e03> by user <arayan01> in cluster <chimera> at Wed Mar  5 11:17:36 2025
+Job was executed on host(s) <1*lc07e26>, in queue <premium>, as user <arayan01> in cluster <chimera> at Wed Mar  5 11:17:42 2025
+                            <1*lc07e25>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-03-04_atachg19> was used as the working directory.
+Started at Wed Mar  5 11:17:42 2025
+Terminated at Wed Mar  5 11:17:44 2025
+Results reported at Wed Mar  5 11:17:44 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+trimmomatic PE -threads 2         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R1_001.fastq.gz.fasta.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R2_001.fastq.gz.fasta.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_1P.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_1U.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_2P.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_2U.fastq.gz         ILLUMINACLIP:/sc/arion/work/arayan01/test-env/envs/atacseq/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa:2:30:10 MINLEN:87
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   0.13 sec.
+    Max Memory :                                 7 MB
+    Average Memory :                             7.00 MB
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               15993.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                4
+    Run time :                                   2 sec.
+    Turnaround time :                            8 sec.
+
+The output (if any) follows:
+
+TrimmomaticPE: Started with arguments:
+ -threads 2 /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R1_001.fastq.gz.fasta.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R2_001.fastq.gz.fasta.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_1P.fastq.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_1U.fastq.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_2P.fastq.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_2U.fastq.gz ILLUMINACLIP:/sc/arion/work/arayan01/test-env/envs/atacseq/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa:2:30:10 MINLEN:87
+Using PrefixPair: 'AGATGTGTATAAGAGACAG' and 'AGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTCCGAGCCCACGAGAC'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTGACGCTGCCGACGA'
+ILLUMINACLIP: Using 1 prefix pairs, 4 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Exception in thread "main" java.io.FileNotFoundException: /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R1_001.fastq.gz.fasta.gz (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at org.usadellab.trimmomatic.fastq.FastqParser.parse(FastqParser.java:135)
+	at org.usadellab.trimmomatic.TrimmomaticPE.process(TrimmomaticPE.java:265)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:555)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
+Sender: LSF System <lsfadmin@lh06c13>
+Subject: Job 172771533: <trimmomatic PE -threads 2         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R1_001.fastq.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R2_001.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_1P.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_1U.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_2P.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_2U.fastq.gz         ILLUMINACLIP:/sc/arion/work/arayan01/test-env/envs/atacseq/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa:2:30:10 MINLEN:87> in cluster <chimera> Done
+
+Job <trimmomatic PE -threads 2         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R1_001.fastq.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R2_001.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_1P.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_1U.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_2P.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_2U.fastq.gz         ILLUMINACLIP:/sc/arion/work/arayan01/test-env/envs/atacseq/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa:2:30:10 MINLEN:87> was submitted from host <li04e03> by user <arayan01> in cluster <chimera> at Wed Mar  5 11:20:43 2025
+Job was executed on host(s) <1*lh06c13>, in queue <premium>, as user <arayan01> in cluster <chimera> at Wed Mar  5 11:20:48 2025
+                            <1*lh06c06>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-03-04_atachg19> was used as the working directory.
+Started at Wed Mar  5 11:20:48 2025
+Terminated at Wed Mar  5 12:42:27 2025
+Results reported at Wed Mar  5 12:42:27 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+trimmomatic PE -threads 2         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R1_001.fastq.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R2_001.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_1P.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_1U.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_2P.fastq.gz         /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_2U.fastq.gz         ILLUMINACLIP:/sc/arion/work/arayan01/test-env/envs/atacseq/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa:2:30:10 MINLEN:87
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   4847.36 sec.
+    Max Memory :                                 260 MB
+    Average Memory :                             237.91 MB
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               15740.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                23
+    Run time :                                   4899 sec.
+    Turnaround time :                            4904 sec.
+
+The output (if any) follows:
+
+TrimmomaticPE: Started with arguments:
+ -threads 2 /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R1_001.fastq.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R2_001.fastq.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_1P.fastq.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_1U.fastq.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_2P.fastq.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19/trimmed/7_SEM-1_S53_L004_tr_2U.fastq.gz ILLUMINACLIP:/sc/arion/work/arayan01/test-env/envs/atacseq/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa:2:30:10 MINLEN:87
+Using PrefixPair: 'AGATGTGTATAAGAGACAG' and 'AGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTCCGAGCCCACGAGAC'
+Using Long Clipping Sequence: 'CTGTCTCTTATACACATCTGACGCTGCCGACGA'
+ILLUMINACLIP: Using 1 prefix pairs, 4 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Quality encoding detected as phred33
+Input Read Pairs: 109551390 Both Surviving: 56640533 (51.70%) Forward Only Surviving: 2493182 (2.28%) Reverse Only Surviving: 323722 (0.30%) Dropped: 50093953 (45.73%)
+TrimmomaticPE: Completed successfully
