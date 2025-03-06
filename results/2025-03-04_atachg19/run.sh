@@ -29,8 +29,8 @@ function fastqc_initial {
 }
 
 function trimming {
-	rm -rf "${scratch}/trimmed"
-	mkdir -p "${scratch}/trimmed"
+	rm -rf "${scratch}/trimming"
+	mkdir -p "${scratch}/trimming"
 	
 	samplelist="${work}/sample_ids.txt"
 	adapter_path="/sc/arion/work/arayan01/test-env/envs/atacseq/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa"
@@ -39,10 +39,10 @@ function trimming {
         bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${work}/job_atactrimming_${sample}.txt" \
         "trimmomatic PE -threads 2 \
         ${R1} ${R2} \
-        ${scratch}/trimmed/${sample}_tr_1P.fastq.gz \
-        ${scratch}/trimmed/${sample}_tr_1U.fastq.gz \
-        ${scratch}/trimmed/${sample}_tr_2P.fastq.gz \
-        ${scratch}/trimmed/${sample}_tr_2U.fastq.gz \
+        ${scratch}/trimming/${sample}_tr_1P.fastq.gz \
+        ${scratch}/trimming/${sample}_tr_1U.fastq.gz \
+        ${scratch}/trimming/${sample}_tr_2P.fastq.gz \
+        ${scratch}/trimming/${sample}_tr_2U.fastq.gz \
         ILLUMINACLIP:${adapter_path}:2:30:10 MINLEN:87" #2:30:10 tell Trimmomatic to cut the adapters allowing a maximum of 2 mismatches, a score of 30 for paired reads, and score of 10 for single reads 
 														#MINLEN option tells Trimmomatic to drop reads shorter than 30 base pairs.
 	done < "${samplelist}"
@@ -54,10 +54,10 @@ function fastqc_trimming {
 
 	samplelist="${work}/sample_ids.txt"
 	qc_output="${work}/qc/trimming"
-	trimmed_dir="${scratch}/trimming"
+	trimming_dir="${scratch}/trimming"
 
 	while IFS=$'\t' read -r sample R1 R2; do
-		fastqc -t 2 "${trimmed_dir}/${sample}_tr_1P.fastq.gz" "${trimmed_dir}/${sample}_tr_2P.fastq.gz" -o "${qc_output}"
+		fastqc -t 2 "${trimming_dir}/${sample}_tr_1P.fastq.gz" "${trimming_dir}/${sample}_tr_2P.fastq.gz" -o "${qc_output}"
 	done < "${samplelist}"
 
 }
@@ -74,7 +74,7 @@ function mapping {
     mkdir -p ${scratch}/mapping
 	ref_gen="${scratch}/refgenome/hg19"
 	mapped_dir="${scratch}/mapping"
-	sample_dir="${scratch}/trimmed"
+	sample_dir="${scratch}/trimming"
     samplelist="${work}/sample_ids.txt"
 
 	while IFS=$'\t' read -r sample R1 R2; do
@@ -130,7 +130,6 @@ function peakcalling {
 #trimming
 #fastqc_trimming
 #ndexing
-mapping
-#mapping2
-#pre_peakcalling_processing
+#mapping
+pre_peakcalling_processing
 #peakcalling
