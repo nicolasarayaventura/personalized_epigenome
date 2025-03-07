@@ -13,7 +13,7 @@ function samplelist {
     find "${sample_dir}" -name "*_R1_001.fastq.gz" | while read R1; do
         sample=$(basename "${R1}" | sed 's/_R1_001.fastq.gz//')
         R2="${R1/_R1_001.fastq.gz/_R2_001.fastq.gz}"
-        echo -e "${sample}\t${R1}.fasta.gz\t${R2}.fasta.gz" >> "${output}"
+        echo -e "${sample}\t${R1}\t${R2}" >> "${output}"
     done
 
 }
@@ -74,7 +74,7 @@ function mapping {
     mkdir -p ${scratch}/mapping
 	ref_gen="${scratch}/refgenome/hg19"
 	mapped_dir="${scratch}/mapping"
-	sample_dir="${scratch}/trimming"
+	sample_dir="${scratch}/trimmed"
     samplelist="${work}/sample_ids.txt"
 
 	while IFS=$'\t' read -r sample R1 R2; do
@@ -129,7 +129,7 @@ function peakcalling {
 #fastqc_initial
 #trimming
 #fastqc_trimming
-#ndexing
+#indexing
 #mapping
-pre_peakcalling_processing
-#peakcalling
+#pre_peakcalling_processing
+peakcalling
