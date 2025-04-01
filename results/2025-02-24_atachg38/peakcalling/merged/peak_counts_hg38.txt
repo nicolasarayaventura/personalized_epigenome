@@ -1,0 +1,4 @@
+File Name | Chromosome | Start | End | Locus | Peak Count
+merged_SEM_peak_peaks.narrowPeak | chr2 | 88826861 | 90237547 | IgK | 72 peaks
+merged_SEM_peak_peaks.narrowPeak | chr14 | 105422420 | 107043718 | IgH | 78 peaks
+merged_SEM_peak_peaks.narrowPeak | chr22 | 22005516 | 22922912 | IgL | 70 peaks
