@@ -5,8 +5,15 @@ scratch_hg19="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/20
 
 
 function data_download {
-	mkdir -p /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data
-	cp /sc/arion/projects/oscarlr/projects/IGH_epigenome/data/2025-02-11_transfer_from_UofL/data.tar.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data
+    mkdir -p /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data
+    bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=16000]" -o "/sc/arion/work/arayan01/project/personalized_epigenome/data/datadownload.txt" \
+        cp /sc/arion/projects/oscarlr/projects/IGH_epigenome/data/2025-02-11_transfer_from_UofL/data.tar.gz \
+           /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data
+}
+
+function uncompress {
+	bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=16000]" -o "/sc/arion/work/arayan01/project/personalized_epigenome/data/datadownload.txt" \
+		tar -xzvf /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/data.tar.gz
 
 }
 
@@ -31,5 +38,6 @@ done < url_links.txt
 }
 
 #data_download
+uncompress
 #ref_genome_hg38
-ref_genome_hg19
+#ref_genome_hg19
