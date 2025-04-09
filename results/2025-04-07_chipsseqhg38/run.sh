@@ -45,6 +45,22 @@ function trimming {
     done < "${samplelist}"
 }
 
+function bowtiemapping {
+    rm -rf ${work}/mapping
+    mkdir -p ${work}/mapping
+        
+    refgen="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/refgen/hg"
+    out="${work}/mapping"
+    
+    while IFS=$'\t' read -r base path; do
+        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${work}/bowtiemapping_job.txt" \
+            bowtie2 -x ${refgen} \
+                -U ${path} \
+                -S ${out}/${base}.sam \
+                --met-file ${out}/bowtie2_mapping_stats.txt
+    done < "${samplelist}"
+}
 #samplelist
 #fastqc_initial
-trimming
+#trimming
+bowtiemapping
