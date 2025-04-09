@@ -3,6 +3,7 @@ set -x -e
 adapter_path="/sc/arion/work/arayan01/test-env/envs/atacseq/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa"
 scratch="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-24_atachg38"
 work="/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-02-24_atachg38"
+gen_dir="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen"
 
 function samplelist {
 	rm -rf "${work}/sample_ids.txt"
@@ -62,17 +63,22 @@ function fastqc_trimming {
 
 }
 
-function indexing {
-	gen_dir="${scratch}/refgenome"
-	bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${work}/job_atacgenomeindexing.txt" \
-	"bwa index -p ${gen_dir}/hg38  ${gen_dir}/hg38.fasta"
+function filteredref {
+    grep -vE "Un|random|alt|M" ${gen_dir}/hg38.fa.fai > ${gen_dir}/hg38_filtered.fa.fai
+    cut -f1 ${gen_dir}/hg38_filtered.fa.fai > ${gen_dir}/filtered_chromosomes.txt
+
+    while read chr; do samtools faidx ${gen_dir}/hg38.fa $chr >> ${gen_dir}/hg38_filtered.fa; done < ${gen_dir}/filtered_chromosomes.txt
+
+
+	bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${work}/job_hg38filterd_indexing.txt" \
+	"bwa index -p ${gen_dir}/hg38_filtered ${gen_dir}/hg38_filtered.fa"
 
 }
 
 function mapping {
     rm -rf ${scratch}/mapping
     mkdir -p ${scratch}/mapping
-	ref_gen="${scratch}/refgenome/hg38"
+	ref_gen="${gen_dir}/hg38_filtered"
 	mapped_dir="${scratch}/mapping"
 	sample_dir="${scratch}/trimming"
 
@@ -82,7 +88,7 @@ function mapping {
         sample2="${sample}_tr_2P.fastq.gz"
 
         # Submit job to bsub
-        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${work}/job_atacmapping_${basename}.txt" \
+        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${work}/atacmapping_${basename}.txt" \
         "bwa mem -t 2 ${ref_gen} ${sample_dir}/${sample1} ${sample_dir}/${sample2} \
         | samtools sort -@2 -o ${mapped_dir}/${basename}.bam - \
         && samtools index ${mapped_dir}/${basename}.bam \
@@ -127,9 +133,8 @@ function peakcalling {
 
 #samplelist
 #fastqc_initial
-trimming
 #trimming
-#indexing
+filteredref
 #mapping
 #pre_peakcalling_processing
 #peakcalling
