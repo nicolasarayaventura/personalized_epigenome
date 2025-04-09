@@ -3,6 +3,7 @@ set -x -e
 adapter_path="/sc/arion/work/arayan01/test-env/envs/atacseq/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa"
 scratch="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-03-04_atachg19"
 work="/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-03-04_atachg19"
+gen_dir="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg19_rfgen"
 
 function samplelist {
 	rm -rf "${work}/sample_ids.txt"
@@ -62,10 +63,15 @@ function fastqc_trimming {
 
 }
 
-function indexing {
-	gen_dir="${scratch}/refgenome"
-	bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${work}/job_atacgenomeindexing.txt" \
-	"bwa index -p ${gen_dir}/hg19  ${gen_dir}/hg19.fa"
+function filteredref {
+    grep -vE "Un|random|alt|M|_" ${gen_dir}/hg19.fa.fai > ${gen_dir}/hg19_filtered.fa.fai
+    cut -f1 ${gen_dir}/hg19_filtered.fa.fai > ${gen_dir}/filtered_chromosomes.txt
+
+    while read chr; do samtools faidx ${gen_dir}/hg19.fa $chr >> ${gen_dir}/hg19_filtered.fa; done < ${gen_dir}/filtered_chromosomes.txt
+
+
+	bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${work}/job_hg19filterd_indexing.txt" \
+	"bwa index -p ${gen_dir}/hg19_filtered ${gen_dir}/hg19_filtered.fa"
 
 }
 
@@ -129,7 +135,7 @@ function peakcalling {
 #fastqc_initial
 #trimming
 #fastqc_trimming
-#indexing
+filteredref
 #mapping
 #pre_peakcalling_processing
-peakcalling
+#peakcalling
