@@ -7,7 +7,7 @@ gen_dir="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rf
 
 function samplelist {
 	rm -rf "${work}/sample_ids.txt"
-	sampledir="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/atac"
+	sampledir="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/data/2022-11-22_data_from_Ranjan_Xiang/atac"
 	output="${work}/sample_ids.txt"
 	
 	samplepath=$(realpath "${sampledir}")
@@ -64,23 +64,29 @@ function fastqc_trimming {
 }
 
 function filteredref {
-    grep -vE "Un|random|alt|M" ${gen_dir}/hg38.fa.fai > ${gen_dir}/hg38_filtered.fa.fai
-    cut -f1 ${gen_dir}/hg38_filtered.fa.fai > ${gen_dir}/filtered_chromosomes.txt
+    samtools faidx "${gen_dir}/hg38.fa"
+    grep -vE "Un|random|alt" "${gen_dir}/hg38.fa.fai" > "${gen_dir}/hg38_filtered.fa.fai"
+    cut -f1 "${gen_dir}/hg38_filtered.fa.fai" > "${gen_dir}/filtered_chromosomes.txt"
 
-    while read chr; do samtools faidx ${gen_dir}/hg38.fa $chr >> ${gen_dir}/hg38_filtered.fa; done < ${gen_dir}/filtered_chromosomes.txt
+    rm -f "${gen_dir}/hg38_filtered.fa"
+    while read chr; do
+        samtools faidx "${gen_dir}/hg38.fa" "$chr" >> "${gen_dir}/hg38_filtered.fa"
+    done < "${gen_dir}/filtered_chromosomes.txt"
 
-
-	bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${work}/job_hg38filterd_indexing.txt" \
-	"bwa index -p ${gen_dir}/hg38_filtered ${gen_dir}/hg38_filtered.fa"
-
+    bsub -P acc_oscarlr -q premium -W 24:00 -R "rusage[mem=16000]" \
+    -o "${work}/job_hg38filterd_indexing.txt" -eo "${work}/job_hg38filterd_indexing_err.txt" \
+    "bwa index -p ${gen_dir}/hg38_filtered ${gen_dir}/hg38_filtered.fa"
 }
 
 function mapping {
+
     rm -rf ${scratch}/mapping
     mkdir -p ${scratch}/mapping
-	ref_gen="${gen_dir}/hg38_filtered"
+	
+    ref_gen="${gen_dir}/hg38_filtered"
 	mapped_dir="${scratch}/mapping"
 	sample_dir="${scratch}/trimming"
+    samplelist="${work}/sample_ids.txt"
 
 	while IFS=$'\t' read -r sample R1 R2; do
         basename="${sample}"
@@ -88,7 +94,7 @@ function mapping {
         sample2="${sample}_tr_2P.fastq.gz"
 
         # Submit job to bsub
-        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${work}/atacmapping_${basename}.txt" \
+        bsub -P acc_oscarlr -q premium -n 1 -W 24:00 -R "rusage[mem=16000]" -o "${work}/atacmapping_${basename}.txt" \
         "bwa mem -t 2 ${ref_gen} ${sample_dir}/${sample1} ${sample_dir}/${sample2} \
         | samtools sort -@2 -o ${mapped_dir}/${basename}.bam - \
         && samtools index ${mapped_dir}/${basename}.bam \
@@ -134,7 +140,7 @@ function peakcalling {
 #samplelist
 #fastqc_initial
 #trimming
-filteredref
+#filteredref
 #mapping
 #pre_peakcalling_processing
-#peakcalling
+peakcalling
