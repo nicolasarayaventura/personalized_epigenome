@@ -45,15 +45,15 @@ function trimming {
     done < "${samplelist}"
 }
 
-function bowtiemapping {
+function bowtiemapping { #LONG RUN TIME!, prior to running this build the ref genome off the filtered file using bowtie (LONG RUN TIME ASWELL)
     rm -rf ${work}/mapping
     mkdir -p ${work}/mapping
         
-    refgen="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/refgen/hg"
+    refgen="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt2/hg38filtered"
     out="${work}/mapping"
     
     while IFS=$'\t' read -r base path; do
-        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${work}/bowtiemapping_job.txt" \
+        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${work}/bowtiemapping_job.txt"  -eo "${work}/bowtiemapping_job_err.txt" \
             bowtie2 -x ${refgen} \
                 -U ${path} \
                 -S ${out}/${base}.sam \
