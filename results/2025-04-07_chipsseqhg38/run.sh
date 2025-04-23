@@ -82,31 +82,33 @@ function chipqc {
     output="${scratch}/results/chipqc"
     data="${scratch}/mapping/indexed"
 
-    #make sure these files are indexed for input into multibamsum.
-
-    bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${work}/chipqc_job.txt" -eo "${work}/chipqc_eo_job.txt" \
+     bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${work}/chipqc_job.txt" -eo "${work}/chipqc_eo_job.txt" \
         multiBamSummary bins -b ${data}/*.bam \
-        -o ${output}/output_matrix.npz \
+        -o ${output}/samples_correlation_matrix.npz \
         -bs 1000 \
         -n 500
 }
+
 function corplot {
     rm -rf "${work}/results/plot/correlationplot"
     mkdir -p "${work}/results/plot/correlationplot"
+    
+        data="${scratch}/results/chipqc/samples_correlation_matrix.npz"
+        output="${work}/results/plot/correlationplot.png"
 
-    data="${scratch}/results/chipqc/output_matrix.npz"
-    output="${scratch}/results/plot/correlationplot.png"
-
-    bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "corplot_job.txt" \
-        plotCorrelation -in ${data} \
-        -c pearson \
-        -p heatmap \
-        -o ${output}
-}
+        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "corplot_job.txt" \
+            plotCorrelation -in ${data} \
+                -c pearson \
+                -p heatmap \
+                --colorMap RdBu_r \
+                --zMin 0.80 --zMax 1.0 \
+                -o ${output}
+ }
 
 #samplelist
 #fastqc_initial
 #trimming
 #bowtiemapping
 #mappingindex
-chipqc
+#chipqc
+corplot
