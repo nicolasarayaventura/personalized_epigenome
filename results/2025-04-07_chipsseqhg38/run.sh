@@ -90,8 +90,8 @@ function chipqc {
 }
 
 function corplot {
-    rm -rf "${work}/results/plot/correlationplot"
-    mkdir -p "${work}/results/plot/correlationplot"
+    rm -rf "${work}/plot/correlationplot"
+    mkdir -p "${work}/plot/correlationplot"
     
         data="${scratch}/results/chipqc/samples_correlation_matrix.npz"
         output="${work}/results/plot/correlationplot.png"
@@ -105,10 +105,35 @@ function corplot {
                 -o ${output}
  }
 
-#samplelist
+function ipplot {
+    output1="${work}/results/plot/S7_ip_plot.png"
+    output2="${work}/results/plot/S8_ip_plot.png"
+
+    s7l1="${scratch}/mapping/indexed/SEM-CTCF-1_S7_L001_R1_001.fastq.gz.bam"
+    s7l2="${scratch}/mapping/indexed/SEM-CTCF-1_S7_L002_R1_001.fastq.gz.bam"
+
+    s8l1="${scratch}/mapping/indexed/SEM-CTCF-2_S8_L001_R1_001.fastq.gz.bam"
+    s8l2="${scratch}/mapping/indexed/SEM-CTCF-2_S8_L002_R1_001.fastq.gz.bam"
+    
+    bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "S7_ipplot_job.txt" -eo "eo_S7_ipplot_job.txt" \
+        plotFingerprint -b "${s7l1}" "${s7l2}" \
+        -l "SEM-CTCF-1_S7_L001" "SEM-CTCF-1_S7_L002" \
+        -plot "${output1}" \
+        -v \
+        -bs 10000
+
+    bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "S8_ipplot_job.txt" -eo "eo_S8_ipplot_job.txt" \
+        plotFingerprint -b "${s8l1}" "${s8l2}" \
+        -l "SEM-CTCF-2_S8_LOO1" "SEM-CTCF-2_S8_LOO2" \
+        -plot "${output2}" \
+        -v \
+        -bs 10000
+}
+
 #fastqc_initial
 #trimming
 #bowtiemapping
 #mappingindex
 #chipqc
-corplot
+#corplot
+ipplot
