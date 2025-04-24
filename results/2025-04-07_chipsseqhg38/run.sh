@@ -114,6 +114,13 @@ function ipplot {
 
     s8l1="${scratch}/mapping/indexed/SEM-CTCF-2_S8_L001_R1_001.fastq.gz.bam"
     s8l2="${scratch}/mapping/indexed/SEM-CTCF-2_S8_L002_R1_001.fastq.gz.bam"
+
+    bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "S7_ipplot_job.txt" -eo "eo_S7_ipplot_job.txt" \
+        iplot.py "${s7l1}" "${s7l2}"
+    bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "S8_ipplot_job.txt" -eo "eo_S8_ipplot_job.txt" \
+        iplot.py "${s8l1}" "${s8l2}"    
+    
+    
     
     bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "S7_ipplot_job.txt" -eo "eo_S7_ipplot_job.txt" \
         plotFingerprint -b "${s7l1}" "${s7l2}" \
