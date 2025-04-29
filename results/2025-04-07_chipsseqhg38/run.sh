@@ -186,7 +186,8 @@ bsub -P acc_oscarlr -q premium -n 1 -W 24:00 -R "rusage[mem=8000]" -o "S8_ipplot
     -bs 4000 \
     --outRawCounts "${scratch}/plots/S8_ip_plot_rawcounts_chr22.txt"
 }
-
+# should there be an input file here to use a comparison rather than having 2 samples and no control?
+# start normilization here and cont. 4/29/2025
 
 #fastqc_initial
 #trimming
