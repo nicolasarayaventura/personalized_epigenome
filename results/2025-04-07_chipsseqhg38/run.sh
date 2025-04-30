@@ -188,6 +188,51 @@ bsub -P acc_oscarlr -q premium -n 1 -W 24:00 -R "rusage[mem=8000]" -o "S8_ipplot
 }
 # should there be an input file here to use a comparison rather than having 2 samples and no control?
 # start normilization here and cont. 4/29/2025
+function callpeaks {
+    rm -rf "${scratch}/peaks"
+    mkdir -p "${scratch}/peaks"
+
+    input_dir="${scratch}/mapping/indexed"
+    output_dir="${scratch}/peaks"
+
+    while IFS=$'\t' read -r base path; do
+        bam="${input_dir}/${base}.bam"
+
+        bsub -P acc_oscarlr -q premium -n 2 -W 12:00 -R "rusage[mem=8000]" \
+            -o "${work}/peakcall_${base}.out" -eo "${work}/peakcall_${base}.err" \
+            macs2 callpeak -t "${bam}" \
+                -f BAM \
+                -g hs \
+                -n "${base}_peaks" \
+                --outdir "${output_dir}" \
+                --keep-dup all \
+                --nomodel \
+                --extsize 200 \
+                -q 0.01
+    done < "${samplelist}"
+}
+
+# dont use bamcomp since we dont have a control
+function bamcov {
+    rm -rf "${scratch}/heatplot/prep"
+    mkdir -p "${scratch}/heatplot/prep"
+
+    outdir="${scratch}/heatplot/prep"
+
+
+    while IFS=$'\t' read -r base path; do
+        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "bamcov_job.txt" -eo "${base}_bamcov_err.txt" \
+            bamCoverage -b "${path}" \
+            -o "${outdir}/${base}.bw" \
+            --outFileFormat bigwig \
+            --binSize 25 \
+            --normalizeUsing RPGC \
+            --effectiveGenomeSize 2913022398 \
+            --verbose
+    done < "${samplelist}"
+}
+
+
 
 #fastqc_initial
 #trimming
@@ -195,4 +240,6 @@ bsub -P acc_oscarlr -q premium -n 1 -W 24:00 -R "rusage[mem=8000]" -o "S8_ipplot
 #mappingindex
 #chipqc
 #corplot
-ipplot
+#ipplot
+#callpeaks
+bamcov
