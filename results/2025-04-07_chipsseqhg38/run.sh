@@ -219,9 +219,9 @@ function bamcov {
 
     outdir="${scratch}/heatplot/prep"
 
-
+#re read the tut and see what file im imputing here i dont think its the raw file but bam to bw conversion ehre 05/01/2025
     while IFS=$'\t' read -r base path; do
-        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "bamcov_job.txt" -eo "${base}_bamcov_err.txt" \
+        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${base}_bamcov_job.txt" -eo "${base}_bamcov_err.txt" \
             bamCoverage -b "${path}" \
             -o "${outdir}/${base}.bw" \
             --outFileFormat bigwig \
