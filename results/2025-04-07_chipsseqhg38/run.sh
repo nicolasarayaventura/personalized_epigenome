@@ -120,72 +120,72 @@ function ipplot {
     s8l1="${scratch}/mapping/indexed/SEM-CTCF-2_S8_L001_R1_001.fastq.gz.bam"
     s8l2="${scratch}/mapping/indexed/SEM-CTCF-2_S8_L002_R1_001.fastq.gz.bam"
     
-# Command for chr2
-bsub -P acc_oscarlr -q premium -n 1 -W 24:00 -R "rusage[mem=8000]" -o "S7_ipplot_chr2_job.txt" -eo "eo_S7_ipplot_chr2_job.txt" \
-    plotFingerprint -b "${s7l1}" "${s7l2}" \
-    -T "SEM-CTCF-1_S7 Samples (chr2)" \
-    -l "SEM-CTCF-1_S7_L001" "SEM-CTCF-1_S7_L002" \
-    -plot "${output1}" \
-    -v \
-    -r "chr2" \
-    -bs 4000 \
-    --outRawCounts "${scratch}/plots/S7_ip_plot_rawcounts_chr2.txt"
+    # Command for chr2
+    bsub -P acc_oscarlr -q premium -n 1 -W 24:00 -R "rusage[mem=8000]" -o "S7_ipplot_chr2_job.txt" -eo "eo_S7_ipplot_chr2_job.txt" \
+        plotFingerprint -b "${s7l1}" "${s7l2}" \
+        -T "SEM-CTCF-1_S7 Samples (chr2)" \
+        -l "SEM-CTCF-1_S7_L001" "SEM-CTCF-1_S7_L002" \
+        -plot "${output1}" \
+        -v \
+        -r "chr2" \
+        -bs 4000 \
+        --outRawCounts "${scratch}/plots/S7_ip_plot_rawcounts_chr2.txt"
 
-# Command for chr14
-bsub -P acc_oscarlr -q premium -n 1 -W 24:00 -R "rusage[mem=8000]" -o "S7_ipplot_chr14_job.txt" -eo "eo_S7_ipplot_chr14_job.txt" \
-    plotFingerprint -b "${s7l1}" "${s7l2}" \
-    -T "SEM-CTCF-1_S7 Samples (chr14)" \
-    -l "SEM-CTCF-1_S7_L001" "SEM-CTCF-1_S7_L002" \
-    -plot "${output2}" \
-    -v \
-    -r "chr14" \
-    -bs 4000 \
-    --outRawCounts "${scratch}/plots/S7_ip_plot_rawcounts_chr14.txt"
+    # Command for chr14
+    bsub -P acc_oscarlr -q premium -n 1 -W 24:00 -R "rusage[mem=8000]" -o "S7_ipplot_chr14_job.txt" -eo "eo_S7_ipplot_chr14_job.txt" \
+        plotFingerprint -b "${s7l1}" "${s7l2}" \
+        -T "SEM-CTCF-1_S7 Samples (chr14)" \
+        -l "SEM-CTCF-1_S7_L001" "SEM-CTCF-1_S7_L002" \
+        -plot "${output2}" \
+        -v \
+        -r "chr14" \
+        -bs 4000 \
+        --outRawCounts "${scratch}/plots/S7_ip_plot_rawcounts_chr14.txt"
 
-# Command for chr22
-bsub -P acc_oscarlr -q premium -n 1 -W 24:00 -R "rusage[mem=8000]" -o "S7_ipplot_chr22_job.txt" -eo "eo_S7_ipplot_chr22_job.txt" \
-    plotFingerprint -b "${s7l1}" "${s7l2}" \
-    -T "SEM-CTCF-1_S7 Samples (chr22)" \
-    -l "SEM-CTCF-1_S7_L001" "SEM-CTCF-1_S7_L002" \
-    -plot "${output3}" \
-    -v \
-    -r "chr22" \
-    -bs 4000 \
-    --outRawCounts "${scratch}/plots/S7_ip_plot_rawcounts_chr22.txt"
-#########
+    # Command for chr22
+    bsub -P acc_oscarlr -q premium -n 1 -W 24:00 -R "rusage[mem=8000]" -o "S7_ipplot_chr22_job.txt" -eo "eo_S7_ipplot_chr22_job.txt" \
+        plotFingerprint -b "${s7l1}" "${s7l2}" \
+        -T "SEM-CTCF-1_S7 Samples (chr22)" \
+        -l "SEM-CTCF-1_S7_L001" "SEM-CTCF-1_S7_L002" \
+        -plot "${output3}" \
+        -v \
+        -r "chr22" \
+        -bs 4000 \
+        --outRawCounts "${scratch}/plots/S7_ip_plot_rawcounts_chr22.txt"
+    #########
 
-bsub -P acc_oscarlr -q premium -n 1 -W 24:00 -R "rusage[mem=8000]" -o "S8_ipplot_chr2_job.txt" -eo "eo_S8_ipplot_chr2_job.txt" \
-    plotFingerprint -b "${s8l1}" "${s8l2}" \
-    -T "SEM-CTCF-1_S8 Samples (chr2)" \
-    -l "SEM-CTCF-1_S8_L001" "SEM-CTCF-1_S8_L002" \
-    -plot "${output4}" \
-    -v \
-    -r "chr2" \
-    -bs 4000 \
-    --outRawCounts "${scratch}/plots/S8_ip_plot_rawcounts_chr2.txt"
+    bsub -P acc_oscarlr -q premium -n 1 -W 24:00 -R "rusage[mem=8000]" -o "S8_ipplot_chr2_job.txt" -eo "eo_S8_ipplot_chr2_job.txt" \
+        plotFingerprint -b "${s8l1}" "${s8l2}" \
+        -T "SEM-CTCF-1_S8 Samples (chr2)" \
+        -l "SEM-CTCF-1_S8_L001" "SEM-CTCF-1_S8_L002" \
+        -plot "${output4}" \
+        -v \
+        -r "chr2" \
+        -bs 4000 \
+        --outRawCounts "${scratch}/plots/S8_ip_plot_rawcounts_chr2.txt"
 
-# Command for chr14
-bsub -P acc_oscarlr -q premium -n 1 -W 24:00 -R "rusage[mem=8000]" -o "S8_ipplot_chr14_job.txt" -eo "eo_S8_ipplot_chr14_job.txt" \
-    plotFingerprint -b "${s8l1}" "${s8l2}" \
-    -T "SEM-CTCF-1_S8 Samples (chr14)" \
-    -l "SEM-CTCF-1_S8_L001" "SEM-CTCF-1_S8_L002" \
-    -plot "${output5}" \
-    -v \
-    -r "chr14" \
-    -bs 4000 \
-    --outRawCounts "${scratch}/plots/S8_ip_plot_rawcounts_chr14.txt"
+    # Command for chr14
+    bsub -P acc_oscarlr -q premium -n 1 -W 24:00 -R "rusage[mem=8000]" -o "S8_ipplot_chr14_job.txt" -eo "eo_S8_ipplot_chr14_job.txt" \
+        plotFingerprint -b "${s8l1}" "${s8l2}" \
+        -T "SEM-CTCF-1_S8 Samples (chr14)" \
+        -l "SEM-CTCF-1_S8_L001" "SEM-CTCF-1_S8_L002" \
+        -plot "${output5}" \
+        -v \
+        -r "chr14" \
+        -bs 4000 \
+        --outRawCounts "${scratch}/plots/S8_ip_plot_rawcounts_chr14.txt"
 
-# Command for chr22
-bsub -P acc_oscarlr -q premium -n 1 -W 24:00 -R "rusage[mem=8000]" -o "S8_ipplot_chr22_job.txt" -eo "eo_S8_ipplot_chr22_job.txt" \
-    plotFingerprint -b "${s8l1}" "${s8l2}" \
-    -T "SEM-CTCF-1_S8 Samples (chr22)" \
-    -l "SEM-CTCF-1_S8_L001" "SEM-CTCF-1_S8_L002" \
-    -plot "${output6}" \
-    -v \
-    -r "chr22" \
-    -bs 4000 \
-    --outRawCounts "${scratch}/plots/S8_ip_plot_rawcounts_chr22.txt"
-}
+    # Command for chr22
+    bsub -P acc_oscarlr -q premium -n 1 -W 24:00 -R "rusage[mem=8000]" -o "S8_ipplot_chr22_job.txt" -eo "eo_S8_ipplot_chr22_job.txt" \
+        plotFingerprint -b "${s8l1}" "${s8l2}" \
+        -T "SEM-CTCF-1_S8 Samples (chr22)" \
+        -l "SEM-CTCF-1_S8_L001" "SEM-CTCF-1_S8_L002" \
+        -plot "${output6}" \
+        -v \
+        -r "chr22" \
+        -bs 4000 \
+        --outRawCounts "${scratch}/plots/S8_ip_plot_rawcounts_chr22.txt"
+    }
 # should there be an input file here to use a comparison rather than having 2 samples and no control?
 # start normilization here and cont. 4/29/2025
 function callpeaks {
@@ -212,34 +212,184 @@ function callpeaks {
     done < "${samplelist}"
 }
 
-# dont use bamcomp since we dont have a control
-function bamcov {
+function bamcov_merge {
+    rm -rf "${scratch}/heatplot/prep"
+    mkdir -p "${scratch}/heatplot/prep"
+    mkdir -p "${scratch}/heatplot/merged_bam"
+
+    bamdir="${scratch}/mapping/indexed"
+    merge_dir="${scratch}/heatplot/merged_bam"
+
+    declare -A sample_bams_ctcf1
+    declare -A sample_bams_ctcf2
+
+    # Group BAMs by sample prefix (SEM-CTCF-1 or SEM-CTCF-2)
+    while IFS=$'\t' read -r base path; do
+        if [[ "$base" == SEM-CTCF-1* ]]; then
+            sample_bams_ctcf1["SEM-CTCF-1"]="${sample_bams_ctcf1["SEM-CTCF-1"]} ${bamdir}/${base}.bam"
+        elif [[ "$base" == SEM-CTCF-2* ]]; then
+            sample_bams_ctcf2["SEM-CTCF-2"]="${sample_bams_ctcf2["SEM-CTCF-2"]} ${bamdir}/${base}.bam"
+        fi
+    done < "${samplelist}"
+
+    # Function to merge BAM files for a sample
+    merge_bam_files() {
+        sample=$1
+        sample_bams=$2
+        merged_bam="${merge_dir}/${sample}.bam"
+
+        bsub -P acc_oscarlr -q premium -n 2 -W 8:00 -R "rusage[mem=8000]" \
+            -o "${sample}_merge_bam_job.txt" -eo "${sample}_merge_bam_err.txt" \
+            samtools merge -f "$merged_bam" $sample_bams
+    }
+
+    merge_bam_files "SEM-CTCF-1" "${sample_bams_ctcf1["SEM-CTCF-1"]}"
+    merge_bam_files "SEM-CTCF-2" "${sample_bams_ctcf2["SEM-CTCF-2"]}"
+}
+
+function index_merged_bams {
+    bamdir="${scratch}/heatplot/merged_bam"
+
+    for bam in ${bamdir}/*.bam; do
+        bsub -P acc_oscarlr -q premium -n 1 -W 01:00 -R "rusage[mem=2000]" \
+            -o "${bam%.bam}_index.out" -eo "${bam%.bam}_index.err" \
+            samtools index "$bam"
+    done
+}
+function bamcov_run {
     rm -rf "${scratch}/heatplot/prep"
     mkdir -p "${scratch}/heatplot/prep"
 
+    bamdir="${scratch}/heatplot/merged_bam"
     outdir="${scratch}/heatplot/prep"
 
-#re read the tut and see what file im imputing here i dont think its the raw file but bam to bw conversion ehre 05/01/2025
-    while IFS=$'\t' read -r base path; do
-        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${base}_bamcov_job.txt" -eo "${base}_bamcov_err.txt" \
-            bamCoverage -b "${path}" \
-            -o "${outdir}/${base}.bw" \
+    for bam in ${bamdir}/*.bam; do
+        sample=$(basename "$bam" .bam)
+
+        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" \
+            -o "${sample}_bamcov_job.txt" -eo "${sample}_bamcov_err.txt" \
+            bamCoverage -b "$bam" \
+            -o "${outdir}/${sample}.bw" \
             --outFileFormat bigwig \
             --binSize 25 \
             --normalizeUsing RPGC \
             --effectiveGenomeSize 2913022398 \
             --verbose
-    done < "${samplelist}"
+    done
+}
+function merge_ctcf1_peaks {
+    outdir="${scratch}/heatplot/merged_peaks"
+    peakdir="${scratch}/peaks"
+
+    mkdir -p "${outdir}"
+
+    rm -f "${outdir}/concatenated_ctcf1_peaks.narrowPeak"
+
+    cat ${peakdir}/SEM-CTCF-1_S7_L001_R1_001.fastq.gz_peaks_peaks.narrowPeak \
+        ${peakdir}/SEM-CTCF-1_S7_L002_R1_001.fastq.gz_peaks_peaks.narrowPeak > \
+        "${outdir}/concatenated_ctcf1_peaks.narrowPeak"
+
+    bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" \
+        -o "${outdir}/merge_ctcf1_peaks_job.txt" \
+        "bedtools sort -i ${outdir}/concatenated_ctcf1_peaks.narrowPeak | \
+         bedtools merge -i - > ${outdir}/merged_ctcf1_peaks.bed"
+}
+function merge_ctcf2_peaks {
+    peakdir="${scratch}/peaks"
+    outdir="${scratch}/heatplot/merged_peaks"
+
+    # Merge peaks for CTCF-2 samples
+    cat ${peakdir}/SEM-CTCF-2_S8_L001_R1_001.fastq.gz_peaks_peaks.narrowPeak \
+        ${peakdir}/SEM-CTCF-2_S8_L002_R1_001.fastq.gz_peaks_peaks.narrowPeak > \
+        "${outdir}/concatenated_ctcf2_peaks.narrowPeak"
+
+    bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" \
+        -o "${outdir}/merge_ctcf2_peaks_job.txt" \
+        "bedtools sort -i ${outdir}/concatenated_ctcf2_peaks.narrowPeak | \
+         bedtools merge -i - > ${outdir}/merged_ctcf2_peaks.bed"
 }
 
+function matrix1 {
+    beddir="${scratch}/heatplot/merged_peaks"
+    bwdir="${scratch}/heatplot/prep"
+    outdir="${scratch}/heatplot/prep"
 
+    bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" \
+        -o "matrix_job.out" -eo "matrix_job.err" \
+        computeMatrix reference-point \
+        -S "${bwdir}/SEM-CTCF-1.bw" \
+        -R "${beddir}/merged_ctcf1_peaks.bed"  \
+        --referencePoint center \
+        --upstream 3000 \
+        --downstream 3000 \
+        --outFileName "${outdir}/CTCF_matrix.gz" \
+        --skipZeros \
+        --verbose
+}
+
+function matrix2 {
+    beddir="${scratch}/heatplot/merged_peaks"
+    bwdir="${scratch}/heatplot/prep"
+    outdir="${scratch}/heatplot/prep"
+
+    bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" \
+        -o "matrix_job.out" -eo "matrix_job.err" \
+        computeMatrix reference-point \
+        -S "${bwdir}/SEM-CTCF-2.bw" \
+        -R "${beddir}/merged_ctcf2_peaks.bed"  \
+        --referencePoint center \
+        --upstream 3000 \
+        --downstream 3000 \
+        --outFileName "${outdir}/CTCF2_matrix.gz" \
+        --skipZeros \
+        --verbose
+}
+
+function heatp1 {
+    outdir="${work}/plot/heatlplot"
+    matrixfile="${scratch}/heatplot/prep/CTCF_matrix.gz"
+
+        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "CTCF__heatmap_job.txt" -eo "CTCF__heatmap_err.txt" \
+            plotHeatmap -m ${matrixfile} \
+            --heatmapWidth 8 \
+            --heatmapHeight 8 \
+            --colorMap RdYlBu \
+            -o ${outdir}/CTCF_k4_heatmap.png \
+            --kmeans 4
+                
+}
+
+function heatp2 {
+    # rm -rf "${work}/plot/heatlplot"
+    #mkdir -p "${work}/plot/heatlplot"
+
+    outdir="${work}/plot/heatlplot"
+    matrixfile="${scratch}/heatplot/prep/CTCF2_matrix.gz"
+
+        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "CTCF2_heatmap_job.txt" -eo "CTCF2__heatmap_err.txt" \
+            plotHeatmap -m ${matrixfile} \
+            --heatmapWidth 8 \
+            --heatmapHeight 8 \
+            --colorMap RdYlBu \
+            -o ${outdir}/CTCF2_k4_heatmap.png \
+            --kmeans 4
+                
+}
 
 #fastqc_initial
-#trimming
+#trimmingl
 #bowtiemapping
 #mappingindex
 #chipqc
 #corplot
 #ipplot
 #callpeaks
-bamcov
+#bamcov_merge
+#index_merged_bams 
+#merge_ctcf1_peaks
+#merge_ctcf2_peaks
+#bamcov_run
+#matrix1
+#matrix2 
+heatp1
+heatp2
