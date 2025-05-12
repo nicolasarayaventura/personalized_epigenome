@@ -1,0 +1,11 @@
+Module	Section	Sample Name	Source
+FastQC	all_sections	RS411-CTCF-1_S1_R1_001_trimmed	/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-04-07_chipsseqhg38/qc/trimming_fastqc/RS411-CTCF-1_S1_R1_001_trimmed_fastqc.zip
+FastQC	all_sections	RS411-Rad21-2_S4_R1_001_trimmed	/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-04-07_chipsseqhg38/qc/trimming_fastqc/RS411-Rad21-2_S4_R1_001_trimmed_fastqc.zip
+FastQC	all_sections	SEM-CTCF-2_S8_L002_R1_001_trimmed	/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-04-07_chipsseqhg38/qc/trimming_fastqc/SEM-CTCF-2_S8_L002_R1_001_trimmed_fastqc.zip
+FastQC	all_sections	SEM-Rad21-2_S6_R1_001_trimmed	/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-04-07_chipsseqhg38/qc/trimming_fastqc/SEM-Rad21-2_S6_R1_001_trimmed_fastqc.zip
+FastQC	all_sections	SEM-CTCF-1_S7_L002_R1_001_trimmed	/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-04-07_chipsseqhg38/qc/trimming_fastqc/SEM-CTCF-1_S7_L002_R1_001_trimmed_fastqc.zip
+FastQC	all_sections	SEM-Rad21-1_S5_R1_001_trimmed	/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-04-07_chipsseqhg38/qc/trimming_fastqc/SEM-Rad21-1_S5_R1_001_trimmed_fastqc.zip
+FastQC	all_sections	SEM-CTCF-2_S8_L001_R1_001_trimmed	/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-04-07_chipsseqhg38/qc/trimming_fastqc/SEM-CTCF-2_S8_L001_R1_001_trimmed_fastqc.zip
+FastQC	all_sections	RS411-CTCF-2_S2_R1_001_trimmed	/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-04-07_chipsseqhg38/qc/trimming_fastqc/RS411-CTCF-2_S2_R1_001_trimmed_fastqc.zip
+FastQC	all_sections	RS411-Rad21-1_S3_R1_001_trimmed	/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-04-07_chipsseqhg38/qc/trimming_fastqc/RS411-Rad21-1_S3_R1_001_trimmed_fastqc.zip
+FastQC	all_sections	SEM-CTCF-1_S7_L001_R1_001_trimmed	/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-04-07_chipsseqhg38/qc/trimming_fastqc/SEM-CTCF-1_S7_L001_R1_001_trimmed_fastqc.zip
