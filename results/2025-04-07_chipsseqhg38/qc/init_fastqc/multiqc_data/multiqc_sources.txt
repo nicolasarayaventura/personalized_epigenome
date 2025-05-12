@@ -1,5 +1,0 @@
-Module	Section	Sample Name	Source
-FastQC	all_sections	SEM-CTCF-1_S7_L001_R1_001	/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-04-07_chipsseqhg38/qc/init_fastqc/SEM-CTCF-1_S7_L001_R1_001_fastqc.zip
-FastQC	all_sections	SEM-CTCF-1_S7_L002_R1_001	/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-04-07_chipsseqhg38/qc/init_fastqc/SEM-CTCF-1_S7_L002_R1_001_fastqc.zip
-FastQC	all_sections	SEM-CTCF-2_S8_L001_R1_001	/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-04-07_chipsseqhg38/qc/init_fastqc/SEM-CTCF-2_S8_L001_R1_001_fastqc.zip
-FastQC	all_sections	SEM-CTCF-2_S8_L002_R1_001	/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-04-07_chipsseqhg38/qc/init_fastqc/SEM-CTCF-2_S8_L002_R1_001_fastqc.zip
