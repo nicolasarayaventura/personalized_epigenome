@@ -78,21 +78,26 @@ function genomefilter {
 }
 
 function bwt_genome {
+    # hg38
+    rm -rf "${scratch_base}/hg38_rfgen/bwt"
+    mkdir -p "${scratch_base}/hg38_rfgen/bwt"
     hg38_bwtdir="${scratch_base}/hg38_rfgen/bwt"
     hg38_genome="${scratch_base}/hg38_rfgen/hg38_filtered.fa"
-    hg38_out="${bwtdir}/hg38_filtered"
+    hg38_out="${hg38_bwtdir}/hg38_filtered"
 
-
+    # hg19
+    rm -rf "${scratch_base}/hg19_rfgen/bwt"
+    mkdir -p "${scratch_base}/hg19_rfgen/bwt"
     hg19_bwtdir="${scratch_base}/hg19_rfgen/bwt"
     hg19_genome="${scratch_base}/hg19_rfgen/hg19_filtered.fa"
-    hg19_out="${bwtdir}/hg19_filtered"
+    hg19_out="${hg19_bwtdir}/hg19_filtered"
     
+    # job submission
     bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=16000]" -o "job_hg38bwt.txt" \
-        bowtie2-build ${hg38_genome} ${hg38_out}
+        bowtie2-build "${hg38_genome}" "${hg38_out}"
 
     bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=16000]" -o "job_hg19bwt.txt" \
-        bowtie2-build ${hg19_genome} ${hg19_out}
-
+        bowtie2-build "${hg19_genome}" "${hg19_out}"
 }
 
 # Main script execution
@@ -101,5 +106,5 @@ function bwt_genome {
 #uncompress
 #ref_genomes
 #genome_unzip
-genomefilter
-#bwt_genome
+#enomefilter
+bwt_genome
