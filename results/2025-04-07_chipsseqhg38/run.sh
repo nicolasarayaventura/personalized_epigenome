@@ -2,21 +2,26 @@ set -x -e
 
 scratch="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38"
 work="/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-04-07_chipsseqhg38"
+job="${work}/job"
 
-sampledir="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen042022_24"
+sampledir1="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen042022_24"
+sampledir2="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10"
+
 samplelist="${work}/sample_ids.txt"
 
-function samplelist {
-    rm -rf "${work}/sample_ids.txt"
-    mkdir -p "${work}"
-    
-    output="${work}/sample_ids.txt"
 
-    
-    for filepath in "${sampledir}"/*; do
+function samplelist_generate {
+    output="${work}/sample_ids.txt"
+    for filepath in ${sampledir1}/*; do
         [ -f "$filepath" ] || continue
         basename=$(basename "$filepath")
-        echo -e "${basename}\t${filepath}" >> "${output}"
+        echo -e "${basename}\t${filepath}" >> "$output"
+    done
+
+    for filepath in ${sampledir2}/*; do
+        [ -f "$filepath" ] || continue
+        basename=$(basename "$filepath")
+        echo -e "${basename}\t${filepath}" >> "$output"
     done
 }
 
@@ -27,7 +32,7 @@ function fastqc_initial {
 	qc_out="${work}/qc/init_fastqc" #once job is finished run multiqc in directory!
 
 	while IFS=$'\t' read -r base path; do
-		bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${work}/job_fastqc.txt" \
+		bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${job}/job_fastqc.txt" \
 		    fastqc --noextract -t 2 "${path}" -o "${qc_out}"
 	done < "${samplelist}"
 }
@@ -36,28 +41,52 @@ function trimming {
     rm -rf "${scratch}/trimming"
     mkdir -p "${scratch}/trimming"
 
-   
     out="${scratch}/trimming"
 
     while IFS=$'\t' read -r base path; do
-        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${work}/trimming_job.txt" \
-         trim_galore --quality 15 --stringency 3 --report ${path} -o "${out}/${base}_trimmed"
+        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${job}/trimming_job.txt" \
+         trim_galore --quality 15 --stringency 3 --report ${path} -o "${out}"
     done < "${samplelist}"
 }
 
+function fastqc_posttrimming {
+    rm -rf "${work}/qc/trimming_fastqc"
+    mkdir "${work}/qc/trimming_fastqc"
+    
+    trimdir="${scratch}/trimming"
+
+	qc_out="${work}/qc/trimming_fastqc" #once job is finished run multiqc in directory!
+
+	while IFS=$'\t' read -r base path; do
+        clean_base="${base%.fastq.gz}"
+        fq_file="${trimdir}/${clean_base}_trimmed.fq.gz"
+
+        if [[ -f "$fq_file" ]]; then
+            bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${job}/posttrimming_job_fastqc.txt" -eo "eo_posttrimming_job_fastqc.txt" \
+                fastqc --noextract -t 2 "$fq_file" -o "$qc_out"   
+        fi   
+    done < "${samplelist}"
+}
 function bowtiemapping { #LONG RUN TIME!, prior to running this build the ref genome off the filtered file using bowtie (LONG RUN TIME ASWELL)
     rm -rf ${scratch}/mapping
     mkdir -p ${scratch}/mapping
         
-    refgen="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt2/hg38_filtered"
+    refgen="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg38_filtered"
     out="${scratch}/mapping"
-    
+    trimdir="${scratch}/trimming"
+
     while IFS=$'\t' read -r base path; do
-        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${work}/bowtiemapping_job.txt"  -eo "${work}/bowtiemapping_job_err.txt" \
-            bowtie2 -x ${refgen} \
-                -U ${path} \
-                -S ${out}/${base}.sam \
-                --met-file ${out}/bowtie2_mapping_stats.txt
+        clean_base="${base%.fastq.gz}"
+        trimmed_file="${trimdir}/${clean_base}_trimmed.fq.gz"
+        if [[ -f "$trimmed_file" ]]; then
+            bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" \
+                -o "${job}/bowtiemapping_job.txt" \
+                -eo "bowtiemapping_job_err.txt" \
+                bowtie2 -x "${refgen}" \
+                        -U "${trimmed_file}" \
+                        -S "${out}/${base}.sam" \
+                        --met-file "${out}/bowtie2_mapping_stats.txt"
+        fi
     done < "${samplelist}"
 }
 
@@ -69,7 +98,7 @@ function mappingindex {
     mapdir="${work}/mapping" #change to scratch once done
 
     while IFS=$'\t' read -r base path; do
-      bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${work}/bowtieindex_job.txt"  -eo "${work}/bowtieindex_job_err.txt" \
+      bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${job}/bowtieindex_job.txt"  -eo "${job}/bowtieindex_job_err.txt" \
                 "samtools sort ${mapdir}/${base}.sam -o ${output}/${base}.bam && \
                 samtools index ${output}/${base}.bam"
     done < "${samplelist}"
@@ -82,7 +111,7 @@ function chipqc {
     output="${scratch}/results/chipqc"
     data="${scratch}/mapping/indexed"
 
-     bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${work}/chipqc_job.txt" -eo "${work}/chipqc_eo_job.txt" \
+     bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${job}/chipqc_job.txt" -eo "${job}/chipqc_eo_job.txt" \
         multiBamSummary bins -b ${data}/*.bam \
         -o ${output}/samples_correlation_matrix.npz \
         -bs 1000 \
@@ -96,7 +125,7 @@ function corplot {
         data="${scratch}/results/chipqc/samples_correlation_matrix.npz"
         output="${work}/results/plot/correlationplot.png"
 
-        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "corplot_job.txt" \
+        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${job}/corplot_job.txt" \
             plotCorrelation -in ${data} \
                 -c pearson \
                 -p heatmap \
@@ -105,6 +134,7 @@ function corplot {
                 -o ${output}
  }
 
+#should IP plot still be made? #05/12/2025
 function ipplot {
     output1="${work}/results/plot/S7_ip_plot_chr2.png"
     output2="${work}/results/plot/S7_ip_plot_chr14.png"
@@ -121,7 +151,7 @@ function ipplot {
     s8l2="${scratch}/mapping/indexed/SEM-CTCF-2_S8_L002_R1_001.fastq.gz.bam"
     
     # Command for chr2
-    bsub -P acc_oscarlr -q premium -n 1 -W 24:00 -R "rusage[mem=8000]" -o "S7_ipplot_chr2_job.txt" -eo "eo_S7_ipplot_chr2_job.txt" \
+    bsub -P acc_oscarlr -q premium -n 1 -W 24:00 -R "rusage[mem=8000]" -o "${job}/S7_ipplot_chr2_job.txt" -eo "${job}/eo_S7_ipplot_chr2_job.txt" \
         plotFingerprint -b "${s7l1}" "${s7l2}" \
         -T "SEM-CTCF-1_S7 Samples (chr2)" \
         -l "SEM-CTCF-1_S7_L001" "SEM-CTCF-1_S7_L002" \
@@ -132,7 +162,7 @@ function ipplot {
         --outRawCounts "${scratch}/plots/S7_ip_plot_rawcounts_chr2.txt"
 
     # Command for chr14
-    bsub -P acc_oscarlr -q premium -n 1 -W 24:00 -R "rusage[mem=8000]" -o "S7_ipplot_chr14_job.txt" -eo "eo_S7_ipplot_chr14_job.txt" \
+    bsub -P acc_oscarlr -q premium -n 1 -W 24:00 -R "rusage[mem=8000]" -o "${job}/S7_ipplot_chr14_job.txt" -eo "${job}/eo_S7_ipplot_chr14_job.txt" \
         plotFingerprint -b "${s7l1}" "${s7l2}" \
         -T "SEM-CTCF-1_S7 Samples (chr14)" \
         -l "SEM-CTCF-1_S7_L001" "SEM-CTCF-1_S7_L002" \
@@ -143,7 +173,7 @@ function ipplot {
         --outRawCounts "${scratch}/plots/S7_ip_plot_rawcounts_chr14.txt"
 
     # Command for chr22
-    bsub -P acc_oscarlr -q premium -n 1 -W 24:00 -R "rusage[mem=8000]" -o "S7_ipplot_chr22_job.txt" -eo "eo_S7_ipplot_chr22_job.txt" \
+    bsub -P acc_oscarlr -q premium -n 1 -W 24:00 -R "rusage[mem=8000]" -o "${job}/S7_ipplot_chr22_job.txt" -eo "eo_S7_ipplot_chr22_job.txt" \
         plotFingerprint -b "${s7l1}" "${s7l2}" \
         -T "SEM-CTCF-1_S7 Samples (chr22)" \
         -l "SEM-CTCF-1_S7_L001" "SEM-CTCF-1_S7_L002" \
@@ -376,9 +406,11 @@ function heatp2 {
                 
 }
 
+#samplelist
 #fastqc_initial
-#trimmingl
-#bowtiemapping
+#trimming
+#fastqc_posttrimming
+bowtiemapping
 #mappingindex
 #chipqc
 #corplot
@@ -391,5 +423,10 @@ function heatp2 {
 #bamcov_run
 #matrix1
 #matrix2 
-heatp1
-heatp2
+#heatp1
+#heatp2
+
+
+#05/13/2025
+# left off at mapping job, finished atac MAPQ dist. chart but make sure the axis are correct compared to this also after this start hg19?
+#https://www.acgt.me/blog/2014/12/16/understanding-mapq-scores-in-sam-files-does-37-42
