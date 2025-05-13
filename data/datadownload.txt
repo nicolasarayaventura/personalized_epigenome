@@ -1,0 +1,814 @@
+Sender: LSF System <lsfadmin@lh06c06>
+Subject: Job 178489152: <cp /sc/arion/projects/oscarlr/projects/IGH_epigenome/data/2025-02-11_transfer_from_UofL/data.tar.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data> in cluster <chimera> Done
+
+Job <cp /sc/arion/projects/oscarlr/projects/IGH_epigenome/data/2025-02-11_transfer_from_UofL/data.tar.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Mon Apr  7 13:56:29 2025
+Job was executed on host(s) <1*lh06c06>, in queue <premium>, as user <arayan01> in cluster <chimera> at Mon Apr  7 13:56:35 2025
+                            <1*lh06c21>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/data/2025-02-24_atac/2025-02-19_ranjan_data> was used as the working directory.
+Started at Mon Apr  7 13:56:35 2025
+Terminated at Mon Apr  7 14:15:00 2025
+Results reported at Mon Apr  7 14:15:00 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+cp /sc/arion/projects/oscarlr/projects/IGH_epigenome/data/2025-02-11_transfer_from_UofL/data.tar.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   1037.94 sec.
+    Max Memory :                                 336 MB
+    Average Memory :                             271.64 MB
+    Total Requested Memory :                     32000.00 MB
+    Delta Memory :                               31664.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                4
+    Run time :                                   1105 sec.
+    Turnaround time :                            1111 sec.
+
+The output (if any) follows:
+
+Sender: LSF System <lsfadmin@lc07e09>
+Subject: Job 178507037: <tar -xzvf /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data> in cluster <chimera> Exited
+
+Job <tar -xzvf /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Mon Apr  7 14:59:25 2025
+Job was executed on host(s) <1*lc07e09>, in queue <premium>, as user <arayan01> in cluster <chimera> at Mon Apr  7 14:59:37 2025
+                            <1*lc06e64>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/data/2025-02-24_atac/2025-02-19_ranjan_data> was used as the working directory.
+Started at Mon Apr  7 14:59:37 2025
+Terminated at Mon Apr  7 14:59:38 2025
+Results reported at Mon Apr  7 14:59:38 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+tar -xzvf /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data
+------------------------------------------------------------
+
+Exited with exit code 2.
+
+Resource usage summary:
+
+    CPU time :                                   0.02 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     32000.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   0 sec.
+    Turnaround time :                            13 sec.
+
+The output (if any) follows:
+
+tar (child): /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data: Cannot read: Is a directory
+tar (child): At beginning of tape, quitting now
+tar (child): Error is not recoverable: exiting now
+
+gzip: stdin: unexpected end of file
+tar: Child returned status 2
+tar: Error is not recoverable: exiting now
+Sender: LSF System <lsfadmin@lc07e31>
+Subject: Job 178507047: <tar -xzvf /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data> in cluster <chimera> Exited
+
+Job <tar -xzvf /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Mon Apr  7 15:00:05 2025
+Job was executed on host(s) <1*lc07e31>, in queue <premium>, as user <arayan01> in cluster <chimera> at Mon Apr  7 15:00:11 2025
+                            <1*lc06e64>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/data/2025-02-24_atac/2025-02-19_ranjan_data> was used as the working directory.
+Started at Mon Apr  7 15:00:11 2025
+Terminated at Mon Apr  7 15:00:11 2025
+Results reported at Mon Apr  7 15:00:11 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+tar -xzvf /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data
+------------------------------------------------------------
+
+Exited with exit code 2.
+
+Resource usage summary:
+
+    CPU time :                                   0.02 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     32000.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   0 sec.
+    Turnaround time :                            6 sec.
+
+The output (if any) follows:
+
+tar (child): /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data: Cannot read: Is a directory
+tar (child): At beginning of tape, quitting now
+tar (child): Error is not recoverable: exiting now
+
+gzip: stdin: unexpected end of file
+tar: Child returned status 2
+tar: Error is not recoverable: exiting now
+Sender: LSF System <lsfadmin@lc07e15>
+Subject: Job 178507057: <tar -xzvf /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/data.tar.gz> in cluster <chimera> Exited
+
+Job <tar -xzvf /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/data.tar.gz> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Mon Apr  7 15:02:06 2025
+Job was executed on host(s) <1*lc07e15>, in queue <premium>, as user <arayan01> in cluster <chimera> at Mon Apr  7 15:02:16 2025
+                            <1*lc07e07>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/data/2025-02-24_atac/2025-02-19_ranjan_data> was used as the working directory.
+Started at Mon Apr  7 15:02:16 2025
+Terminated at Mon Apr  7 15:02:18 2025
+Results reported at Mon Apr  7 15:02:18 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+tar -xzvf /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/data.tar.gz
+------------------------------------------------------------
+
+TERM_OWNER: job killed by owner.
+Exited with exit code 130.
+
+Resource usage summary:
+
+    CPU time :                                   1.00 sec.
+    Max Memory :                                 6 MB
+    Average Memory :                             6.00 MB
+    Total Requested Memory :                     32000.00 MB
+    Delta Memory :                               31994.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                5
+    Run time :                                   2 sec.
+    Turnaround time :                            12 sec.
+
+The output (if any) follows:
+
+data/
+data/2022-07-25_Seq_CW48_10-12/
+data/2022-07-25_Seq_CW48_10-12/run.sh~
+data/2022-07-25_Seq_CW48_10-12/run.sh
+data/2022-07-25_Seq_CW48_10-12/demultiplex.bc1017--bc1017.bam
+Sender: LSF System <lsfadmin@lc07e63>
+Subject: Job 178507056: <tar -xzvf /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/data.tar.gz> in cluster <chimera> Exited
+
+Job <tar -xzvf /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/data.tar.gz> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Mon Apr  7 15:01:55 2025
+Job was executed on host(s) <1*lc07e63>, in queue <premium>, as user <arayan01> in cluster <chimera> at Mon Apr  7 15:02:01 2025
+                            <1*lc06e21>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/data/2025-02-24_atac/2025-02-19_ranjan_data> was used as the working directory.
+Started at Mon Apr  7 15:02:01 2025
+Terminated at Mon Apr  7 16:04:02 2025
+Results reported at Mon Apr  7 16:04:02 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+tar -xzvf /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/data.tar.gz
+------------------------------------------------------------
+
+Exited with exit code 2.
+
+Resource usage summary:
+
+    CPU time :                                   3709.48 sec.
+    Max Memory :                                 6 MB
+    Average Memory :                             6.00 MB
+    Total Requested Memory :                     32000.00 MB
+    Delta Memory :                               31994.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                5
+    Run time :                                   3721 sec.
+    Turnaround time :                            3727 sec.
+
+The output (if any) follows:
+
+data/
+data/2022-07-25_Seq_CW48_10-12/
+data/2022-07-25_Seq_CW48_10-12/run.sh~
+data/2022-07-25_Seq_CW48_10-12/run.sh
+data/2022-07-25_Seq_CW48_10-12/demultiplex.bc1017--bc1017.bam
+data/2022-07-25_Seq_CW48_10-12/demultiplex.bc1017--bc1017.bam.bai
+data/2022-07-25_Seq_CW48_10-12/demultiplex.bc1017--bc1017.bam.pbi
+data/2022-08-29_CW48_7-8/
+data/2022-08-29_CW48_7-8/run.sh~
+data/2022-08-29_CW48_7-8/run.sh
+data/2022-08-29_CW48_7-8/demultiplex.bc1058--bc1058.bam
+data/2022-08-29_CW48_7-8/demultiplex.bc1058--bc1058.bam.pbi
+data/2022-08-29_CW48_7-8/STC-Watson-_203__Seq_CW48_7-8_08.22.22_Barcoded_samples.csv~
+data/2022-08-29_CW48_7-8/STC-Watson-_203__Seq_CW48_7-8_08.22.22_Barcoded_samples.csv
+data/2022-08-29_CW48_7-8/demultiplex.bc1058--bc1058.bam.bai
+data/2022-09-21_Seq_CW48_10-12/
+data/2022-09-21_Seq_CW48_10-12/run.sh~
+data/2022-09-21_Seq_CW48_10-12/run.sh
+data/2022-09-21_Seq_CW48_10-12/demultiplex.bc1017--bc1017.bam
+data/2022-09-21_Seq_CW48_10-12/demultiplex.bc1017--bc1017.bam.bai
+data/2022-09-21_Seq_CW48_10-12/demultiplex.bc1017--bc1017.bam.pbi
+data/2022-11-22_data_from_Ranjan_Xiang/
+data/2022-11-22_data_from_Ranjan_Xiang/run.sh~
+data/2022-11-22_data_from_Ranjan_Xiang/run.sh
+data/2022-11-22_data_from_Ranjan_Xiang/file-manager?origin_id=4fb3dcf8-650a-11ed-b0b8-bfe7e7197080
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-Rad21-1_S5_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-K27ac-1_S7_R2.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-K27ac-1_S7_R2.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-Rad21-1_S5_R1.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-Rad21-1_S5_R1.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-K27ac-1_S7_R1.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-K27ac-1_S7_R1.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-CTCF-1_S3_R2.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-CTCF-1_S3_R2.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-K27ac-2_S8_R2.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-K27ac-2_S8_R2.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/SEM-K27ac-1_S1_R2.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/SEM-K27ac-1_S1_R2.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-K27ac-2_S8_R1.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-K27ac-2_S8_R1.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-CTCF-1_S3_R1.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-CTCF-1_S3_R1.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/SEM-K27ac-1_S1_R1.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/SEM-K27ac-1_S1_R1.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-CTCF-2_S4_R2.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-CTCF-2_S4_R2.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-CTCF-2_S4_R1.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-CTCF-2_S4_R1.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-Rad21-2_S6_R2.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-Rad21-2_S6_R2.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-Rad21-2_S6_R1.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-Rad21-2_S6_R1.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/SEM-K27ac-2_S2_R2.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/SEM-K27ac-2_S2_R2.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/SEM-K27ac-2_S2_R1.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/SEM-K27ac-2_S2_R1.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-1_S3_L002_R2_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-1_S3_L002_R2_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-1_S3_L001_R2_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-1_S3_L001_R2_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-1_S5_L002_R2_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-1_S5_L002_R2_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-2_S4_L002_R2_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-2_S4_L002_R2_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-1_S5_L001_R2_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-1_S5_L001_R2_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-2_S4_L001_R2_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-2_S4_L001_R2_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-1_S3_L001_R1_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-1_S3_L001_R1_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-1_S3_L002_R1_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-1_S3_L002_R1_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-2_S4_L001_R1_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-2_S4_L001_R1_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-2_S4_L002_R1_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-2_S4_L002_R1_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-1_S5_L001_R1_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-1_S5_L001_R1_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-1_S5_L002_R1_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-1_S5_L002_R1_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-2_S6_L002_R2_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-2_S6_L002_R2_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-2_S6_L001_R2_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-2_S6_L001_R2_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-2_S6_L001_R1_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-2_S6_L001_R1_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-2_S6_L002_R1_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-2_S6_L002_R1_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/rna/
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/RS411-2_S9_R2.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/RS411-2_S9_R2.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/SEM-2_S8_R2.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/SEM-2_S8_R2.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/RS411-2_S9_R1.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/RS411-2_S9_R1.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/SEM-2_S8_R1.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/SEM-2_S8_R1.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/RS411-1_S18_R2.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/RS411-1_S18_R2.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/RS411-1_S18_R1.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/RS411-1_S18_R1.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/SEM-1_S17_R2.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/SEM-1_S17_R2.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/SEM-1_S17_R1.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/SEM-1_S17_R1.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/atac/
+data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R2_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R2_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R1_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R1_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/atac/8_SEM-2_S54_L004_R1_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/atac/8_SEM-2_S54_L004_R1_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/atac/8_SEM-2_S54_L004_R2_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/atac/8_SEM-2_S54_L004_R2_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/chip/
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/RS411-CTCF-1_S1_R1_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/RS411-CTCF-1_S1_R1_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/RS411-Rad21-1_S3_R1_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/RS411-Rad21-1_S3_R1_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/RS411-Rad21-2_S4_R1_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/RS411-Rad21-2_S4_R1_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/RS411-CTCF-2_S2_R1_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/RS411-CTCF-2_S2_R1_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/SEM-Rad21-2_S6_R1_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/SEM-Rad21-2_S6_R1_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/SEM-Rad21-1_S5_R1_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/SEM-Rad21-1_S5_R1_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen042022_24/
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen042022_24/SEM-CTCF-2_S8_L002_R1_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen042022_24/SEM-CTCF-2_S8_L002_R1_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen042022_24/SEM-CTCF-1_S7_L002_R1_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen042022_24/SEM-CTCF-1_S7_L002_R1_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen042022_24/SEM-CTCF-2_S8_L001_R1_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen042022_24/SEM-CTCF-2_S8_L001_R1_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen042022_24/SEM-CTCF-1_S7_L001_R1_001.fastq.gz
+tar: data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen042022_24/SEM-CTCF-1_S7_L001_R1_001.fastq.gz: Cannot write: Disk quota exceeded
+data/2023-02-13_Seq_CW50-52-56_caps-1/
+data/2023-02-13_Seq_CW50-52-56_caps-1/run.sh~
+data/2023-02-13_Seq_CW50-52-56_caps-1/run.sh
+data/2023-02-13_Seq_CW50-52-56_caps-1/demultiplex.bc1058--bc1058.bam
+tar: data/2023-02-13_Seq_CW50-52-56_caps-1/demultiplex.bc1058--bc1058.bam: Cannot write: Disk quota exceeded
+data/2023-02-13_Seq_CW50-52-56_caps-1/demultiplex.bc1058--bc1058.bam.pbi
+tar: data/2023-02-13_Seq_CW50-52-56_caps-1/demultiplex.bc1058--bc1058.bam.pbi: Cannot write: Disk quota exceeded
+data/2023-02-13_Seq_CW50-52-56_caps-1/jobs.txt
+data/2023-02-13_Seq_CW50-52-56_caps-1/demultiplex.bc1058--bc1058.bam.bai
+data/2024-05-01_flairr/
+data/2024-05-01_flairr/run.sh~
+data/2024-05-01_flairr/run.sh
+data/2024-05-01_flairr/analysis-220471903C_IgM-2833-m64152e_230702_021054.RACE_TSO_5p--bc1012.hifi_reads.fastq
+tar: data/2024-05-01_flairr/analysis-220471903C_IgM-2833-m64152e_230702_021054.RACE_TSO_5p--bc1012.hifi_reads.fastq: Cannot write: Disk quota exceeded
+data/2024-05-01_flairr/analysis-RAG12-1_IgM-2834-m64152e_230630_201139.RACE_TSO_5p--bc1001.hifi_reads.fastq
+tar: data/2024-05-01_flairr/analysis-RAG12-1_IgM-2834-m64152e_230630_201139.RACE_TSO_5p--bc1001.hifi_reads.fastq: Cannot write: Disk quota exceeded
+data/2024-05-01_flairr/analysis-RAG12-1_IgM-2834-m64152e_230630_201139.RACE_TSO_5p--bc1002.hifi_reads.fastq
+tar: data/2024-05-01_flairr/analysis-RAG12-1_IgM-2834-m64152e_230630_201139.RACE_TSO_5p--bc1002.hifi_reads.fastq: Cannot write: Disk quota exceeded
+data/2024-05-01_flairr/Raw_dat_key.txt~
+data/2024-05-01_flairr/Raw_dat_key.txt
+data/2024-05-01_flairr/analysis-RAG12-1_IgM-2834-m64152e_230630_201139.RACE_TSO_5p--bc1001.hifi_reads.fastq.fai
+tar: data/2024-05-01_flairr/analysis-RAG12-1_IgM-2834-m64152e_230630_201139.RACE_TSO_5p--bc1001.hifi_reads.fastq.fai: Cannot write: Disk quota exceeded
+data/2024-05-01_flairr/analysis-RAG12-1_IgM-2834-m64152e_230630_201139.RACE_TSO_5p--bc1002.hifi_reads.fastq.fai
+tar: data/2024-05-01_flairr/analysis-RAG12-1_IgM-2834-m64152e_230630_201139.RACE_TSO_5p--bc1002.hifi_reads.fastq.fai: Cannot write: Disk quota exceeded
+data/2024-05-01_flairr/analysis-220471903C_IgM-2833-m64152e_230702_021054.RACE_TSO_5p--bc1012.hifi_reads.fastq.fai
+tar: data/2024-05-01_flairr/analysis-220471903C_IgM-2833-m64152e_230702_021054.RACE_TSO_5p--bc1012.hifi_reads.fastq.fai: Cannot write: Disk quota exceeded
+data/2024-05-01_flairr/NIH_Changeos_For_OR/
+data/2024-05-01_flairr/NIH_Changeos_For_OR/FLAIRR_IgG_Control_1_IgM-C_atleast-2_db-pass_clone-pass_germ-pass.tsv
+tar: data/2024-05-01_flairr/NIH_Changeos_For_OR/FLAIRR_IgG_Control_1_IgM-C_atleast-2_db-pass_clone-pass_germ-pass.tsv: Cannot write: Disk quota exceeded
+data/2024-05-01_flairr/NIH_Changeos_For_OR/RAG12-1_C_allele_IgM.tsv
+tar: data/2024-05-01_flairr/NIH_Changeos_For_OR/RAG12-1_C_allele_IgM.tsv: Cannot write: Disk quota exceeded
+data/2024-05-01_flairr/NIH_Changeos_For_OR/RAG12-3_C_allele_IgM.tsv
+tar: data/2024-05-01_flairr/NIH_Changeos_For_OR/RAG12-3_C_allele_IgM.tsv: Cannot write: Disk quota exceeded
+tar: Exiting with failure status due to previous errors
+Sender: LSF System <lsfadmin@lh06c29>
+Subject: Job 178641904: <tar -xzvf /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/data.tar.gz> in cluster <chimera> Exited
+
+Job <tar -xzvf /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/data.tar.gz> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Tue Apr  8 11:57:10 2025
+Job was executed on host(s) <1*lh06c29>, in queue <premium>, as user <arayan01> in cluster <chimera> at Tue Apr  8 11:57:15 2025
+                            <1*lh06c12>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data> was used as the working directory.
+Started at Tue Apr  8 11:57:15 2025
+Terminated at Tue Apr  8 11:57:15 2025
+Results reported at Tue Apr  8 11:57:15 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+tar -xzvf /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/data.tar.gz
+------------------------------------------------------------
+
+Exited with exit code 2.
+
+Resource usage summary:
+
+    CPU time :                                   0.03 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     32000.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   0 sec.
+    Turnaround time :                            5 sec.
+
+The output (if any) follows:
+
+tar (child): /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/data.tar.gz: Cannot open: No such file or directory
+tar (child): Error is not recoverable: exiting now
+tar: Child returned status 2
+tar: Error is not recoverable: exiting now
+Sender: LSF System <lsfadmin@lh06c29>
+Subject: Job 178642666: <cp /sc/arion/projects/oscarlr/projects/IGH_epigenome/data/2025-02-11_transfer_from_UofL/data.tar.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data> in cluster <chimera> Done
+
+Job <cp /sc/arion/projects/oscarlr/projects/IGH_epigenome/data/2025-02-11_transfer_from_UofL/data.tar.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Tue Apr  8 12:01:36 2025
+Job was executed on host(s) <1*lh06c29>, in queue <premium>, as user <arayan01> in cluster <chimera> at Tue Apr  8 12:01:40 2025
+                            <1*lh06c14>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data> was used as the working directory.
+Started at Tue Apr  8 12:01:40 2025
+Terminated at Tue Apr  8 12:20:39 2025
+Results reported at Tue Apr  8 12:20:39 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+cp /sc/arion/projects/oscarlr/projects/IGH_epigenome/data/2025-02-11_transfer_from_UofL/data.tar.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   1110.22 sec.
+    Max Memory :                                 336 MB
+    Average Memory :                             284.92 MB
+    Total Requested Memory :                     32000.00 MB
+    Delta Memory :                               31664.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                4
+    Run time :                                   1139 sec.
+    Turnaround time :                            1143 sec.
+
+The output (if any) follows:
+
+Sender: LSF System <lsfadmin@lc07e07>
+Subject: Job 178646812: <tar -xzvf /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/data.tar.gz> in cluster <chimera> Done
+
+Job <tar -xzvf /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/data.tar.gz> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Tue Apr  8 12:24:14 2025
+Job was executed on host(s) <1*lc07e07>, in queue <premium>, as user <arayan01> in cluster <chimera> at Tue Apr  8 12:24:15 2025
+                            <1*lc06e09>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data> was used as the working directory.
+Started at Tue Apr  8 12:24:15 2025
+Terminated at Tue Apr  8 13:31:18 2025
+Results reported at Tue Apr  8 13:31:18 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+tar -xzvf /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/data.tar.gz
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   3974.24 sec.
+    Max Memory :                                 7 MB
+    Average Memory :                             6.00 MB
+    Total Requested Memory :                     32000.00 MB
+    Delta Memory :                               31993.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                5
+    Run time :                                   4023 sec.
+    Turnaround time :                            4024 sec.
+
+The output (if any) follows:
+
+data/
+data/2022-07-25_Seq_CW48_10-12/
+data/2022-07-25_Seq_CW48_10-12/run.sh~
+data/2022-07-25_Seq_CW48_10-12/run.sh
+data/2022-07-25_Seq_CW48_10-12/demultiplex.bc1017--bc1017.bam
+data/2022-07-25_Seq_CW48_10-12/demultiplex.bc1017--bc1017.bam.bai
+data/2022-07-25_Seq_CW48_10-12/demultiplex.bc1017--bc1017.bam.pbi
+data/2022-08-29_CW48_7-8/
+data/2022-08-29_CW48_7-8/run.sh~
+data/2022-08-29_CW48_7-8/run.sh
+data/2022-08-29_CW48_7-8/demultiplex.bc1058--bc1058.bam
+data/2022-08-29_CW48_7-8/demultiplex.bc1058--bc1058.bam.pbi
+data/2022-08-29_CW48_7-8/STC-Watson-_203__Seq_CW48_7-8_08.22.22_Barcoded_samples.csv~
+data/2022-08-29_CW48_7-8/STC-Watson-_203__Seq_CW48_7-8_08.22.22_Barcoded_samples.csv
+data/2022-08-29_CW48_7-8/demultiplex.bc1058--bc1058.bam.bai
+data/2022-09-21_Seq_CW48_10-12/
+data/2022-09-21_Seq_CW48_10-12/run.sh~
+data/2022-09-21_Seq_CW48_10-12/run.sh
+data/2022-09-21_Seq_CW48_10-12/demultiplex.bc1017--bc1017.bam
+data/2022-09-21_Seq_CW48_10-12/demultiplex.bc1017--bc1017.bam.bai
+data/2022-09-21_Seq_CW48_10-12/demultiplex.bc1017--bc1017.bam.pbi
+data/2022-11-22_data_from_Ranjan_Xiang/
+data/2022-11-22_data_from_Ranjan_Xiang/run.sh~
+data/2022-11-22_data_from_Ranjan_Xiang/run.sh
+data/2022-11-22_data_from_Ranjan_Xiang/file-manager?origin_id=4fb3dcf8-650a-11ed-b0b8-bfe7e7197080
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-Rad21-1_S5_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-K27ac-1_S7_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-Rad21-1_S5_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-K27ac-1_S7_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-CTCF-1_S3_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-K27ac-2_S8_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/SEM-K27ac-1_S1_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-K27ac-2_S8_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-CTCF-1_S3_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/SEM-K27ac-1_S1_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-CTCF-2_S4_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-CTCF-2_S4_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-Rad21-2_S6_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-Rad21-2_S6_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/SEM-K27ac-2_S2_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/SEM-K27ac-2_S2_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-1_S3_L002_R2_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-1_S3_L001_R2_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-1_S5_L002_R2_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-2_S4_L002_R2_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-1_S5_L001_R2_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-2_S4_L001_R2_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-1_S3_L001_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-1_S3_L002_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-2_S4_L001_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-2_S4_L002_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-1_S5_L001_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-1_S5_L002_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-2_S6_L002_R2_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-2_S6_L001_R2_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-2_S6_L001_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-2_S6_L002_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/rna/
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/RS411-2_S9_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/SEM-2_S8_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/RS411-2_S9_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/SEM-2_S8_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/RS411-1_S18_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/RS411-1_S18_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/SEM-1_S17_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/SEM-1_S17_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/atac/
+data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R2_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/atac/8_SEM-2_S54_L004_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/atac/8_SEM-2_S54_L004_R2_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/chip/
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/RS411-CTCF-1_S1_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/RS411-Rad21-1_S3_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/RS411-Rad21-2_S4_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/RS411-CTCF-2_S2_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/SEM-Rad21-2_S6_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/SEM-Rad21-1_S5_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen042022_24/
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen042022_24/SEM-CTCF-2_S8_L002_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen042022_24/SEM-CTCF-1_S7_L002_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen042022_24/SEM-CTCF-2_S8_L001_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen042022_24/SEM-CTCF-1_S7_L001_R1_001.fastq.gz
+data/2023-02-13_Seq_CW50-52-56_caps-1/
+data/2023-02-13_Seq_CW50-52-56_caps-1/run.sh~
+data/2023-02-13_Seq_CW50-52-56_caps-1/run.sh
+data/2023-02-13_Seq_CW50-52-56_caps-1/demultiplex.bc1058--bc1058.bam
+data/2023-02-13_Seq_CW50-52-56_caps-1/demultiplex.bc1058--bc1058.bam.pbi
+data/2023-02-13_Seq_CW50-52-56_caps-1/jobs.txt
+data/2023-02-13_Seq_CW50-52-56_caps-1/demultiplex.bc1058--bc1058.bam.bai
+data/2024-05-01_flairr/
+data/2024-05-01_flairr/run.sh~
+data/2024-05-01_flairr/run.sh
+data/2024-05-01_flairr/analysis-220471903C_IgM-2833-m64152e_230702_021054.RACE_TSO_5p--bc1012.hifi_reads.fastq
+data/2024-05-01_flairr/analysis-RAG12-1_IgM-2834-m64152e_230630_201139.RACE_TSO_5p--bc1001.hifi_reads.fastq
+data/2024-05-01_flairr/analysis-RAG12-1_IgM-2834-m64152e_230630_201139.RACE_TSO_5p--bc1002.hifi_reads.fastq
+data/2024-05-01_flairr/Raw_dat_key.txt~
+data/2024-05-01_flairr/Raw_dat_key.txt
+data/2024-05-01_flairr/analysis-RAG12-1_IgM-2834-m64152e_230630_201139.RACE_TSO_5p--bc1001.hifi_reads.fastq.fai
+data/2024-05-01_flairr/analysis-RAG12-1_IgM-2834-m64152e_230630_201139.RACE_TSO_5p--bc1002.hifi_reads.fastq.fai
+data/2024-05-01_flairr/analysis-220471903C_IgM-2833-m64152e_230702_021054.RACE_TSO_5p--bc1012.hifi_reads.fastq.fai
+data/2024-05-01_flairr/NIH_Changeos_For_OR/
+data/2024-05-01_flairr/NIH_Changeos_For_OR/FLAIRR_IgG_Control_1_IgM-C_atleast-2_db-pass_clone-pass_germ-pass.tsv
+data/2024-05-01_flairr/NIH_Changeos_For_OR/RAG12-1_C_allele_IgM.tsv
+data/2024-05-01_flairr/NIH_Changeos_For_OR/RAG12-3_C_allele_IgM.tsv
+Sender: LSF System <lsfadmin@lc07e22>
+Subject: Job 184484134: <cp /sc/arion/projects/oscarlr/projects/IGH_epigenome/data/2025-02-11_transfer_from_UofL/data.tar.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data> in cluster <chimera> Done
+
+Job <cp /sc/arion/projects/oscarlr/projects/IGH_epigenome/data/2025-02-11_transfer_from_UofL/data.tar.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Tue May  6 14:14:22 2025
+Job was executed on host(s) <1*lc07e22>, in queue <premium>, as user <arayan01> in cluster <chimera> at Tue May  6 14:14:23 2025
+                            <1*lc07e58>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/scratch/arayan01/projects/personalized_epigenome/data> was used as the working directory.
+Started at Tue May  6 14:14:23 2025
+Terminated at Tue May  6 14:29:12 2025
+Results reported at Tue May  6 14:29:12 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+cp /sc/arion/projects/oscarlr/projects/IGH_epigenome/data/2025-02-11_transfer_from_UofL/data.tar.gz /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   873.89 sec.
+    Max Memory :                                 337 MB
+    Average Memory :                             272.19 MB
+    Total Requested Memory :                     32000.00 MB
+    Delta Memory :                               31663.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                4
+    Run time :                                   889 sec.
+    Turnaround time :                            890 sec.
+
+The output (if any) follows:
+
+Sender: LSF System <lsfadmin@lh06c24>
+Subject: Job 184485939: <tar -xzvf /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/data.tar.gz> in cluster <chimera> Done
+
+Job <tar -xzvf /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/data.tar.gz> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Tue May  6 14:30:47 2025
+Job was executed on host(s) <1*lh06c24>, in queue <premium>, as user <arayan01> in cluster <chimera> at Tue May  6 14:30:50 2025
+                            <1*lh06c13>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/scratch/arayan01/projects/personalized_epigenome/data> was used as the working directory.
+Started at Tue May  6 14:30:50 2025
+Terminated at Tue May  6 15:36:59 2025
+Results reported at Tue May  6 15:36:59 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+tar -xzvf /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/data.tar.gz
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   3915.64 sec.
+    Max Memory :                                 6 MB
+    Average Memory :                             5.99 MB
+    Total Requested Memory :                     32000.00 MB
+    Delta Memory :                               31994.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                5
+    Run time :                                   3969 sec.
+    Turnaround time :                            3972 sec.
+
+The output (if any) follows:
+
+data/
+data/2022-07-25_Seq_CW48_10-12/
+data/2022-07-25_Seq_CW48_10-12/run.sh~
+data/2022-07-25_Seq_CW48_10-12/run.sh
+data/2022-07-25_Seq_CW48_10-12/demultiplex.bc1017--bc1017.bam
+data/2022-07-25_Seq_CW48_10-12/demultiplex.bc1017--bc1017.bam.bai
+data/2022-07-25_Seq_CW48_10-12/demultiplex.bc1017--bc1017.bam.pbi
+data/2022-08-29_CW48_7-8/
+data/2022-08-29_CW48_7-8/run.sh~
+data/2022-08-29_CW48_7-8/run.sh
+data/2022-08-29_CW48_7-8/demultiplex.bc1058--bc1058.bam
+data/2022-08-29_CW48_7-8/demultiplex.bc1058--bc1058.bam.pbi
+data/2022-08-29_CW48_7-8/STC-Watson-_203__Seq_CW48_7-8_08.22.22_Barcoded_samples.csv~
+data/2022-08-29_CW48_7-8/STC-Watson-_203__Seq_CW48_7-8_08.22.22_Barcoded_samples.csv
+data/2022-08-29_CW48_7-8/demultiplex.bc1058--bc1058.bam.bai
+data/2022-09-21_Seq_CW48_10-12/
+data/2022-09-21_Seq_CW48_10-12/run.sh~
+data/2022-09-21_Seq_CW48_10-12/run.sh
+data/2022-09-21_Seq_CW48_10-12/demultiplex.bc1017--bc1017.bam
+data/2022-09-21_Seq_CW48_10-12/demultiplex.bc1017--bc1017.bam.bai
+data/2022-09-21_Seq_CW48_10-12/demultiplex.bc1017--bc1017.bam.pbi
+data/2022-11-22_data_from_Ranjan_Xiang/
+data/2022-11-22_data_from_Ranjan_Xiang/run.sh~
+data/2022-11-22_data_from_Ranjan_Xiang/run.sh
+data/2022-11-22_data_from_Ranjan_Xiang/file-manager?origin_id=4fb3dcf8-650a-11ed-b0b8-bfe7e7197080
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-Rad21-1_S5_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-K27ac-1_S7_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-Rad21-1_S5_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-K27ac-1_S7_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-CTCF-1_S3_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-K27ac-2_S8_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/SEM-K27ac-1_S1_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-K27ac-2_S8_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-CTCF-1_S3_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/SEM-K27ac-1_S1_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-CTCF-2_S4_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-CTCF-2_S4_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-Rad21-2_S6_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/RS411-Rad21-2_S6_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/SEM-K27ac-2_S2_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722/SEM-K27ac-2_S2_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-1_S3_L002_R2_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-1_S3_L001_R2_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-1_S5_L002_R2_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-2_S4_L002_R2_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-1_S5_L001_R2_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-2_S4_L001_R2_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-1_S3_L001_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-1_S3_L002_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-2_S4_L001_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-CTCF-2_S4_L002_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-1_S5_L001_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-1_S5_L002_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-2_S6_L002_R2_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-2_S6_L001_R2_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-2_S6_L001_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622/SEM-Rad21-2_S6_L002_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/rna/
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/RS411-2_S9_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/SEM-2_S8_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/RS411-2_S9_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/SEM-2_S8_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/RS411-1_S18_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/RS411-1_S18_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/SEM-1_S17_R2.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/rna/RSen082322/SEM-1_S17_R1.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/atac/
+data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R2_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/atac/7_SEM-1_S53_L004_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/atac/8_SEM-2_S54_L004_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/atac/8_SEM-2_S54_L004_R2_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/chip/
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/RS411-CTCF-1_S1_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/RS411-Rad21-1_S3_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/RS411-Rad21-2_S4_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/RS411-CTCF-2_S2_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/SEM-Rad21-2_S6_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen072522_10/SEM-Rad21-1_S5_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen042022_24/
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen042022_24/SEM-CTCF-2_S8_L002_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen042022_24/SEM-CTCF-1_S7_L002_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen042022_24/SEM-CTCF-2_S8_L001_R1_001.fastq.gz
+data/2022-11-22_data_from_Ranjan_Xiang/chip/RSen042022_24/SEM-CTCF-1_S7_L001_R1_001.fastq.gz
+data/2023-02-13_Seq_CW50-52-56_caps-1/
+data/2023-02-13_Seq_CW50-52-56_caps-1/run.sh~
+data/2023-02-13_Seq_CW50-52-56_caps-1/run.sh
+data/2023-02-13_Seq_CW50-52-56_caps-1/demultiplex.bc1058--bc1058.bam
+data/2023-02-13_Seq_CW50-52-56_caps-1/demultiplex.bc1058--bc1058.bam.pbi
+data/2023-02-13_Seq_CW50-52-56_caps-1/jobs.txt
+data/2023-02-13_Seq_CW50-52-56_caps-1/demultiplex.bc1058--bc1058.bam.bai
+data/2024-05-01_flairr/
+data/2024-05-01_flairr/run.sh~
+data/2024-05-01_flairr/run.sh
+data/2024-05-01_flairr/analysis-220471903C_IgM-2833-m64152e_230702_021054.RACE_TSO_5p--bc1012.hifi_reads.fastq
+data/2024-05-01_flairr/analysis-RAG12-1_IgM-2834-m64152e_230630_201139.RACE_TSO_5p--bc1001.hifi_reads.fastq
+data/2024-05-01_flairr/analysis-RAG12-1_IgM-2834-m64152e_230630_201139.RACE_TSO_5p--bc1002.hifi_reads.fastq
+data/2024-05-01_flairr/Raw_dat_key.txt~
+data/2024-05-01_flairr/Raw_dat_key.txt
+data/2024-05-01_flairr/analysis-RAG12-1_IgM-2834-m64152e_230630_201139.RACE_TSO_5p--bc1001.hifi_reads.fastq.fai
+data/2024-05-01_flairr/analysis-RAG12-1_IgM-2834-m64152e_230630_201139.RACE_TSO_5p--bc1002.hifi_reads.fastq.fai
+data/2024-05-01_flairr/analysis-220471903C_IgM-2833-m64152e_230702_021054.RACE_TSO_5p--bc1012.hifi_reads.fastq.fai
+data/2024-05-01_flairr/NIH_Changeos_For_OR/
+data/2024-05-01_flairr/NIH_Changeos_For_OR/FLAIRR_IgG_Control_1_IgM-C_atleast-2_db-pass_clone-pass_germ-pass.tsv
+data/2024-05-01_flairr/NIH_Changeos_For_OR/RAG12-1_C_allele_IgM.tsv
+data/2024-05-01_flairr/NIH_Changeos_For_OR/RAG12-3_C_allele_IgM.tsv
+Sender: LSF System <lsfadmin@lh06c18>
+Subject: Job 187172633: <gunzip /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen//*.gz> in cluster <chimera> Done
+
+Job <gunzip /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen//*.gz> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Tue May 13 12:08:36 2025
+Job was executed on host(s) <2*lh06c18>, in queue <premium>, as user <arayan01> in cluster <chimera> at Tue May 13 12:08:39 2025
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/data> was used as the working directory.
+Started at Tue May 13 12:08:39 2025
+Terminated at Tue May 13 12:09:30 2025
+Results reported at Tue May 13 12:09:30 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+gunzip /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen//*.gz
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   20.05 sec.
+    Max Memory :                                 5 MB
+    Average Memory :                             3.63 MB
+    Total Requested Memory :                     32000.00 MB
+    Delta Memory :                               31995.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                4
+    Run time :                                   51 sec.
+    Turnaround time :                            54 sec.
+
+The output (if any) follows:
+

@@ -1,0 +1,2 @@
+ref_gen_hg38 https://hgdownload.soe.ucsc.edu/goldenpath/hg38/bigZips/hg38.fa.gz
+ref_gen_hg19 https://hgdownload.soe.ucsc.edu/goldenpath/hg19/bigZips/hg19.fa.gz
