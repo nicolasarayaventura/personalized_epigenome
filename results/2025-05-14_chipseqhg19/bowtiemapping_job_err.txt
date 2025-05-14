@@ -1,0 +1,4 @@
+Could not locate a Bowtie index corresponding to basename "/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered"
+Error: Encountered internal Bowtie 2 exception (#1)
+Command: /sc/arion/work/arayan01/test-env/envs/chipseq/bin/bowtie2-align-s --wrapper basic-0 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/SEM-Rad21-2_S6_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt -U /tmp/2354942.unp 
+(ERR): bowtie2-align exited with value 1

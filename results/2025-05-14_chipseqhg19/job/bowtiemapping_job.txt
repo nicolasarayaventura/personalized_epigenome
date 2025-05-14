@@ -1,0 +1,413 @@
+Sender: LSF System <lsfadmin@lc07e49>
+Subject: Job 187313737: <bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/SEM-CTCF-2_S8_L001_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/SEM-CTCF-2_S8_L001_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt> in cluster <chimera> Exited
+
+Job <bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/SEM-CTCF-2_S8_L001_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/SEM-CTCF-2_S8_L001_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Wed May 14 14:58:34 2025
+Job was executed on host(s) <1*lc07e49>, in queue <premium>, as user <arayan01> in cluster <chimera> at Wed May 14 14:58:36 2025
+                            <1*lc06e13>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-05-14_chipseqhg19> was used as the working directory.
+Started at Wed May 14 14:58:36 2025
+Terminated at Wed May 14 14:58:37 2025
+Results reported at Wed May 14 14:58:37 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/SEM-CTCF-2_S8_L001_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/SEM-CTCF-2_S8_L001_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   0.06 sec.
+    Max Memory :                                 7 MB
+    Average Memory :                             6.33 MB
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               15993.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                4
+    Run time :                                   1 sec.
+    Turnaround time :                            3 sec.
+
+The output (if any) follows:
+
+
+
+PS:
+
+Read file <bowtiemapping_job_err.txt> for stderr output of this job.
+
+Sender: LSF System <lsfadmin@lc07e49>
+Subject: Job 187313735: <bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/SEM-CTCF-1_S7_L002_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/SEM-CTCF-1_S7_L002_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt> in cluster <chimera> Exited
+
+Job <bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/SEM-CTCF-1_S7_L002_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/SEM-CTCF-1_S7_L002_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Wed May 14 14:58:34 2025
+Job was executed on host(s) <2*lc07e49>, in queue <premium>, as user <arayan01> in cluster <chimera> at Wed May 14 14:58:36 2025
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-05-14_chipseqhg19> was used as the working directory.
+Started at Wed May 14 14:58:36 2025
+Terminated at Wed May 14 14:58:37 2025
+Results reported at Wed May 14 14:58:37 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/SEM-CTCF-1_S7_L002_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/SEM-CTCF-1_S7_L002_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   0.06 sec.
+    Max Memory :                                 7 MB
+    Average Memory :                             5.67 MB
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               15993.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                4
+    Run time :                                   1 sec.
+    Turnaround time :                            3 sec.
+
+The output (if any) follows:
+
+
+
+PS:
+
+Read file <bowtiemapping_job_err.txt> for stderr output of this job.
+
+Sender: LSF System <lsfadmin@lc06e13>
+Subject: Job 187313750: <bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/SEM-Rad21-1_S5_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/SEM-Rad21-1_S5_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt> in cluster <chimera> Exited
+
+Job <bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/SEM-Rad21-1_S5_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/SEM-Rad21-1_S5_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Wed May 14 14:58:35 2025
+Job was executed on host(s) <2*lc06e13>, in queue <premium>, as user <arayan01> in cluster <chimera> at Wed May 14 14:58:36 2025
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-05-14_chipseqhg19> was used as the working directory.
+Started at Wed May 14 14:58:36 2025
+Terminated at Wed May 14 14:58:37 2025
+Results reported at Wed May 14 14:58:37 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/SEM-Rad21-1_S5_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/SEM-Rad21-1_S5_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   0.06 sec.
+    Max Memory :                                 7 MB
+    Average Memory :                             5.67 MB
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               15993.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                4
+    Run time :                                   1 sec.
+    Turnaround time :                            2 sec.
+
+The output (if any) follows:
+
+
+
+PS:
+
+Read file <bowtiemapping_job_err.txt> for stderr output of this job.
+
+Sender: LSF System <lsfadmin@lc06e13>
+Subject: Job 187313748: <bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/RS411-Rad21-2_S4_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/RS411-Rad21-2_S4_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt> in cluster <chimera> Exited
+
+Job <bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/RS411-Rad21-2_S4_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/RS411-Rad21-2_S4_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Wed May 14 14:58:35 2025
+Job was executed on host(s) <2*lc06e13>, in queue <premium>, as user <arayan01> in cluster <chimera> at Wed May 14 14:58:36 2025
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-05-14_chipseqhg19> was used as the working directory.
+Started at Wed May 14 14:58:36 2025
+Terminated at Wed May 14 14:58:37 2025
+Results reported at Wed May 14 14:58:37 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/RS411-Rad21-2_S4_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/RS411-Rad21-2_S4_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   0.06 sec.
+    Max Memory :                                 7 MB
+    Average Memory :                             5.67 MB
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               15993.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                4
+    Run time :                                   1 sec.
+    Turnaround time :                            2 sec.
+
+The output (if any) follows:
+
+
+
+PS:
+
+Read file <bowtiemapping_job_err.txt> for stderr output of this job.
+
+Sender: LSF System <lsfadmin@lc06e13>
+Subject: Job 187313746: <bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/RS411-Rad21-1_S3_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/RS411-Rad21-1_S3_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt> in cluster <chimera> Exited
+
+Job <bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/RS411-Rad21-1_S3_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/RS411-Rad21-1_S3_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Wed May 14 14:58:35 2025
+Job was executed on host(s) <2*lc06e13>, in queue <premium>, as user <arayan01> in cluster <chimera> at Wed May 14 14:58:36 2025
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-05-14_chipseqhg19> was used as the working directory.
+Started at Wed May 14 14:58:36 2025
+Terminated at Wed May 14 14:58:37 2025
+Results reported at Wed May 14 14:58:37 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/RS411-Rad21-1_S3_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/RS411-Rad21-1_S3_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   0.06 sec.
+    Max Memory :                                 7 MB
+    Average Memory :                             6.33 MB
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               15993.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                4
+    Run time :                                   1 sec.
+    Turnaround time :                            2 sec.
+
+The output (if any) follows:
+
+
+
+PS:
+
+Read file <bowtiemapping_job_err.txt> for stderr output of this job.
+
+Sender: LSF System <lsfadmin@lc06e13>
+Subject: Job 187313744: <bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/RS411-CTCF-2_S2_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/RS411-CTCF-2_S2_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt> in cluster <chimera> Exited
+
+Job <bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/RS411-CTCF-2_S2_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/RS411-CTCF-2_S2_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Wed May 14 14:58:35 2025
+Job was executed on host(s) <2*lc06e13>, in queue <premium>, as user <arayan01> in cluster <chimera> at Wed May 14 14:58:36 2025
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-05-14_chipseqhg19> was used as the working directory.
+Started at Wed May 14 14:58:36 2025
+Terminated at Wed May 14 14:58:37 2025
+Results reported at Wed May 14 14:58:37 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/RS411-CTCF-2_S2_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/RS411-CTCF-2_S2_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   0.06 sec.
+    Max Memory :                                 7 MB
+    Average Memory :                             6.33 MB
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               15993.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                4
+    Run time :                                   1 sec.
+    Turnaround time :                            2 sec.
+
+The output (if any) follows:
+
+
+
+PS:
+
+Read file <bowtiemapping_job_err.txt> for stderr output of this job.
+
+Sender: LSF System <lsfadmin@lc06e13>
+Subject: Job 187313741: <bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/RS411-CTCF-1_S1_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/RS411-CTCF-1_S1_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt> in cluster <chimera> Exited
+
+Job <bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/RS411-CTCF-1_S1_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/RS411-CTCF-1_S1_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Wed May 14 14:58:34 2025
+Job was executed on host(s) <2*lc06e13>, in queue <premium>, as user <arayan01> in cluster <chimera> at Wed May 14 14:58:36 2025
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-05-14_chipseqhg19> was used as the working directory.
+Started at Wed May 14 14:58:36 2025
+Terminated at Wed May 14 14:58:37 2025
+Results reported at Wed May 14 14:58:37 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/RS411-CTCF-1_S1_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/RS411-CTCF-1_S1_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   0.06 sec.
+    Max Memory :                                 7 MB
+    Average Memory :                             6.33 MB
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               15993.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                4
+    Run time :                                   1 sec.
+    Turnaround time :                            3 sec.
+
+The output (if any) follows:
+
+
+
+PS:
+
+Read file <bowtiemapping_job_err.txt> for stderr output of this job.
+
+Sender: LSF System <lsfadmin@lc06e13>
+Subject: Job 187313739: <bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/SEM-CTCF-2_S8_L002_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/SEM-CTCF-2_S8_L002_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt> in cluster <chimera> Exited
+
+Job <bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/SEM-CTCF-2_S8_L002_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/SEM-CTCF-2_S8_L002_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Wed May 14 14:58:34 2025
+Job was executed on host(s) <2*lc06e13>, in queue <premium>, as user <arayan01> in cluster <chimera> at Wed May 14 14:58:36 2025
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-05-14_chipseqhg19> was used as the working directory.
+Started at Wed May 14 14:58:36 2025
+Terminated at Wed May 14 14:58:37 2025
+Results reported at Wed May 14 14:58:37 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/SEM-CTCF-2_S8_L002_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/SEM-CTCF-2_S8_L002_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   0.06 sec.
+    Max Memory :                                 7 MB
+    Average Memory :                             5.67 MB
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               15993.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                4
+    Run time :                                   1 sec.
+    Turnaround time :                            3 sec.
+
+The output (if any) follows:
+
+
+
+PS:
+
+Read file <bowtiemapping_job_err.txt> for stderr output of this job.
+
+Sender: LSF System <lsfadmin@lc06e17>
+Subject: Job 187313732: <bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/SEM-CTCF-1_S7_L001_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/SEM-CTCF-1_S7_L001_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt> in cluster <chimera> Exited
+
+Job <bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/SEM-CTCF-1_S7_L001_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/SEM-CTCF-1_S7_L001_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Wed May 14 14:58:33 2025
+Job was executed on host(s) <1*lc06e17>, in queue <premium>, as user <arayan01> in cluster <chimera> at Wed May 14 14:58:36 2025
+                            <1*lc06e19>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-05-14_chipseqhg19> was used as the working directory.
+Started at Wed May 14 14:58:36 2025
+Terminated at Wed May 14 14:58:41 2025
+Results reported at Wed May 14 14:58:41 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/SEM-CTCF-1_S7_L001_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/SEM-CTCF-1_S7_L001_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   0.06 sec.
+    Max Memory :                                 6 MB
+    Average Memory :                             4.50 MB
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               15994.00 MB
+    Max Swap :                                   -
+    Max Processes :                              2
+    Max Threads :                                2
+    Run time :                                   5 sec.
+    Turnaround time :                            8 sec.
+
+The output (if any) follows:
+
+
+
+PS:
+
+Read file <bowtiemapping_job_err.txt> for stderr output of this job.
+
+Sender: LSF System <lsfadmin@lh06c21>
+Subject: Job 187313753: <bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/SEM-Rad21-2_S6_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/SEM-Rad21-2_S6_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt> in cluster <chimera> Exited
+
+Job <bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/SEM-Rad21-2_S6_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/SEM-Rad21-2_S6_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt> was submitted from host <li04e04> by user <arayan01> in cluster <chimera> at Wed May 14 14:58:36 2025
+Job was executed on host(s) <1*lh06c21>, in queue <premium>, as user <arayan01> in cluster <chimera> at Wed May 14 14:58:41 2025
+                            <1*lh06c07>
+</hpc/users/arayan01> was used as the home directory.
+</sc/arion/work/arayan01/project/personalized_epigenome/results/2025-05-14_chipseqhg19> was used as the working directory.
+Started at Wed May 14 14:58:41 2025
+Terminated at Wed May 14 14:58:41 2025
+Results reported at Wed May 14 14:58:41 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+bowtie2 -x /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered -U /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming/SEM-Rad21-2_S6_R1_001_trimmed.fq.gz -S /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/SEM-Rad21-2_S6_R1_001.fastq.gz.sam --met-file /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-05-14_chipseqhg19/mapping/bowtie2_mapping_stats.txt
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   0.06 sec.
+    Max Memory :                                 6 MB
+    Average Memory :                             6.00 MB
+    Total Requested Memory :                     16000.00 MB
+    Delta Memory :                               15994.00 MB
+    Max Swap :                                   -
+    Max Processes :                              2
+    Max Threads :                                2
+    Run time :                                   0 sec.
+    Turnaround time :                            5 sec.
+
+The output (if any) follows:
+
+
+
+PS:
+
+Read file <bowtiemapping_job_err.txt> for stderr output of this job.
+
