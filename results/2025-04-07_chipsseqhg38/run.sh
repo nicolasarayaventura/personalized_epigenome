@@ -95,7 +95,7 @@ function mappingindex {
     mkdir -p ${scratch}/mapping/indexed
 
     output="${scratch}/mapping/indexed"
-    mapdir="${work}/mapping" #change to scratch once done
+    mapdir="${scratch}/mapping" #change to scratch once done
 
     while IFS=$'\t' read -r base path; do
       bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${job}/bowtieindex_job.txt"  -eo "${job}/bowtieindex_job_err.txt" \
@@ -123,9 +123,9 @@ function corplot {
     mkdir -p "${work}/plot/correlationplot"
     
         data="${scratch}/results/chipqc/samples_correlation_matrix.npz"
-        output="${work}/results/plot/correlationplot.png"
+        output="${work}/plot/correlationplot.png"
 
-        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${job}/corplot_job.txt" \
+        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${job}/corplot_job.txt" -eo "corplot_eo.txt"\
             plotCorrelation -in ${data} \
                 -c pearson \
                 -p heatmap \
@@ -244,48 +244,50 @@ function callpeaks {
 
 function bamcov_merge {
     rm -rf "${scratch}/heatplot/prep"
+    rm -rf "${scratch}/heatplot/merged_bam"
+    
     mkdir -p "${scratch}/heatplot/prep"
     mkdir -p "${scratch}/heatplot/merged_bam"
 
     bamdir="${scratch}/mapping/indexed"
-    merge_dir="${scratch}/heatplot/merged_bam"
 
-    declare -A sample_bams_ctcf1
-    declare -A sample_bams_ctcf2
+    merged_names=(
+        "SEM-CTCF-1_S7_merged.bam"
+        "SEM-CTCF-2_S8_merged.bam"
+        "RS411-CTCF_merged.bam"
+        "RS411-Rad21_merged.bam"
+        "SEM-Rad21_merged.bam"
+    )
 
-    # Group BAMs by sample prefix (SEM-CTCF-1 or SEM-CTCF-2)
-    while IFS=$'\t' read -r base path; do
-        if [[ "$base" == SEM-CTCF-1* ]]; then
-            sample_bams_ctcf1["SEM-CTCF-1"]="${sample_bams_ctcf1["SEM-CTCF-1"]} ${bamdir}/${base}.bam"
-        elif [[ "$base" == SEM-CTCF-2* ]]; then
-            sample_bams_ctcf2["SEM-CTCF-2"]="${sample_bams_ctcf2["SEM-CTCF-2"]} ${bamdir}/${base}.bam"
-        fi
-    done < "${samplelist}"
+    for i in {0..4}; do
+        start_line=$((i * 2 + 1))
+        end_line=$((start_line + 1))
+        pair=$(sed -n "${start_line}p;${end_line}p" "$samplelist")
 
-    # Function to merge BAM files for a sample
-    merge_bam_files() {
-        sample=$1
-        sample_bams=$2
-        merged_bam="${merge_dir}/${sample}.bam"
+        bams=()
+        while IFS=$'\t' read -r base path; do
+            bams+=("${bamdir}/${base}.bam")
+        done <<< "$pair"
 
+        merged="${scratch}/heatplot/merged_bam/${merged_names[$i]}"
         bsub -P acc_oscarlr -q premium -n 2 -W 8:00 -R "rusage[mem=8000]" \
-            -o "${sample}_merge_bam_job.txt" -eo "${sample}_merge_bam_err.txt" \
-            samtools merge -f "$merged_bam" $sample_bams
-    }
-
-    merge_bam_files "SEM-CTCF-1" "${sample_bams_ctcf1["SEM-CTCF-1"]}"
-    merge_bam_files "SEM-CTCF-2" "${sample_bams_ctcf2["SEM-CTCF-2"]}"
+            -o "${job}/pair${i}_merge_bam_job.txt" -eo "${job}/pair${i}_merge_bam_err.txt" \
+            samtools merge -f "$merged" "${bams[@]}"
+    done
 }
 
-function index_merged_bams {
-    bamdir="${scratch}/heatplot/merged_bam"
+function index_merged_bam {
+    mergeddir="${scratch}/heatplot/merged_bam"
 
-    for bam in ${bamdir}/*.bam; do
+    for bam in "${mergeddir}"/*.bam; do
         bsub -P acc_oscarlr -q premium -n 1 -W 01:00 -R "rusage[mem=2000]" \
-            -o "${bam%.bam}_index.out" -eo "${bam%.bam}_index.err" \
+            -o "${job}/$(basename "$bam").index.out" \
+            -eo "${job}/$(basename "$bam").index.err" \
             samtools index "$bam"
     done
 }
+
+
 function bamcov_run {
     rm -rf "${scratch}/heatplot/prep"
     mkdir -p "${scratch}/heatplot/prep"
@@ -410,14 +412,14 @@ function heatp2 {
 #fastqc_initial
 #trimming
 #fastqc_posttrimming
-bowtiemapping
+#bowtiemapping
 #mappingindex
 #chipqc
 #corplot
 #ipplot
 #callpeaks
 #bamcov_merge
-#index_merged_bams 
+index_merged_bam 
 #merge_ctcf1_peaks
 #merge_ctcf2_peaks
 #bamcov_run
