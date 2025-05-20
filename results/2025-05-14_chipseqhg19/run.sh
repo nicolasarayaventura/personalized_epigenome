@@ -109,7 +109,7 @@ function index_merged_bam {
             samtools index "$bam"
     done
 }
-unction mergepeaks {
+function mergepeaks {
     peakdir="${scratch}/peaks"
     outdir="${scratch}/heatplot/merged_peaks"
     mkdir -p "${outdir}"
@@ -215,8 +215,8 @@ function heatplots {
 #bowtiemapping
 #mappingindex
 #callpeaks
-bamcov_merge #05/20/2025 4:55pm
-#index_merged_bam
+#bamcov_merge #05/20/2025 4:55pm
+index_merged_bam
 #mergepeaks
 #bamcov_run
 #matrix
