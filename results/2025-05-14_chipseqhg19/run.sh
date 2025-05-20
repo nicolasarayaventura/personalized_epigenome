@@ -11,7 +11,7 @@ function bowtiemapping { #LONG RUN TIME!, prior to running this build the ref ge
     rm -rf ${scratch}/mapping
     mkdir -p ${scratch}/mapping
         
-    refgen="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwt/hg19_filtered"
+    refgen="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg19_rfgen/bwt/hg19_filtered"
     out="${scratch}/mapping"
     trimdir="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/trimming"
 
@@ -43,37 +43,6 @@ function mappingindex {
                 samtools index ${output}/${base}.bam"
     done < "${samplelist}"
 }
-
-function chipqc {
-    rm -rf ${scratch}/results/chipqc
-    mkdir -p ${scratch}/results/chipqc
-    
-    output="${scratch}/results/chipqc"
-    data="${scratch}/mapping/indexed"
-
-     bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${job}/chipqc_job.txt" -eo "${job}/chipqc_eo_job.txt" \
-        multiBamSummary bins -b ${data}/*.bam \
-        -o ${output}/samples_correlation_matrix.npz \
-        -bs 1000 \
-        -n 500
-}
-
-function corplot {
-    rm -rf "${work}/plot/correlationplot"
-    mkdir -p "${work}/plot/correlationplot"
-    
-        data="${scratch}/results/chipqc/samples_correlation_matrix.npz"
-        output="${work}/results/plot/correlationplot.png"
-
-        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "${job}/corplot_job.txt" \
-            plotCorrelation -in ${data} \
-                -c pearson \
-                -p heatmap \
-                --colorMap RdBu_r \
-                --zMin 0.80 --zMax 1.0 \
-                -o ${output}
- }
-
 function callpeaks {
     rm -rf "${scratch}/peaks"
     mkdir -p "${scratch}/peaks"
@@ -97,49 +66,73 @@ function callpeaks {
                 -q 0.01
     done < "${samplelist}"
 }
-
 function bamcov_merge {
     rm -rf "${scratch}/heatplot/prep"
+    rm -rf "${scratch}/heatplot/merged_bam"
+    
     mkdir -p "${scratch}/heatplot/prep"
     mkdir -p "${scratch}/heatplot/merged_bam"
 
     bamdir="${scratch}/mapping/indexed"
-    merge_dir="${scratch}/heatplot/merged_bam"
 
-    declare -A sample_bams_ctcf1
-    declare -A sample_bams_ctcf2
+    merged_names=(
+        "SEM-CTCF-1_S7_merged.bam"
+        "SEM-CTCF-2_S8_merged.bam"
+        "RS411-CTCF_merged.bam"
+        "RS411-Rad21_merged.bam"
+        "SEM-Rad21_merged.bam"
+    )
 
-    # Group BAMs by sample prefix (SEM-CTCF-1 or SEM-CTCF-2)
-    while IFS=$'\t' read -r base path; do
-        if [[ "$base" == SEM-CTCF-1* ]]; then
-            sample_bams_ctcf1["SEM-CTCF-1"]="${sample_bams_ctcf1["SEM-CTCF-1"]} ${bamdir}/${base}.bam"
-        elif [[ "$base" == SEM-CTCF-2* ]]; then
-            sample_bams_ctcf2["SEM-CTCF-2"]="${sample_bams_ctcf2["SEM-CTCF-2"]} ${bamdir}/${base}.bam"
-        fi
-    done < "${samplelist}"
+    for i in {0..4}; do
+        start_line=$((i * 2 + 1))
+        end_line=$((start_line + 1))
+        pair=$(sed -n "${start_line}p;${end_line}p" "$samplelist")
 
-    # Function to merge BAM files for a sample
-    merge_bam_files() {
-        sample=$1
-        sample_bams=$2
-        merged_bam="${merge_dir}/${sample}.bam"
+        bams=()
+        while IFS=$'\t' read -r base path; do
+            bams+=("${bamdir}/${base}.bam")
+        done <<< "$pair"
 
+        merged="${scratch}/heatplot/merged_bam/${merged_names[$i]}"
         bsub -P acc_oscarlr -q premium -n 2 -W 8:00 -R "rusage[mem=8000]" \
-            -o "${sample}_merge_bam_job.txt" -eo "${sample}_merge_bam_err.txt" \
-            samtools merge -f "$merged_bam" $sample_bams
-    }
-
-    merge_bam_files "SEM-CTCF-1" "${sample_bams_ctcf1["SEM-CTCF-1"]}"
-    merge_bam_files "SEM-CTCF-2" "${sample_bams_ctcf2["SEM-CTCF-2"]}"
+            -o "${job}/pair${i}_merge_bam_job.txt" -eo "${job}/pair${i}_merge_bam_err.txt" \
+            samtools merge -f "$merged" "${bams[@]}"
+    done
 }
+function index_merged_bam {
+    mergeddir="${scratch}/heatplot/merged_bam"
 
-function index_merged_bams {
-    bamdir="${scratch}/heatplot/merged_bam"
-
-    for bam in ${bamdir}/*.bam; do
+    for bam in "${mergeddir}"/*.bam; do
         bsub -P acc_oscarlr -q premium -n 1 -W 01:00 -R "rusage[mem=2000]" \
-            -o "${bam%.bam}_index.out" -eo "${bam%.bam}_index.err" \
+            -o "${job}/$(basename "$bam").index.out" \
+            -eo "${job}/$(basename "$bam").index.err" \
             samtools index "$bam"
+    done
+}
+unction mergepeaks {
+    peakdir="${scratch}/peaks"
+    outdir="${scratch}/heatplot/merged_peaks"
+    mkdir -p "${outdir}"
+
+    declare -A peak_groups
+
+    peak_groups["RS411-CTCF"]="RS411-CTCF-1_S1_R1_001.fastq.gz_peaks_peaks.narrowPeak RS411-CTCF-2_S2_R1_001.fastq.gz_peaks_peaks.narrowPeak"
+    peak_groups["SEM-CTCF_S7"]="SEM-CTCF-1_S7_L001_R1_001.fastq.gz_peaks_peaks.narrowPeak SEM-CTCF-1_S7_L002_R1_001.fastq.gz_peaks_peaks.narrowPeak"
+    peak_groups["SEM-CTCF_S8"]="SEM-CTCF-2_S8_L001_R1_001.fastq.gz_peaks_peaks.narrowPeak SEM-CTCF-2_S8_L002_R1_001.fastq.gz_peaks_peaks.narrowPeak"
+    peak_groups["RS411-Rad21"]="RS411-Rad21-1_S3_R1_001.fastq.gz_peaks_peaks.narrowPeak RS411-Rad21-2_S4_R1_001.fastq.gz_peaks_peaks.narrowPeak"
+    peak_groups["SEM-Rad21"]="SEM-Rad21-1_S5_R1_001.fastq.gz_peaks_peaks.narrowPeak SEM-Rad21-2_S6_R1_001.fastq.gz_peaks_peaks.narrowPeak"
+    
+    for group in "${!peak_groups[@]}"; do
+        echo "Processing $group"
+        files="${peak_groups[$group]}"
+        inputs=""
+        for file in $files; do
+            inputs+="${peakdir}/${file} "
+        done
+
+        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" \
+            -o "${outdir}/merge_${group}.out" -eo "${outdir}/merge_${group}.err" \
+            "cat ${inputs} | bedtools sort -i - | bedtools merge -i - > ${outdir}/merged_${group}_peaks.bed"
     done
 }
 function bamcov_run {
@@ -163,121 +156,68 @@ function bamcov_run {
             --verbose
     done
 }
-function merge_ctcf1_peaks {
-    outdir="${scratch}/heatplot/merged_peaks"
-    peakdir="${scratch}/peaks"
-
-    mkdir -p "${outdir}"
-
-    rm -f "${outdir}/concatenated_ctcf1_peaks.narrowPeak"
-
-    cat ${peakdir}/SEM-CTCF-1_S7_L001_R1_001.fastq.gz_peaks_peaks.narrowPeak \
-        ${peakdir}/SEM-CTCF-1_S7_L002_R1_001.fastq.gz_peaks_peaks.narrowPeak > \
-        "${outdir}/concatenated_ctcf1_peaks.narrowPeak"
-
-    bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" \
-        -o "${outdir}/merge_ctcf1_peaks_job.txt" \
-        "bedtools sort -i ${outdir}/concatenated_ctcf1_peaks.narrowPeak | \
-         bedtools merge -i - > ${outdir}/merged_ctcf1_peaks.bed"
-}
-function merge_ctcf2_peaks {
-    peakdir="${scratch}/peaks"
-    outdir="${scratch}/heatplot/merged_peaks"
-
-    # Merge peaks for CTCF-2 samples
-    cat ${peakdir}/SEM-CTCF-2_S8_L001_R1_001.fastq.gz_peaks_peaks.narrowPeak \
-        ${peakdir}/SEM-CTCF-2_S8_L002_R1_001.fastq.gz_peaks_peaks.narrowPeak > \
-        "${outdir}/concatenated_ctcf2_peaks.narrowPeak"
-
-    bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" \
-        -o "${outdir}/merge_ctcf2_peaks_job.txt" \
-        "bedtools sort -i ${outdir}/concatenated_ctcf2_peaks.narrowPeak | \
-         bedtools merge -i - > ${outdir}/merged_ctcf2_peaks.bed"
-}
-
-function matrix1 {
+function matrix {
     beddir="${scratch}/heatplot/merged_peaks"
     bwdir="${scratch}/heatplot/prep"
     outdir="${scratch}/heatplot/prep"
 
-    bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" \
-        -o "matrix_job.out" -eo "matrix_job.err" \
-        computeMatrix reference-point \
-        -S "${bwdir}/SEM-CTCF-1.bw" \
-        -R "${beddir}/merged_ctcf1_peaks.bed"  \
-        --referencePoint center \
-        --upstream 3000 \
-        --downstream 3000 \
-        --outFileName "${outdir}/CTCF_matrix.gz" \
-        --skipZeros \
-        --verbose
+    declare -A bw_to_bed
+    bw_to_bed["SEM-CTCF-1_S7_merged"]="merged_SEM-CTCF_S7_peaks.bed"
+    bw_to_bed["SEM-CTCF-2_S8_merged"]="merged_SEM-CTCF_S8_peaks.bed"
+    bw_to_bed["RS411-CTCF_merged"]="merged_RS411-CTCF_peaks.bed"
+    bw_to_bed["RS411-Rad21_merged"]="merged_RS411-Rad21_peaks.bed"
+    bw_to_bed["SEM-Rad21_merged"]="merged_SEM-Rad21_peaks.bed"
+
+    for label in "${!bw_to_bed[@]}"; do
+        bw="${bwdir}/${label}.bw"
+        bed="${beddir}/${bw_to_bed[$label]}"
+        outmatrix="${outdir}/${label}_matrix.gz"
+        outlog=" ${label}_matrix_job.out"
+        outerr="${label}_matrix_job.err"
+
+        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" \
+            -o "$outlog" -eo "$outerr" \
+            computeMatrix reference-point \
+            -S "$bw" \
+            -R "$bed" \
+            --referencePoint center \
+            --upstream 3000 \
+            --downstream 3000 \
+            --outFileName "$outmatrix" \
+            --skipZeros \
+            --verbose
+    done
 }
-
-function matrix2 {
-    beddir="${scratch}/heatplot/merged_peaks"
-    bwdir="${scratch}/heatplot/prep"
-    outdir="${scratch}/heatplot/prep"
-
-    bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" \
-        -o "matrix_job.out" -eo "matrix_job.err" \
-        computeMatrix reference-point \
-        -S "${bwdir}/SEM-CTCF-2.bw" \
-        -R "${beddir}/merged_ctcf2_peaks.bed"  \
-        --referencePoint center \
-        --upstream 3000 \
-        --downstream 3000 \
-        --outFileName "${outdir}/CTCF2_matrix.gz" \
-        --skipZeros \
-        --verbose
-}
-
-function heatp1 {
+function heatplots {
     outdir="${work}/plot/heatlplot"
-    matrixfile="${scratch}/heatplot/prep/CTCF_matrix.gz"
 
-        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "CTCF__heatmap_job.txt" -eo "CTCF__heatmap_err.txt" \
-            plotHeatmap -m ${matrixfile} \
+    declare -A matrixfiles
+    matrixfiles["SEM-CTCF-1_S7"]="SEM-CTCF-1_S7_merged_matrix.gz"
+    matrixfiles["SEM-CTCF-2_S8"]="SEM-CTCF-2_S8_merged_matrix.gz"
+    matrixfiles["RS411-CTCF"]="RS411-CTCF_merged_matrix.gz"
+    matrixfiles["RS411-Rad21"]="RS411-Rad21_merged_matrix.gz"
+    matrixfiles["SEM-Rad21"]="SEM-Rad21_merged_matrix.gz"
+    
+    for label in "${!matrixfiles[@]}"; do
+        matrixfile="${scratch}/heatplot/prep/${matrixfiles[$label]}"
+        outpng="${outdir}/${label}_heatmap.png"
+
+        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" \
+            -o "${label}_heatmap_job.txt" -eo "${label}_heatmap_err.txt" \
+            plotHeatmap -m "$matrixfile" \
             --heatmapWidth 8 \
             --heatmapHeight 8 \
             --colorMap RdYlBu \
-            -o ${outdir}/CTCF_k4_heatmap.png \
+            -o "$outpng" \
             --kmeans 4
-                
+    done
 }
-
-function heatp2 {
-    # rm -rf "${work}/plot/heatlplot"
-    #mkdir -p "${work}/plot/heatlplot"
-
-    outdir="${work}/plot/heatlplot"
-    matrixfile="${scratch}/heatplot/prep/CTCF2_matrix.gz"
-
-        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" -o "CTCF2_heatmap_job.txt" -eo "CTCF2__heatmap_err.txt" \
-            plotHeatmap -m ${matrixfile} \
-            --heatmapWidth 8 \
-            --heatmapHeight 8 \
-            --colorMap RdYlBu \
-            -o ${outdir}/CTCF2_k4_heatmap.png \
-            --kmeans 4
-                
-}
-
-bowtiemapping
+#bowtiemapping
 #mappingindex
-#chipqc
-#corplot
 #callpeaks
-#bamcov_merge
-#index_merged_bams 
-#merge_ctcf1_peaks
-#merge_ctcf2_peaks
+bamcov_merge #05/20/2025 4:55pm
+#index_merged_bam
+#mergepeaks
 #bamcov_run
-#matrix1
-#matrix2 
-#heatp1
-#heatp2
-
-
-#05/13/2025
-# left off at mapping job, finished atac MAPQ dist. chart but make sure the axis are correct compared to this also after this start hg19?
-#https://www.acgt.me/blog/2014/12/16/understanding-mapq-scores-in-sam-files-does-37-42
+#matrix
+#heatlplot
