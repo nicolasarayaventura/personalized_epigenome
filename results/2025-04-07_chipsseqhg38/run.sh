@@ -209,11 +209,11 @@ function mergepeaks {
 
     declare -A peak_groups
 
-    peak_groups["RS411-CTCF"]="RS411-CTCF-1_S1_R1_001.fastq.gz_peaks_peaks.narrowPeak RS411-CTCF-2_S2_R1_001.fastq.gz_peaks_peaks.narrowPeak"
-    peak_groups["SEM-CTCF_S7"]="SEM-CTCF-1_S7_L001_R1_001.fastq.gz_peaks_peaks.narrowPeak SEM-CTCF-1_S7_L002_R1_001.fastq.gz_peaks_peaks.narrowPeak"
-    peak_groups["SEM-CTCF_S8"]="SEM-CTCF-2_S8_L001_R1_001.fastq.gz_peaks_peaks.narrowPeak SEM-CTCF-2_S8_L002_R1_001.fastq.gz_peaks_peaks.narrowPeak"
-    peak_groups["RS411-Rad21"]="RS411-Rad21-1_S3_R1_001.fastq.gz_peaks_peaks.narrowPeak RS411-Rad21-2_S4_R1_001.fastq.gz_peaks_peaks.narrowPeak"
-    peak_groups["SEM-Rad21"]="SEM-Rad21-1_S5_R1_001.fastq.gz_peaks_peaks.narrowPeak SEM-Rad21-2_S6_R1_001.fastq.gz_peaks_peaks.narrowPeak"
+    peak_groups["RS411-CTCF"]="RS411-CTCF-1_S1_R1_001.fastq.gz_peaks_peaks.gz.bam RS411-CTCF-2_S2_R1_001.fastq.gz_peaks_peaks.gz.bam]"
+    peak_groups["SEM-CTCF_S7"]="SEM-CTCF-1_S7_L001_R1_001.fastq.gz_peaks_peaks.gz.bam] SEM-CTCF-1_S7_L002_R1_001.fastq.gz_peaks_peaks.gz.bam]"
+    peak_groups["SEM-CTCF_S8"]="SEM-CTCF-2_S8_L001_R1_001.fastq.gz_peaks_peaks.gz.bam] SEM-CTCF-2_S8_L002_R1_001.fastq.gz_peaks_peaks.gz.bam]"
+    peak_groups["RS411-Rad21"]="RS411-Rad21-1_S3_R1_001.fastq.gz_peaks_peaks.gz.bam] RS411-Rad21-2_S4_R1_001.fastq.gz_peaks_peaks.gz.bam]"
+    peak_groups["SEM-Rad21"]="SEM-Rad21-1_S5_R1_001.fastq.gz_peaks_peaks.gz.bam] SEM-Rad21-2_S6_R1_001.fastq.gz_peaks_peaks.gz.bam]"
     
     for group in "${!peak_groups[@]}"; do
         echo "Processing $group"
@@ -246,7 +246,7 @@ function bamcov_run {
             --outFileFormat bigwig \
             --binSize 25 \
             --normalizeUsing RPGC \
-            --effectiveGenomeSize 2913022398 \
+            --effectiveGenomeSize 2423000000 \
             --verbose
     done
 }
@@ -309,6 +309,62 @@ function heatplots {
     done
 }
 
+#peak counts 05/27/2025
+
+function merged_bam {
+    bamdir="${scratch}/mapping/indexed/"
+    outdir="${scratch}/mapping/merged_bam"
+    mkdir -p "${outdir}"
+
+    declare -A bamfile_groups
+    bamfile_groups["RS411-CTCF"]="RS411-CTCF-1_S1_R1_001.fastq.gz.bam RS411-CTCF-2_S2_R1_001.fastq.gz.bam"
+    bamfile_groups["SEM-CTCF_S7"]="SEM-CTCF-1_S7_L001_R1_001.fastq.gz.bam SEM-CTCF-1_S7_L002_R1_001.fastq.gz.bam"
+    bamfile_groups["SEM-CTCF_S8"]="SEM-CTCF-2_S8_L001_R1_001.fastq.gz.bam SEM-CTCF-2_S8_L002_R1_001.fastq.gz.bam"
+    bamfile_groups["RS411-Rad21"]="RS411-Rad21-1_S3_R1_001.fastq.gz.bam RS411-Rad21-2_S4_R1_001.fastq.gz.bam"
+    bamfile_groups["SEM-Rad21"]="SEM-Rad21-1_S5_R1_001.fastq.gz.bam SEM-Rad21-2_S6_R1_001.fastq.gz.bam"
+
+    for group in "${!bamfile_groups[@]}"; do
+        files="${bamfile_groups[$group]}"
+        inputs=""
+        for file in $files; do
+            inputs+=" ${bamdir}/${file}"
+        done
+
+        outfile="${outdir}/${group}.bam"
+
+        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=16000]" -o "${job}/${group}_merged_job.txt" \
+            "samtools merge -f ${outfile} ${inputs}"
+    done
+}
+
+function merge_callpeak {
+    merged_bam_dir="${scratch}/mapping/merged_bam"
+    outdir="${scratch}/maping/merged_bam/peaks"
+    mkdir -p "${outdir}"
+
+    for bam in ${merged_bam_dir}/*.bam; do
+        sample_name=$(basename "${bam}" .bam)
+
+        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=16000]" -o "${work}/${sample_name}_peakcalling_job.txt" \
+            "macs2 callpeak -t '${bam}' -f BAMPE -n '${sample_name}' -g hs --keep-dup all --outdir '${outdir}/${sample_name}'"
+    done
+}
+
+function mappingquality {
+    rm -rf "${work}/mapping_quality"
+    mkdir -p "${work}/mapping_quality"
+
+    sampledir="${scratch}/mapping/merged_bam"
+
+    for file in "${sampledir}"/*.bam; do
+        sample_name=$(basename "${file}" .bam)
+        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" \
+            -o "${work}/mapping_quality/${sample_name}_job.txt" \
+            -eo "${work}/mapping_quality/${sample_name}_job_eo.txt" \
+            python mapping_quality.py "${file}" "${work}/mapping_quality/${sample_name}_mapping_quality.png"
+    done
+}
+
 
 #samplelist
 #fastqc_initial
@@ -324,9 +380,7 @@ function heatplots {
 #mergepeaks
 #bamcov_run
 #matrix
-heatplots
-
-
-#05/13/2025
-# left off at mapping job, finished atac MAPQ dist. chart but make sure the axis are correct compared to this also after this start hg19?
-#https://www.acgt.me/blog/2014/12/16/understanding-mapq-scores-in-sam-files-does-37-42
+#heatplots
+#merged_bam
+#merge_callpeak
+mappingquality
