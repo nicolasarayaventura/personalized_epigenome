@@ -405,6 +405,32 @@ function count_peaks {
     done
 }
 
+function atac_chipmerge {
+    atacdir="/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-02-24_atachg38/peakcalling" 
+    chipdir="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-04-07_chipsseqhg38/mapping/merged_bam/peaks"
+    outdir="${scratch}/atac_chip_merge"
+    mkdir -p "$outdir"
+    
+    declare -A mergegroups
+    mergegroups["SEM-CTCF_S7"]="SEM-CTCF_S7_peaks.narrowPeak 7_SEM-1_S53_L004_peak_peaks.narrowPeak"
+    mergegroups["SEM-CTCF_S8"]="SEM-CTCF_S8_peaks.narrowPeak 8_SEM-2_S54_L004_peak_peaks.narrowPeak"
+    
+    for group in "${!mergegroups[@]}"; do
+        read -r chipfile atacfile <<< "${mergegroups[$group]}"
+
+        chip_path="${chipdir}/${chipfile}"
+        atac_path="${atacdir}/${atacfile}"
+
+        if [[ -f "$chip_path" && -f "$atac_path" ]]; then
+            bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=16000]" \
+            -o "${job}/${group}_atacchip_job.txt" \
+            -e "${job}/${group}_atacchip_job.err" \
+            -- \
+            bash -c "cat \"$chip_path\" \"$atac_path\" | sort -k1,1 -k2,2n | bedtools merge > \"${outdir}/${group}_merged.bed\""
+        fi
+    done
+}
+
 
 #samplelist
 #fastqc_initial
@@ -423,5 +449,7 @@ function count_peaks {
 #heatplots
 #merged_bam
 #merge_callpeak
-count_peaks
+#count_peaks
 #mappingquality
+#atac_chipmerge
+
