@@ -270,15 +270,15 @@ function mappingquality {
 }
 function count_peaks {
     peaks_dir="${scratch}/mapping/merged_bam/peaks"
-    output_file="${work}/peak_counts_hg38_all.txt"
+    output_file="${work}/peak_counts_hg19_all.txt"
 
     # Header for the combined output file
     printf "File Name | Chromosome | Start | End | Locus | Peak Count\n" > "$output_file"
 
     coordinate_windows=(
-        "chr2 88826861 90237547"
-        "chr14 105422420 107043718"
-        "chr22 22005516 22922912"
+        "chr2  89156875 90274235"
+        "chr14  106052774 107286287"
+        "chr22  22371717 23267275"
     )
 
     # Loop over every .narrowPeak file
@@ -318,5 +318,5 @@ function count_peaks {
 #heatplots
 #merged_bam
 #merge_callpeak
-count_peaks
+#count_peaks
 #mappingquality
