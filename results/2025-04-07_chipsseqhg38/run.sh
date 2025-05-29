@@ -339,14 +339,16 @@ function merged_bam {
 
 function merge_callpeak {
     merged_bam_dir="${scratch}/mapping/merged_bam"
-    outdir="${scratch}/maping/merged_bam/peaks"
+    outdir="${scratch}/mapping/merged_bam/peaks"
     mkdir -p "${outdir}"
 
-    for bam in ${merged_bam_dir}/*.bam; do
+    for bam in "${merged_bam_dir}"/*.bam; do
         sample_name=$(basename "${bam}" .bam)
 
-        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=16000]" -o "${work}/${sample_name}_peakcalling_job.txt" \
-            "macs2 callpeak -t '${bam}' -f BAMPE -n '${sample_name}' -g hs --keep-dup all --outdir '${outdir}/${sample_name}'"
+        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=16000]" \
+            -o "${work}/${sample_name}_peakcalling_job.txt" \
+            -e "${work}/${sample_name}_peakcalling_job.err" \
+            "macs2 callpeak -t '${bam}' -n '${outdir}/${sample_name}' -g hs --keep-dup all"
     done
 }
 
@@ -362,6 +364,44 @@ function mappingquality {
             -o "${work}/mapping_quality/${sample_name}_job.txt" \
             -eo "${work}/mapping_quality/${sample_name}_job_eo.txt" \
             python mapping_quality.py "${file}" "${work}/mapping_quality/${sample_name}_mapping_quality.png"
+    done
+}
+function count_peaks {
+    peaks_dir="${scratch}/mapping/merged_bam/peaks"
+    output_file="${work}/peak_counts_hg38_all.txt"
+
+    # Header for the combined output file
+    printf "File Name | Chromosome | Start | End | Locus | Peak Count\n" > "$output_file"
+
+    coordinate_windows=(
+        "chr2 88826861 90237547"
+        "chr14 105422420 107043718"
+        "chr22 22005516 22922912"
+    )
+
+    # Loop over every .narrowPeak file
+    for narrowpeak_file in "${peaks_dir}"/*.narrowPeak; do
+        base_narrowpeak_file=$(basename "$narrowpeak_file")
+
+        for window in "${coordinate_windows[@]}"; do
+            chr=$(echo $window | cut -d ' ' -f1)
+            start=$(echo $window | cut -d ' ' -f2)
+            end=$(echo $window | cut -d ' ' -f3)
+
+            case "$chr" in
+                chr2) locus="IgK" ;;
+                chr14) locus="IgH" ;;
+                chr22) locus="IgL" ;;
+                *) locus="Unknown" ;;
+            esac
+
+            # Count peaks overlapping the window (partial overlap)
+            count=$(awk -v chr="$chr" -v start="$start" -v end="$end" \
+                '$1 == chr && $3 > start && $2 < end' "$narrowpeak_file" | wc -l)
+
+            printf "%s | %s | %s | %s | %s | %d\n" \
+                "$base_narrowpeak_file" "$chr" "$start" "$end" "$locus" "$count" >> "$output_file"
+        done
     done
 }
 
@@ -383,4 +423,5 @@ function mappingquality {
 #heatplots
 #merged_bam
 #merge_callpeak
-mappingquality
+count_peaks
+#mappingquality
