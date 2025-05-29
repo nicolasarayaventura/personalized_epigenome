@@ -54,7 +54,7 @@ function callpeaks {
         bam="${input_dir}/${base}.bam"
 
         bsub -P acc_oscarlr -q premium -n 2 -W 12:00 -R "rusage[mem=8000]" \
-            -o "${work}/peakcall_${base}.out" -eo "${work}/peakcall_${base}.err" \
+            -o "${job}/peakcall_${base}.out" -eo "${job}/peakcall_${base}.err" \
             macs2 callpeak -t "${bam}" \
                 -f BAM \
                 -g hs \
@@ -131,7 +131,7 @@ function mergepeaks {
         done
 
         bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" \
-            -o "${outdir}/merge_${group}.out" -eo "${outdir}/merge_${group}.err" \
+            -o "${job}/merge_${group}.out" -eo "${job}/merge_${group}.err" \
             "cat ${inputs} | bedtools sort -i - | bedtools merge -i - > ${outdir}/merged_${group}_peaks.bed"
     done
 }
@@ -146,13 +146,13 @@ function bamcov_run {
         sample=$(basename "$bam" .bam)
 
         bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" \
-            -o "${sample}_bamcov_job.txt" -eo "${sample}_bamcov_err.txt" \
+            -o "${job}/${sample}_bamcov_job.txt" -eo "${job}/${sample}_bamcov_err.txt" \
             bamCoverage -b "$bam" \
             -o "${outdir}/${sample}.bw" \
             --outFileFormat bigwig \
             --binSize 25 \
             --normalizeUsing RPGC \
-            --effectiveGenomeSize 2913022398 \
+            --effectiveGenomeSize 2451960000 \
             --verbose
     done
 }
@@ -172,8 +172,8 @@ function matrix {
         bw="${bwdir}/${label}.bw"
         bed="${beddir}/${bw_to_bed[$label]}"
         outmatrix="${outdir}/${label}_matrix.gz"
-        outlog=" ${label}_matrix_job.out"
-        outerr="${label}_matrix_job.err"
+        outlog="${job}/${label}_matrix_job.out"
+        outerr="${job}/${label}_matrix_job.err"
 
         bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" \
             -o "$outlog" -eo "$outerr" \
@@ -189,6 +189,8 @@ function matrix {
     done
 }
 function heatplots {
+    rm -rf "${work}/plot/heatlplot"
+    mkdir -p "${work}/plot/heatlplot"
     outdir="${work}/plot/heatlplot"
 
     declare -A matrixfiles
@@ -203,7 +205,7 @@ function heatplots {
         outpng="${outdir}/${label}_heatmap.png"
 
         bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" \
-            -o "${label}_heatmap_job.txt" -eo "${label}_heatmap_err.txt" \
+            -o "${job}/${label}_heatmap_job.txt" -eo "${job}/${label}_heatmap_err.txt" \
             plotHeatmap -m "$matrixfile" \
             --heatmapWidth 8 \
             --heatmapHeight 8 \
@@ -212,12 +214,109 @@ function heatplots {
             --kmeans 4
     done
 }
+function merged_bam {
+    bamdir="${scratch}/mapping/indexed/"
+    outdir="${scratch}/mapping/merged_bam"
+    mkdir -p "${outdir}"
+
+    declare -A bamfile_groups
+    bamfile_groups["RS411-CTCF"]="RS411-CTCF-1_S1_R1_001.fastq.gz.bam RS411-CTCF-2_S2_R1_001.fastq.gz.bam"
+    bamfile_groups["SEM-CTCF_S7"]="SEM-CTCF-1_S7_L001_R1_001.fastq.gz.bam SEM-CTCF-1_S7_L002_R1_001.fastq.gz.bam"
+    bamfile_groups["SEM-CTCF_S8"]="SEM-CTCF-2_S8_L001_R1_001.fastq.gz.bam SEM-CTCF-2_S8_L002_R1_001.fastq.gz.bam"
+    bamfile_groups["RS411-Rad21"]="RS411-Rad21-1_S3_R1_001.fastq.gz.bam RS411-Rad21-2_S4_R1_001.fastq.gz.bam"
+    bamfile_groups["SEM-Rad21"]="SEM-Rad21-1_S5_R1_001.fastq.gz.bam SEM-Rad21-2_S6_R1_001.fastq.gz.bam"
+
+    for group in "${!bamfile_groups[@]}"; do
+        files="${bamfile_groups[$group]}"
+        inputs=""
+        for file in $files; do
+            inputs+=" ${bamdir}/${file}"
+        done
+
+        outfile="${outdir}/${group}.bam"
+
+        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=16000]" -o "${job}/${group}_merged_job.txt" \
+            "samtools merge -f ${outfile} ${inputs}"
+    done
+}
+
+function merge_callpeak {
+    merged_bam_dir="${scratch}/mapping/merged_bam"
+    outdir="${scratch}/mapping/merged_bam/peaks"
+    mkdir -p "${outdir}"
+
+    for bam in "${merged_bam_dir}"/*.bam; do
+        sample_name=$(basename "${bam}" .bam)
+
+        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=16000]" \
+            -o "${work}/${sample_name}_peakcalling_job.txt" \
+            -e "${work}/${sample_name}_peakcalling_job.err" \
+            "macs2 callpeak -t '${bam}' -n '${outdir}/${sample_name}' -g hs --keep-dup all"
+    done
+}
+function mappingquality {
+    rm -rf "${work}/mapping_quality"
+    mkdir -p "${work}/mapping_quality"
+
+    sampledir="${scratch}/mapping/merged_bam"
+
+    for file in "${sampledir}"/*.bam; do
+        sample_name=$(basename "${file}" .bam)
+        bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=8000]" \
+            -o "${work}/mapping_quality/${sample_name}_job.txt" \
+            -eo "${work}/mapping_quality/${sample_name}_job_eo.txt" \
+            python mapping_quality.py "${file}" "${work}/mapping_quality/${sample_name}_mapping_quality.png"
+    done
+}
+function count_peaks {
+    peaks_dir="${scratch}/mapping/merged_bam/peaks"
+    output_file="${work}/peak_counts_hg38_all.txt"
+
+    # Header for the combined output file
+    printf "File Name | Chromosome | Start | End | Locus | Peak Count\n" > "$output_file"
+
+    coordinate_windows=(
+        "chr2 88826861 90237547"
+        "chr14 105422420 107043718"
+        "chr22 22005516 22922912"
+    )
+
+    # Loop over every .narrowPeak file
+    for narrowpeak_file in "${peaks_dir}"/*.narrowPeak; do
+        base_narrowpeak_file=$(basename "$narrowpeak_file")
+
+        for window in "${coordinate_windows[@]}"; do
+            chr=$(echo $window | cut -d ' ' -f1)
+            start=$(echo $window | cut -d ' ' -f2)
+            end=$(echo $window | cut -d ' ' -f3)
+
+            case "$chr" in
+                chr2) locus="IgK" ;;
+                chr14) locus="IgH" ;;
+                chr22) locus="IgL" ;;
+                *) locus="Unknown" ;;
+            esac
+
+            # Count peaks overlapping the window (partial overlap)
+            count=$(awk -v chr="$chr" -v start="$start" -v end="$end" \
+                '$1 == chr && $3 > start && $2 < end' "$narrowpeak_file" | wc -l)
+
+            printf "%s | %s | %s | %s | %s | %d\n" \
+                "$base_narrowpeak_file" "$chr" "$start" "$end" "$locus" "$count" >> "$output_file"
+        done
+    done
+}
+
 #bowtiemapping
 #mappingindex
 #callpeaks
-#bamcov_merge #05/20/2025 4:55pm
-index_merged_bam
+#bamcov_merge
+#index_merged_bam
 #mergepeaks
-#bamcov_run
-#matrix
-#heatlplot
+#bamcov_run  #05/20/2025 5:15pm 
+#matrix #not run yet but see if regions in bamcoverage should be done instead? like chr2 22 and 14 only for better specificity
+#heatplots
+#merged_bam
+#merge_callpeak
+count_peaks
+#mappingquality
