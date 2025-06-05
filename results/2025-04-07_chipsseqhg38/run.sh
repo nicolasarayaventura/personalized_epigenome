@@ -412,21 +412,27 @@ function atac_chipmerge {
     mkdir -p "$outdir"
     
     declare -A mergegroups
-    mergegroups["SEM-CTCF_S7"]="SEM-CTCF_S7_peaks.narrowPeak 7_SEM-1_S53_L004_peak_peaks.narrowPeak"
-    mergegroups["SEM-CTCF_S8"]="SEM-CTCF_S8_peaks.narrowPeak 8_SEM-2_S54_L004_peak_peaks.narrowPeak"
+    mergegroups["SEM-CTCF"]="SEM-CTCF_S7_peaks.narrowPeak SEM-CTCF_S8_peaks.narrowPeak"
+    mergegroups["SEM-ATAC"]="7_SEM-1_S53_L004_peak_peaks.narrowPeak 8_SEM-2_S54_L004_peak_peaks.narrowPeak"
     
     for group in "${!mergegroups[@]}"; do
-        read -r chipfile atacfile <<< "${mergegroups[$group]}"
+        read -r file1 file2 <<< "${mergegroups[$group]}"
 
-        chip_path="${chipdir}/${chipfile}"
-        atac_path="${atacdir}/${atacfile}"
+        # Route to correct directories
+        if [[ "$group" == *"CTCF"* ]]; then
+            path1="${chipdir}/${file1}"
+            path2="${chipdir}/${file2}"
+        else
+            path1="${atacdir}/${file1}"
+            path2="${atacdir}/${file2}"
+        fi
 
-        if [[ -f "$chip_path" && -f "$atac_path" ]]; then
+        if [[ -f "$path1" && -f "$path2" ]]; then
             bsub -P acc_oscarlr -q premium -n 2 -W 24:00 -R "rusage[mem=16000]" \
-            -o "${job}/${group}_atacchip_job.txt" \
-            -e "${job}/${group}_atacchip_job.err" \
+            -o "${job}/${group}_merge_job.txt" \
+            -e "${job}/${group}_merge_job.err" \
             -- \
-            bash -c "cat \"$chip_path\" \"$atac_path\" | sort -k1,1 -k2,2n | bedtools merge > \"${outdir}/${group}_merged.bed\""
+            bash -c "cat \"$path1\" \"$path2\" | sort -k1,1 -k2,2n | bedtools merge > \"${outdir}/${group}_merged.bed\""
         fi
     done
 }
