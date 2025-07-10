@@ -3,9 +3,12 @@ set -x -e
 ###
 work="/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-07-08_hichiphg38"
 scratch="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-07-08_hichiphg38"
-sampledir1="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/oscar_data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622"
-sampledir2="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/oscar_data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722"
-ref="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/hg38.fa"
+sampledir1="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090622"
+sampledir2="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-02-19_ranjan_data/data/2022-11-22_data_from_Ranjan_Xiang/hichip/RSen090722"
+###
+tmp="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-07-08_hichiphg38/tmp"
+ref="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwa/hg38_filtered"
+chrmsize="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwa/hg38_filtered.chrom.sizes"
 ###
 jobs="/sc/arion/work/arayan01/projects/personalized_epigenome/data/2025-07-08_hichiphg38/jobs"
 errmsg="/sc/arion/work/arayan01/projects/personalized_epigenome/data/2025-07-08_hichiphg38/jobs/eo"
@@ -15,13 +18,13 @@ samplelist="${work}/sample_ids.txt"
 
 function samplelists {
     output="${work}/sample_ids.txt"
-    for filepath in ${sampledir}/*; do
+    for filepath in ${sampledir1}/*; do
         [ -f "$filepath" ] || continue
         basename=$(basename "$filepath")
         echo -e "${basename}\t${filepath}" >> "$output"
     done
 
-    for filepath in ${sampledir}/*; do
+    for filepath in ${sampledir2}/*; do
         [ -f "$filepath" ] || continue
         basename=$(basename "$filepath")
         echo -e "${basename}\t${filepath}" >> "$output"
@@ -49,8 +52,8 @@ function mapping {
                 bash -c "
                     bwa mem -5SP -T0 -t ${cores} ${ref} \"${r1}\" \"${r2}\" | \
                     pairtools parse --min-mapq 40 --walks-policy 5unique --max-inter-align-gap 30 \
-                        --nproc-in ${cores} --nproc-out ${cores} --chroms-path /path/to/hg38.chrom.sizes | \
-                    pairtools sort --tmpdir=/sc/arion/scratch/arayan01/tmp --nproc ${cores} | \
+                        --nproc-in ${cores} --nproc-out ${cores} --chroms-path ${chrmsize}| \
+                    pairtools sort --tmpdir=${tmp} --nproc ${cores} | \
                     pairtools dedup --nproc-in ${cores} --nproc-out ${cores} --mark-dups --output-stats ${outdir}/${base}_stats.txt | \
                     pairtools split --nproc-in ${cores} --nproc-out ${cores} \
                         --output-pairs ${outdir}/${base}_mapped.pairs --output-sam - | \
@@ -64,7 +67,6 @@ function mapping {
 
 function enrichment {
     mapdir="${scratch}/mapping"
-    peakfile="/sc/arion/scratch/arayan01/projects/hichip_tut/data/samples/ENCFF017XLW.bed"
 
     for bam in "${mapdir}"/*_mapped.PT.bam; do
         [[ -e "$bam" ]] || continue  # Skip if no BAM files found
@@ -136,3 +138,4 @@ function loopcalling {
 
 #samplelists
 mapping
+#enrichment
