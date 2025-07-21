@@ -10,8 +10,8 @@ tmp="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-07-08_
 ref="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwa/hg38_filtered"
 chrmsize="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwa/hg38_filtered.chrom.sizes"
 ###
-jobs="/sc/arion/work/arayan01/projects/personalized_epigenome/data/2025-07-08_hichiphg38/jobs"
-errmsg="/sc/arion/work/arayan01/projects/personalized_epigenome/data/2025-07-08_hichiphg38/jobs/eo"
+jobs="/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-07-08_hichiphg38/jobs"
+errmsg="/sc/arion/work/arayan01/project/personalized_epigenome/data/2025-07-08_hichiphg38/jobs/eo"
 ###
 cores=4
 samplelist="${work}/sample_ids.txt"
@@ -31,12 +31,13 @@ function samplelists {
     done
 }
 
-function mapping {
-    outdir="${scratch}/mapping"
-    mkdir -p "$outdir"
+function bmem {
+    rm -rf "${scratch}/bmem"
+
+    outdir="${scratch}/bmem"  
+    mkdir -p "${outdir}"       
 
     while IFS=$'\t' read -r basename filepath; do
-
         if [[ "$filepath" == *_R1*.fastq.gz ]]; then
             r1="$filepath"
             [[ -e "$r1" ]] || continue
@@ -48,21 +49,136 @@ function mapping {
             base=${filename%%_R1*}
 
             bsub -P acc_oscarlr -q premium -n ${cores} -W 4:00 -R "rusage[mem=16000]" \
-                -o "${jobs}/pairtools_${base}.log" -eo "${errmsg}/pairtools_${base}.log" \
-                bash -c "
-                    bwa mem -5SP -T0 -t ${cores} ${ref} \"${r1}\" \"${r2}\" | \
-                    pairtools parse --min-mapq 40 --walks-policy 5unique --max-inter-align-gap 30 \
-                        --nproc-in ${cores} --nproc-out ${cores} --chroms-path ${chrmsize}| \
-                    pairtools sort --tmpdir=${tmp} --nproc ${cores} | \
-                    pairtools dedup --nproc-in ${cores} --nproc-out ${cores} --mark-dups --output-stats ${outdir}/${base}_stats.txt | \
-                    pairtools split --nproc-in ${cores} --nproc-out ${cores} \
-                        --output-pairs ${outdir}/${base}_mapped.pairs --output-sam - | \
-                    samtools view -bS -@${cores} | \
-                    samtools sort -@${cores} -o ${outdir}/${base}_mapped.PT.bam && \
-                    samtools index ${outdir}/${base}_mapped.PT.bam
-                "
+                -o "${jobs}/bmem_${base}.log" -eo "${errmsg}/bmem_${base}.log" \
+                bash -c "bwa mem -5SP -T0 -t ${cores} ${ref} ${r1} ${r2} > ${outdir}/${base}_aligned.sam"
         fi
     done < "$samplelist"
+}
+
+function bmem_chip_peakcall {
+    rm -rf "${scratch}/chip_bam"
+    mkdir -p "${scratch}/chip_bam"
+
+    while IFS=$'\t' read -r basename filepath; do
+        if [[ "$filepath" == *_R1*.fastq.gz ]]; then
+            r1="$filepath"
+            [[ -e "$r1" ]] || continue
+
+            r2="${r1/_R1_/_R2_}"
+            [[ -e "$r2" ]] || continue
+
+            filename=$(basename "$r1")
+            base=${filename%%_R1*}
+
+            bsub -P acc_oscarlr -q premium -n ${cores} -W 4:00 -R "rusage[mem=16000]" \
+                -o "${jobs}/chip_${base}.log" -eo "${errmsg}/chip_${base}.log" \
+                bash -c "bwa mem -t ${cores} ${ref} ${r1} ${r2} | \
+                         samtools view -bS -q 30 - | \
+                         samtools sort -@ ${cores} -o ${scratch}/chip_bam/${base}.bam"
+        fi
+    done < "$samplelist"
+}
+
+
+function pt_parse {
+    samdir="${scratch}/bmem"
+    outdir="${scratch}/parsed"
+    mkdir -p "$outdir"
+
+    for file in "${samdir}"/*_aligned.sam; do
+        [[ -e "$file" ]] || continue
+        base=$(basename "$file" "_aligned.sam")
+
+        bsub -P acc_oscarlr -q premium -n ${cores} -W 2:00 -R "rusage[mem=8000]" \
+            -o "${jobs}/parse_${base}.log" -eo "${errmsg}/parse_${base}_eo.log" \
+            bash -c "pairtools parse \
+                --min-mapq 40 --walks-policy 5unique --max-inter-align-gap 30 \
+                --nproc-in ${cores} --nproc-out ${cores} --chroms-path ${chrmsize} \
+                '${file}' > '${outdir}/${base}.parsed.pairs'"
+    done
+}
+
+function pt_sort {
+    pardir="${scratch}/parsed"
+    outdir="${scratch}/sorted"
+    mkdir -p "$outdir"
+
+    for file in "${pardir}"/*.parsed.pairs; do
+        [[ -e "$file" ]] || continue  # Skip if no parsed.pairs files found
+        base=$(basename "$file" ".parsed.pairs")
+
+        bsub -P acc_oscarlr -q premium -n ${cores} -W 2:00 -R "rusage[mem=8000]" \
+            -o "${jobs}/sort_${base}.log" -eo "${errmsg}/sort_${base}_eo.log" \
+            bash -c "pairtools sort --tmpdir=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-07-08_hichiphg38/tmp --nproc ${cores} < ${file} > ${outdir}/${base}.sorted.pairs"
+    done
+}
+
+function pt_dedup {
+    sortdir="${scratch}/sorted"
+    outdir="${scratch}/deduped"
+    mkdir -p "$outdir"
+
+    for file in "${sortdir}"/*.sorted.pairs; do
+        [[ -e "$file" ]] || continue
+        base=$(basename "$file" ".sorted.pairs")
+
+        bsub -P acc_oscarlr -q premium -n ${cores} -W 2:00 -R "rusage[mem=8000]" \
+            -o "${jobs}/dedup_${base}.log" -eo "${errmsg}/dedup_${base}_eo.log" \
+            bash -c "pairtools dedup --nproc-in ${cores} --nproc-out ${cores} --mark-dups \
+                --output-stats ${outdir}/${base}_stats.txt \
+                --output ${outdir}/${base}.pairsam \
+                ${file}"
+    done
+}
+
+function pt_split {
+    dedupdir="${scratch}/deduped"
+    outdir="${scratch}/final_pairs"
+    mkdir -p "$outdir"
+
+    for file in "${dedupdir}"/*.pairsam; do
+        [[ -e "$file" ]] || continue
+        base=$(basename "$file" ".pairsam")
+
+        bsub -P acc_oscarlr -q premium -n ${cores} -W 2:00 -R "rusage[mem=8000]" \
+            -o "${jobs}/split_${base}.log" -eo "${errmsg}/split_${base}_eo.log" \
+            bash -c "pairtools split \
+                --nproc-in ${cores} --nproc-out ${cores} \
+                --output-pairs ${outdir}/${base}.pairs \
+                --output-sam ${outdir}/${base}.bam \
+                ${file}"
+    done
+}
+
+function samtools_sort_and_index {
+    bamdir="${scratch}/final_pairs"   # directory with unsorted BAM files
+    sorted_dir="${scratch}/sorted_bam"
+    mkdir -p "$sorted_dir" "$jobs" "$errmsg"
+
+    for file in "${bamdir}"/*.bam; do
+        [[ -e "$file" ]] || continue
+        base=$(basename "$file" ".bam")
+
+        bsub -P acc_oscarlr -q premium -n ${cores} -W 3:00 -R "rusage[mem=8000]" \
+            -o "${jobs}/sort_index_${base}.log" -eo "${errmsg}/sort_index_${base}_eo.log" \
+            bash -c "samtools sort -@ ${cores} -T /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-07-08_hichiphg38/tmp/${base}_temp \
+                -o ${sorted_dir}/${base}_sorted.bam ${file} && samtools index ${sorted_dir}/${base}_sorted.bam"
+    done
+}
+
+function run_get_qc {
+    sorted_dir="${scratch}/sorted_bam"
+    qc_outdir="${scratch}/qc_reports"
+    mkdir -p "$qc_outdir" "$jobs" "$errmsg"
+
+    for bamfile in "${sorted_dir}"/*_sorted.bam; do
+        [[ -e "$bamfile" ]] || continue
+        base=$(basename "$bamfile" "_sorted.bam")
+
+        bsub -P acc_oscarlr -q premium -n 1 -W 1:00 -R "rusage[mem=4000]" \
+            -o "${jobs}/qc_${base}.log" -eo "${errmsg}/qc_${base}_eo.log" \
+            bash -c "python /sc/arion/scratch/arayan01/projects/hichip_tut/data/HiChiP/get_qc.py '${bamfile}' > '${qc_outdir}/${base}_qc.txt'"
+    done
 }
 
 function enrichment {
@@ -137,5 +253,11 @@ function loopcalling {
 }
 
 #samplelists
-mapping
-#enrichment
+#bmem
+#bmem_chip_peakcall
+#pt_parse
+#pt_sort
+#pt_dedup
+#pt_split
+samtools_sort_and_index
+#enrichmentß
