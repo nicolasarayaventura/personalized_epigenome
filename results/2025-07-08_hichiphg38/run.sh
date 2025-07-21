@@ -167,19 +167,27 @@ function samtools_sort_and_index {
 }
 
 function run_get_qc {
-    sorted_dir="${scratch}/sorted_bam"
-    qc_outdir="${scratch}/qc_reports"
+    dedupdir="${scratch}/deduped"
+    qc_outdir="${work}/qc_reports"
     mkdir -p "$qc_outdir" "$jobs" "$errmsg"
 
-    for bamfile in "${sorted_dir}"/*_sorted.bam; do
-        [[ -e "$bamfile" ]] || continue
-        base=$(basename "$bamfile" "_sorted.bam")
+    merged_qc="${qc_outdir}/merged_qc_summary.txt"
+    echo -n "" > "$merged_qc"  # clear previous content
+
+    for statsfile in "${dedupdir}"/*_stats.txt; do
+        [[ -e "$statsfile" ]] || continue
+        base=$(basename "$statsfile" "_stats.txt")
 
         bsub -P acc_oscarlr -q premium -n 1 -W 1:00 -R "rusage[mem=4000]" \
             -o "${jobs}/qc_${base}.log" -eo "${errmsg}/qc_${base}_eo.log" \
-            bash -c "python /sc/arion/scratch/arayan01/projects/hichip_tut/data/HiChiP/get_qc.py '${bamfile}' > '${qc_outdir}/${base}_qc.txt'"
+            bash -c "python3 /sc/arion/scratch/arayan01/projects/hichip_tut/data/HiChiP/get_qc.py -p '${statsfile}' > '${qc_outdir}/${base}_qc.txt' && \
+                     echo -e '=== ${base} ===' >> '${merged_qc}' && \
+                     cat '${qc_outdir}/${base}_qc.txt' >> '${merged_qc}' && \
+                     echo >> '${merged_qc}'"
     done
 }
+
+
 
 function enrichment {
     mapdir="${scratch}/mapping"
@@ -259,5 +267,6 @@ function loopcalling {
 #pt_sort
 #pt_dedup
 #pt_split
-samtools_sort_and_index
+#samtools_sort_and_index
+run_get_qc
 #enrichmentß
