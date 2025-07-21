@@ -1,0 +1,11 @@
+Total Read Pairs                              28,666,807  100%
+Unmapped Read Pairs                           1,673,698   5.84%
+Mapped Read Pairs                             22,050,982  76.92%
+PCR Dup Read Pairs                            6,232,122   21.74%
+No-Dup Read Pairs                             15,818,860  55.18%
+No-Dup Cis Read Pairs                         14,155,934  89.49%
+No-Dup Trans Read Pairs                       1,662,926   10.51%
+No-Dup Valid Read Pairs (cis >= 1kb + trans)  11,481,185  72.58%
+No-Dup Cis Read Pairs < 1kb                   4,337,675   27.42%
+No-Dup Cis Read Pairs >= 1kb                  9,818,259   62.07%
+No-Dup Cis Read Pairs >= 10kb                 7,145,201   45.17%
