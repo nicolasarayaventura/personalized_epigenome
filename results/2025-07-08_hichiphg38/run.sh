@@ -8,10 +8,10 @@ sampledir2="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025
 ###
 tmp="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-07-08_hichiphg38/tmp"
 ref="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwa/hg38_filtered"
-chrmsize="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwa/hg38_filtered.chrom.sizes"
+chrmsize="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/bwa/hg38_filtered.chrom.sizes.sorted"
 ###
 jobs="/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-07-08_hichiphg38/jobs"
-errmsg="/sc/arion/work/arayan01/project/personalized_epigenome/data/2025-07-08_hichiphg38/jobs/eo"
+errmsg="/sc/arion/work/arayan01/project/personalized_epigenome/results/2025-07-08_hichiphg38/jobs/eo"
 ###
 cores=4
 samplelist="${work}/sample_ids.txt"
@@ -55,31 +55,8 @@ function bmem {
     done < "$samplelist"
 }
 
-function bmem_chip_peakcall {
-    rm -rf "${scratch}/chip_bam"
-    mkdir -p "${scratch}/chip_bam"
 
-    while IFS=$'\t' read -r basename filepath; do
-        if [[ "$filepath" == *_R1*.fastq.gz ]]; then
-            r1="$filepath"
-            [[ -e "$r1" ]] || continue
-
-            r2="${r1/_R1_/_R2_}"
-            [[ -e "$r2" ]] || continue
-
-            filename=$(basename "$r1")
-            base=${filename%%_R1*}
-
-            bsub -P acc_oscarlr -q premium -n ${cores} -W 4:00 -R "rusage[mem=16000]" \
-                -o "${jobs}/chip_${base}.log" -eo "${errmsg}/chip_${base}.log" \
-                bash -c "bwa mem -t ${cores} ${ref} ${r1} ${r2} | \
-                         samtools view -bS -q 30 - | \
-                         samtools sort -@ ${cores} -o ${scratch}/chip_bam/${base}.bam"
-        fi
-    done < "$samplelist"
-}
-
-
+# changed walk policy and min mapq to be more relaxed to show more contants in our contact matrix 07/28
 function pt_parse {
     samdir="${scratch}/bmem"
     outdir="${scratch}/parsed"
@@ -92,7 +69,7 @@ function pt_parse {
         bsub -P acc_oscarlr -q premium -n ${cores} -W 2:00 -R "rusage[mem=8000]" \
             -o "${jobs}/parse_${base}.log" -eo "${errmsg}/parse_${base}_eo.log" \
             bash -c "pairtools parse \
-                --min-mapq 40 --walks-policy 5unique --max-inter-align-gap 30 \
+                --min-mapq 20 --walks-policy all --max-inter-align-gap 30 \
                 --nproc-in ${cores} --nproc-out ${cores} --chroms-path ${chrmsize} \
                 '${file}' > '${outdir}/${base}.parsed.pairs'"
     done
@@ -104,14 +81,15 @@ function pt_sort {
     mkdir -p "$outdir"
 
     for file in "${pardir}"/*.parsed.pairs; do
-        [[ -e "$file" ]] || continue  # Skip if no parsed.pairs files found
+        [[ -e "$file" ]] || continue 
         base=$(basename "$file" ".parsed.pairs")
 
         bsub -P acc_oscarlr -q premium -n ${cores} -W 2:00 -R "rusage[mem=8000]" \
             -o "${jobs}/sort_${base}.log" -eo "${errmsg}/sort_${base}_eo.log" \
-            bash -c "pairtools sort --tmpdir=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-07-08_hichiphg38/tmp --nproc ${cores} < ${file} > ${outdir}/${base}.sorted.pairs"
+            bash -c "pairtools sort --tmpdir=/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-07-08_hichiphg38/tmp --nproc ${cores} --output ${outdir}/${base}.sorted.pairs ${file}"
     done
 }
+
 
 function pt_dedup {
     sortdir="${scratch}/sorted"
@@ -147,6 +125,21 @@ function pt_split {
                 --output-pairs ${outdir}/${base}.pairs \
                 --output-sam ${outdir}/${base}.bam \
                 ${file}"
+    done
+}
+
+function filter_pairs { #optional remove pairs where the two reads are less than 1kb apart (or whatever cutoff you choose), so the contact matrix focuses on longer-range, meaningful interactions.
+    indir="${scratch}/deduped"
+    outdir="${scratch}/final_pairs_filtered"
+    mkdir -p "$outdir"
+
+    for file in "${indir}"/*.pairsam; do
+        [[ -e "$file" ]] || continue
+        base=$(basename "$file" ".pairsam")
+
+        # Convert .pairsam to .pairs (if needed), then filter:
+        # Assuming pairsam is text with pairs columns, adjust as needed.
+        awk '($2 != $4) || ($2 == $4 && ($5 - $3) >= 1000)' "${file}" > "${outdir}/${base}.pairs"
     done
 }
 
@@ -187,61 +180,92 @@ function run_get_qc {
     done
 }
 
+function contact_matrix_juicer {
+    outdir="${scratch}/contact_matrices"
+    fragbed="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/MboI_sites.bed"
+    rm -rf "${outdir}"
+    mkdir -p "$outdir"
 
-
-function enrichment {
-    mapdir="${scratch}/mapping"
-
-    for bam in "${mapdir}"/*_mapped.PT.bam; do
-        [[ -e "$bam" ]] || continue  # Skip if no BAM files found
-
-        base=$(basename "$bam" "_mapped.PT.bam")
+    for file in "${scratch}/final_pairs"/*.pairs; do
+        [[ -e "$file" ]] || continue
+        base=$(basename "$file" ".pairs")
 
         bsub -P acc_oscarlr -q premium -n 4 -W 1:00 -R "rusage[mem=4000]" \
-            -o "${jobs}/enrich_${base}.log" -eo "${errmsg}/enrich_${base}.log" \
-            bash /sc/arion/scratch/arayan01/projects/hichip_tut/data/HiChiP/enrichment_stats.sh \
-            -g "$ref" \
-            -b "$bam" \
-            -p "$peakfile" \
-            -t 16 \
-            -x CTCF
+            -o "${jobs}/${base}_juicer_job.txt" \
+            -eo "${errmsg}/${base}_juicer_eo.txt" \
+            java -Xmx48000m -Djava.awt.headless=true \
+            -jar /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-07-08_hichiphg38/juicer_tools.1.9.9_jcuda.0.8.jar \
+            pre \
+            --resolutions 1000,2500,5000,10000,25000 \
+            -x \
+            "${file}" \
+            "${outdir}/contact_map_${base}.hic" \
+            "${chrmsize}" 
+    done
+}
+function anchors1 {
+    outdir="${scratch}/anchors"
+    hic_dir="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-07-08_hichiphg38/contact_matrices"
+    rm -rf "${outdir}"
+    mkdir -p "${outdir}"
+
+    # Loop over .hic files in hic_dir
+    for file in "${hic_dir}"/*.hic; do
+        [[ -e "$file" ]] || continue
+        base=$(basename "$file" ".hic")
+
+        bsub -P acc_oscarlr -q premium -n 4 -W 1:00 -R "rusage[mem=4000]" \
+            -o "${jobs}/${base}_anchors1_job.txt" \
+            -eo "${errmsg}/${base}_anchors1_eo.txt" \
+            java -jar /sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-07-08_hichiphg38/juicer_tools.jar dump observed KR \
+                "${file}" all all BP 10000 \
+                "${outdir}/${base}_observed.txt"
     done
 }
 
-function global_enrichment {
-    chromsizes="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/hg38_rfgen/hg38.chrom.sizes"
-    tmpdir="/sc/arion/scratch/arayan01/projects/hichip_tut/data/tmp"
-    stats="/sc/arion/scratch/arayan01/projects/hichip_tut/results/mapping_stats.txt"
-    outbam="/sc/arion/scratch/arayan01/projects/hichip_tut/results/mapped.PT.bam"
-    pairs="/sc/arion/scratch/arayan01/projects/hichip_tut/results/mapped.pairs"
-    cores=4
-    #_bed for is for bed files other one is for narrowpeak files
-    bsub -P acc_oscarlr -q premium -n 4 -W 1:00 -R "rusage[mem=4000]" -o global_enrichment_job.txt -eo global_enrichment_job_eo.txt \
-        python3 /sc/arion/scratch/arayan01/projects/hichip_tut/data/HiChiP/plot_chip_enrichment_bed.py \
-        -bam /sc/arion/scratch/arayan01/projects/hichip_tut/results/mapped.PT.bam \
-        -peaks /sc/arion/scratch/arayan01/projects/hichip_tut/data/samples/ENCFF017XLW.bed \
-        -output /sc/arion/scratch/arayan01/projects/hichip_tut/results/enrichment.png
 
-}
-function contact_matrix_juicer {
-        bsub -P acc_oscarlr -q premium -n 4 -W 1:00 -R "rusage[mem=4000]" -o juicer_job.txt -eo juicer_eo.txt \
-            java -Xmx48000m  \
-            -Djava.awt.headless=true \
-            -jar /sc/arion/scratch/arayan01/projects/hichip_tut/data/HiChiP/juicertools.jar \
-            pre --threads 16 \
-            /sc/arion/scratch/arayan01/projects/hichip_tut/results/mapped.pairs \
-            contact_map.hic \
-            /sc/arion/scratch/arayan01/projects/hichip_tut/results/hg38.chrom.sizes
+function anchors2 {
+    outdir="${scratch}/simulated_HiChIP"
+    rm -rf "${outdir}"
+    mkdir -p "${outdir}"
 
+    bam_dir="/sc/arion/scratch/arayan01/projects/personalized_epigenome/data/2025-07-08_hichiphg38/final_pairs"
+
+    # Loop over .bam files in bam_dir
+    for file in "${bam_dir}"/*.bam; do
+        [[ -e "$file" ]] || continue
+        base=$(basename "$file" ".bam")
+
+        bsub -P acc_oscarlr -q premium -n 4 -W 1:00 -R "rusage[mem=4000]" \
+            -o "${jobs}/${base}_anchors2_job.txt" \
+            -eo "${errmsg}/${base}_anchors2_eo.txt" \
+            Rscript /sc/arion/scratch/arayan01/projects/hichip_tut/data/FitHiChIP/Imp_Scripts/scripts/HiC_Simulate_by_ChIP_Coverage.r \
+                --OutDir "${outdir}/${base}" \
+                --ChrSizeFile "${chrmsize}" \
+                --ChIPAlignFile "${file}" \
+                --HiCMapFile "${scratch}/anchors/${base}_observed.txt"
+    done
 }
 
-function genpairx {
-    pfile=/sc/arion/scratch/arayan01/projects/hichip_tut/results/mapped.pairs
-    bgzip ${pfile}
-    bsub -P acc_oscarlr -q premium -n 4 -W 1:00 -R "rusage[mem=4000]" -o genpairx_job.txt -eo genpairx_job_eo.txt \
-        pairix ${pfile}.gz 
+
+
+function genpairix_pairs {
+    outdir="${scratch}/pairix_indexed"
+    rm -rf "${outdir}"
+    mkdir -p "$outdir"
+
+    for file in "${scratch}/final_pairs"/*.pairs; do
+        [[ -e "$file" ]] || continue
+        base=$(basename "$file" ".pairs")
+
+        bsub -P acc_oscarlr -q premium -n 1 -W 0:30 -R "rusage[mem=2000]" \
+            -o "${jobs}/${base}_pairix_job.txt" -eo "${errmsg}/${base}_pairix_eo.txt" \
+            bash -c "bgzip -c '${file}' > '${outdir}/${base}.pairs.gz' && pairix '${outdir}/${base}.pairs.gz'"
+    done
 }
+
 function viscool1 {
+
     pfile=/sc/arion/scratch/arayan01/projects/hichip_tut/results/mapped.pairs.gz
     chrom=/sc/arion/scratch/arayan01/projects/hichip_tut/results/hg38.chrom.sizes
     coolfile=/sc/arion/scratch/arayan01/projects/hichip_tut/results/matrix_1kb.cool
@@ -262,11 +286,14 @@ function loopcalling {
 
 #samplelists
 #bmem
-#bmem_chip_peakcall
 #pt_parse
 #pt_sort
 #pt_dedup
 #pt_split
-#samtools_sort_and_index
-run_get_qc
-#enrichmentß
+#samtools_sort
+#samtools_index
+#run_get_qc
+contact_matrix_juicer
+#anchors1
+#anchors2
+#genpairix_pairs
